@@ -10,16 +10,26 @@ public class CameraController : MonoBehaviour
     public float minTurnAngle = -90.0f;
     public float maxTurnAngle = 90.0f;
     private float rotX;
+	[SerializeField]
+	private GameObject playerCameraObject;
+	private Camera playerCamera;
+
+	private Interactable currentlyHoveredObject;
 
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+        
+		playerCamera = playerCameraObject.GetComponent<Camera>();
     }
 
     // Update is called once per frame
     void Update()
     {
         MouseAiming();
+		OutlineObject();
+		if(Input.GetKeyDown(KeyCode.E)){
+			Interact();
+		}
     }
 
     void MouseAiming ()
@@ -32,4 +42,48 @@ public class CameraController : MonoBehaviour
     // rotate the camera
     transform.eulerAngles = new Vector3(-rotX, transform.eulerAngles.y + y, 0);
     }
+
+	private void OutlineObject(){
+		
+		RaycastHit hit;
+        Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
+        
+        if (Physics.Raycast(ray, out hit)) {
+            Transform objectHit = hit.transform;
+			if(Vector3.Distance(objectHit.position, transform.position) > 5f){
+				if(currentlyHoveredObject != null){
+					currentlyHoveredObject.TurnOffShader();
+					currentlyHoveredObject = null;
+				}
+				return;
+			}
+			Interactable interactableObject = objectHit.GetComponent<Interactable>();
+			if((interactableObject != currentlyHoveredObject || interactableObject == null) && currentlyHoveredObject != null){
+				currentlyHoveredObject.TurnOffShader();
+				currentlyHoveredObject = null;
+			}
+			if(interactableObject != null && interactableObject != currentlyHoveredObject){
+				interactableObject.TurnOnShader();
+				currentlyHoveredObject = interactableObject;
+			}
+            // Do something with the object that was hit by the raycast.
+        }
+	}
+
+	private void Interact(){
+		RaycastHit hit;
+        Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
+        
+        if (Physics.Raycast(ray, out hit)) {
+            Transform objectHit = hit.transform;
+			if(Vector3.Distance(objectHit.position, transform.position) > 5f){
+				return;
+			}
+			Interactable interactableObject = objectHit.GetComponent<Interactable>();
+			if(interactableObject != null){
+				interactableObject.Interact();
+			}
+            // Do something with the object that was hit by the raycast.
+        }
+	}	
 }
