@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour
 
 	public Dictionary<string, bool> Inventory = new Dictionary<string, bool>();
 
+	 private int interactionCount = 0 ;
+
     private enum Scenes{
         CrimeScene,
         InterrogationScene,
@@ -88,4 +90,17 @@ public class GameManager : MonoBehaviour
 			Cursor.lockState = CursorLockMode.Locked;
 		}
 	}
+
+    // Method to increment interaction count
+    public void AddInteraction()
+    {
+        interactionCount++;
+        Debug.Log("Interaction Count: " + interactionCount);
+    }
+
+    // Method to get the interaction count
+    public int GetInteractionCount()
+    {
+        return interactionCount;
+    }
 }
