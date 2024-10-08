@@ -1,6 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using Microsoft.Unity.VisualStudio.Editor;
 using TMPro;
 using UnityEngine;
 
@@ -10,13 +8,12 @@ public class NotepadManager : MonoBehaviour
 	TextMeshProUGUI notepadInformation;
 	[SerializeField]
 	GameObject panelObject;
-
+    private HashSet<string> notedObjects = new HashSet<string>();
 
     // Start is called before the first frame update
     void Start()
     {
-		DontDestroyOnLoad(this);
-		AddInformation("New Test Item", "This is the new Test items description");
+
     }
 
     // Update is called once per frame
@@ -27,9 +24,15 @@ public class NotepadManager : MonoBehaviour
 		}
     }
 
-	public void AddInformation(string itemName, string itemDescription){
-		notepadInformation.text += "\n\n" + itemName + ": " + itemDescription;
-	}
+	public void AddInformation(string itemName, string itemDescription)
+    {
+        // Avoid duplicate entries by checking if the object has already been noted
+        if (!notedObjects.Contains(itemName))
+        {
+            notedObjects.Add(itemName); // Add to the set of noted objects
+            notepadInformation.text += $"\n\n{itemName}: {itemDescription}";
+        }
+    }
 
 	private void ToggleNotepad(){
 		panelObject.SetActive(!panelObject.activeSelf);
