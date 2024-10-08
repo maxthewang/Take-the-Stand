@@ -43,7 +43,6 @@
 			CGPROGRAM
 			#pragma vertex vert
 			#pragma fragment frag
-
 			#include "UnityCG.cginc"
 
 			struct appdata
@@ -87,6 +86,7 @@
 			CGPROGRAM
 			#pragma vertex vert
 			#pragma fragment frag
+			#pragma multi_compile_fog
 			#include "UnityCG.cginc"
 			#include "Lighting.cginc"
 
@@ -102,6 +102,7 @@
 				float3 worldBitangent : TEXCOORD4;
 				float4 worldPos : TEXCOORD5;
 				float4 pos : SV_POSITION;
+				float fogCoord : TEXCOORD6;
 			};
 
 			v2f vert(appdata_tan v)
@@ -122,6 +123,8 @@
 
 				// Compute shadows data
 				TRANSFER_SHADOW(o);
+
+				UNITY_TRANSFER_FOG(o, o.pos);
 
 				return o;
 			}
@@ -207,6 +210,7 @@
 				half eIntensity = max(emmision.r, emmision.g);
 				eIntensity = max(eIntensity, emmision.b);
 				col = emmision * eIntensity + col * (1 - eIntensity);
+				UNITY_APPLY_FOG(i.fogCoord, col);
 
 				return col;
 			}
