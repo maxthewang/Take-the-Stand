@@ -27,7 +27,6 @@ public class PauseManager : MonoBehaviour
     public void ResumeGame()
     {
         pauseMenuUI.SetActive(false);   // Hide the pause menu
-        Time.timeScale = 1f;            // Resume normal time
         isPaused = false;               // Mark the game as not paused
     }
 
@@ -35,7 +34,6 @@ public class PauseManager : MonoBehaviour
     public void PauseGame()
     {
         pauseMenuUI.SetActive(true);    // Show the pause menu
-        Time.timeScale = 0f;            // Freeze time
         isPaused = true;                // Mark the game as paused
     }
 

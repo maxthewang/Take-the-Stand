@@ -1,12 +1,12 @@
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
 public class InteractableObject : MonoBehaviour
 {
     public string interactionText = "Click to interact.";
     public string clueMessage = "This object doesn't give you any information.";
-    public Text interactionMessageText;
-    public NotepadManager notepadManager;
+    public TextMeshProUGUI interactionMessageText;
+    private NotepadManager notepadManager;
 
     void Start()
     {
@@ -47,7 +47,7 @@ public class InteractableObject : MonoBehaviour
     private void Interact()
     {
         // Define what happens when the player interacts
-        interactionMessageText.text = clueMessage;
+        interactionMessageText.text = $"{gameObject.name} discovered!\n\n{clueMessage}";
         // Notify the GameManager that an interaction has occurred
         GameManager.instance.AddInteraction();
 

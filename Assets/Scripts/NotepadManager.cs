@@ -28,7 +28,8 @@ public class NotepadManager : MonoBehaviour
         if (!notedObjects.Contains(itemName))
         {
             notedObjects.Add(itemName); // Add to the set of noted objects
-            notepadInformation.text += $"\n\n{itemName}: {itemDescription}";
+            notepadInformation.text += $"\n{itemName}: {itemDescription}";
+            DiscoverableManager.instance.DiscoverObject();
         }
     }
 
