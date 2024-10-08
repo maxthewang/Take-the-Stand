@@ -8,20 +8,18 @@ public class NotepadManager : MonoBehaviour
 	TextMeshProUGUI notepadInformation;
 	[SerializeField]
 	GameObject panelObject;
+    public PlayerInputActions playerControls;
     private HashSet<string> notedObjects = new HashSet<string>();
 
     // Start is called before the first frame update
     void Start()
     {
+        // Enable the input actions
+        playerControls = new PlayerInputActions();
+        playerControls.Enable();
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.N)){
-			ToggleNotepad();
-		}
+        // Subscribe to the notepad toggle action
+        playerControls.UI.Notepad.performed += ctx => ToggleNotepad();
     }
 
 	public void AddInformation(string itemName, string itemDescription)
@@ -37,4 +35,10 @@ public class NotepadManager : MonoBehaviour
 	private void ToggleNotepad(){
 		panelObject.SetActive(!panelObject.activeSelf);
 	}
+
+    private void OnDisable()
+    {
+        // Unsubscribe from the input action when disabled
+        playerControls.UI.Notepad.performed -= ctx => ToggleNotepad();
+    }
 }
