@@ -19,6 +19,8 @@ public class DialogTrigger : MonoBehaviour
             messages = new Message[]
             {
                 new Message(0, "As you know, you're the main suspect in the arson attack that took place last night."),
+				new MultipleChoice(0, "Choose an Option", 2, new Dictionary<string, Message[]>{{"first option" , new Message[] {new Message(0, "this is the first test msg"), new Message(1, "This second")}}, 
+				{"second option" , new Message[] {new Message(0, "this is the third test msg"), new Message(1, "This fourth")}}}),
                 new Message(0, "And you understand that we can use anything you say against you, right?"),
                 new Message(1, "Does it matter if I didn't do it?"),
                 new Message(0, "Well then these questions should be easy for you."),
@@ -61,6 +63,7 @@ public class DialogTrigger : MonoBehaviour
             i++;
         }
     }
+
 }
 
 [System.Serializable]
@@ -75,6 +78,17 @@ public class Message
         this.actorid = actorid;
         this.message = message;
     }
+}
+
+[System.Serializable]
+public class MultipleChoice : Message{
+	public int numberOfChoices;
+	public Dictionary<string, Message[]> optionStrings;
+
+	public MultipleChoice(int actorid, string message, int numberOfChoices, Dictionary<string, Message[]> optionStrings) : base(actorid, message){
+		this.optionStrings = optionStrings;
+		this.numberOfChoices = numberOfChoices;
+	}
 }
 
 [System.Serializable]

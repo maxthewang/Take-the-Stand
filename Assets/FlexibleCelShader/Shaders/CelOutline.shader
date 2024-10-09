@@ -42,6 +42,7 @@
 			CGPROGRAM
 			#pragma vertex vert
 			#pragma fragment frag
+			#pragma multi_compile_fog
 			#include "UnityCG.cginc"
 			#include "Lighting.cginc"
 
@@ -57,6 +58,7 @@
 				float3 worldBitangent : TEXCOORD4;
 				float4 worldPos : TEXCOORD5;
 				float4 pos : SV_POSITION;
+				float fogCoord : TEXCOORD6;
 			};
 
 			v2f vert(appdata_tan v)
@@ -77,6 +79,8 @@
 
 				// Compute shadows data
 				TRANSFER_SHADOW(o);
+
+				UNITY_TRANSFER_FOG(o, o.pos);
 
 				return o;
 			}
@@ -162,6 +166,7 @@
 				half eIntensity = max(emmision.r, emmision.g);
 				eIntensity = max(eIntensity, emmision.b);
 				col = emmision * eIntensity + col * (1 - eIntensity);
+				UNITY_APPLY_FOG(i.fogCoord, col);
 
 				return col;
 			}
@@ -177,6 +182,7 @@
 			CGPROGRAM
 			#pragma vertex vert
 			#pragma fragment frag
+			#pragma multi_compile_fog
 
 			#include "UnityCG.cginc"
 
@@ -189,6 +195,7 @@
 			struct v2f
 			{
 				float4 vertex : SV_POSITION;
+				float fogCoord : TEXCOORD1;
 			};
 
 			float _OutlineSize;
@@ -199,13 +206,19 @@
 				half3 worldNormal = UnityObjectToWorldNormal(v.normal);
 				worldPos.xyz = worldPos.xyz + worldNormal * _OutlineSize * 0.001;
 				o.vertex = mul(UNITY_MATRIX_VP, worldPos);
+
+				UNITY_TRANSFER_FOG(o, o.vertex);
+
 				return o;
 			}
 
 			float4 _OutlineColor;
 			fixed4 frag(v2f i) : SV_Target
 			{
-				return _OutlineColor;
+				fixed4 outlineColor = _OutlineColor;
+				UNITY_APPLY_FOG(i.fogCoord, outlineColor);
+
+				return outlineColor;
 			}
 				ENDCG
 		}// End Outline Pass

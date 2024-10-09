@@ -95,7 +95,6 @@ public class GameManager : MonoBehaviour
     public void AddInteraction()
     {
         interactionCount++;
-        Debug.Log("Interaction Count: " + interactionCount);
     }
 
     // Method to get the interaction count

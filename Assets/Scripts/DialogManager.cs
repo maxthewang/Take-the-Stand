@@ -10,8 +10,11 @@ public class DialogManager : MonoBehaviour
     public Image actorImage;
     public TMP_Text actorName;
     public TMP_Text messageText;
-    public RectTransform backgroundBox;
+    public GameObject regularDialogueBox;
+	public GameObject choiceBox;
     public static bool isActive = false;
+
+	public List<TMP_Text> buttonTexts;
 
     Message[] currentMessages;
     Actor[] currentActors;
@@ -27,14 +30,64 @@ public class DialogManager : MonoBehaviour
         DisplayMessage();
     }
 
+	public void ChooseOptionFromOptionsMenu(Dictionary<string, Message[]> optionStrings, string selectedMessage){
+		currentMessages = optionStrings[selectedMessage];
+		activeMessage = 0;
+		DisplayMessage();
+		ShowRegularDialogueBox();
+		HideChoiceBox();
+	}
+
+	public void SelectOption(TMP_Text buttonName){
+		MultipleChoice multipleChoiceToDisplay = (MultipleChoice)currentMessages[activeMessage];
+		ChooseOptionFromOptionsMenu(multipleChoiceToDisplay.optionStrings, buttonName.text);	
+	}
+
+	private void HideRegularDialogueBox(){
+		// Hide the dialogue box
+		regularDialogueBox.SetActive(false);
+	}
+
+	private void ShowRegularDialogueBox(){
+		// Show the dialogue box
+		regularDialogueBox.SetActive(true);
+	}
+
+	private void HideChoiceBox(){
+		// Hide the choice box
+		choiceBox.SetActive(false);
+	}
+
+	private void ShowChoiceBox(){
+		// Show the choice box
+		choiceBox.SetActive(true);
+	}
+
+	private void DisplayOptions(){
+		HideRegularDialogueBox();
+		MultipleChoice multipleChoiceToDisplay = (MultipleChoice)currentMessages[activeMessage];
+		int i = 0;
+		foreach (string key in multipleChoiceToDisplay.optionStrings.Keys){
+			buttonTexts[i].text = key;
+			i++;
+		}
+		ShowChoiceBox();
+	}
+
     void DisplayMessage()
     {
         Message messageToDisplay = currentMessages[activeMessage];
+		if(messageToDisplay.message == "Choose an Option"){
+			// Display the options menu and hide the dialogue menu
+			DisplayOptions();
+			return;
+		}
         messageText.text = messageToDisplay.message;
 
         Actor actorToDisplay = currentActors[messageToDisplay.actorid];
         actorName.text = actorToDisplay.name;
         actorImage.sprite = actorToDisplay.sprite;
+
     }
 
     public void NextMessage()
@@ -55,6 +108,7 @@ public class DialogManager : MonoBehaviour
             }
         }
     }
+
 
     // Update is called once per frame
     void Update()
