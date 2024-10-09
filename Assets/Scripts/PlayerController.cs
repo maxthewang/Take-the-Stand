@@ -2,18 +2,48 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
     public float speed = 5.0f; 
     public float rotateSpeed = 120.0f; 
-    public float jumpForce = 5.0f; 
+    public float jumpForce = 20.0f; 
+    public float mouseSensitivity = 1.0f; // Sensitivity for mouse look
+    public PlayerInputActions playerControls;
+    private InputAction move;
+    private InputAction look;
+    private InputAction jump;
     private Rigidbody rb;
 
     private CharacterController controller;
-    private Vector3 move_speed;
+    private Vector3 moveSpeed;
     private int controllerFlag = 0; // 0 for rigidbody, 1 for character controller
-    public float gravity = -5.8f;
+    private bool isGrounded; 
+    public float gravity = -9.8f;
+    private float rotationX = 0.0f; // X rotation for looking up/down
+
+    private void Awake()
+    {
+        playerControls = new PlayerInputActions();
+    }
+
+    private void OnEnable()
+    {
+        move = playerControls.Player.Move;
+        move.Enable();
+        look = playerControls.Player.Look;
+        look.Enable();
+        jump = playerControls.Player.Jump;
+        jump.Enable();
+    }
+
+    private void OnDisable()
+    {
+        move.Disable();
+        look.Disable();
+        jump.Disable();
+    }
     
     // Start is called before the first frame update
     // This script is responsible for the movement of the player either using rigidbody 
@@ -31,40 +61,88 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (controllerFlag == 0) {
-            if (Input.GetButtonDown("Jump")) {
-                rb.AddForce(Vector3.up * jumpForce, ForceMode.VelocityChange);
-        }
-        } else {
-            CharacterControllerMovement();
+        Vector2 lookInput = look.ReadValue<Vector2>();
+        LookAround(lookInput);
+
+        isGrounded = controller.isGrounded;
+
+        if (isGrounded) {
+            if (jump.triggered) {
+                StartCoroutine(Jump());
+            }
         }
 
+        if (controller)
+        {
+            CharacterControllerMovement();
+        }
     }
 
     private void FixedUpdate() {
         if (controllerFlag == 0) {
-            float moveVertical = Input.GetAxis("Vertical"); 
-            Vector3 movement = speed * moveVertical * transform.forward * Time.fixedDeltaTime;
+            Vector2 moveInput = move.ReadValue<Vector2>(); // Get movement input
+            Vector3 movement = speed * moveInput.y * transform.forward * Time.fixedDeltaTime;
             rb.MovePosition(rb.position + movement);
-            float turn = Input.GetAxis("Horizontal") * rotateSpeed * Time.fixedDeltaTime;
+            float turn = moveInput.x * rotateSpeed * Time.fixedDeltaTime; // Turn based on horizontal input
             Quaternion turnRotation = Quaternion.Euler(0f, turn, 0f);
             rb.MoveRotation(rb.rotation * turnRotation);
         }
     }
 
-    private void CharacterControllerMovement() {
-        // Controls for character controller
-        move_speed = transform.forward * Input.GetAxis("Vertical") * speed * Time.deltaTime;
-        move_speed += transform.right * Input.GetAxis("Horizontal") * speed * Time.deltaTime;
-        move_speed.y += gravity;
-        move_speed.Normalize();
-        move_speed *= speed;
-        if (controller.isGrounded) {
-            move_speed.y = 0;
-            if (Input.GetButtonDown("Jump")) {
-                move_speed.y = jumpForce;
+    public float fallMultiplier = 5f; // Controls how fast the player falls
+
+    private void CharacterControllerMovement() 
+    {
+        Vector2 moveInput = move.ReadValue<Vector2>();
+        moveSpeed = (transform.forward * moveInput.y + transform.right * moveInput.x).normalized * speed;
+
+        // Apply gravity
+        if (!isGrounded) 
+        {
+            moveSpeed.y += gravity * Time.deltaTime * fallMultiplier; // Adjust fall speed
+        }
+
+        // Check if grounded and reset vertical movement
+        if (isGrounded) 
+        {
+            moveSpeed.y = 0;
+            if (jump.triggered) 
+            {
+                moveSpeed.y = jumpForce;
             }
         }
-        controller.Move(move_speed);     
+
+        controller.Move(moveSpeed * Time.deltaTime);     
+    }
+
+    private void LookAround(Vector2 lookInput)
+    {
+        // Get the mouse delta input for looking
+        float mouseX = lookInput.x * mouseSensitivity;
+        float mouseY = lookInput.y * mouseSensitivity * 5;
+
+        // Update the rotation for looking up/down (pitch)
+        rotationX -= mouseY;
+        rotationX = Mathf.Clamp(rotationX, -80f, 80f); // Limit vertical rotation to avoid flipping
+
+        // Apply the rotation to the camera
+        transform.localRotation = Quaternion.Euler(rotationX, transform.localEulerAngles.y + mouseX, 0);
+    }
+
+    private IEnumerator Jump()
+    {
+        float jumpDuration = 0.3f; // Duration to apply jump force
+        float jumpTime = 0f;
+
+        while (jumpTime < jumpDuration)
+        {
+            jumpTime += Time.deltaTime;
+            moveSpeed.y = jumpForce * (1 - (jumpTime / jumpDuration)); // Gradually decrease upward force
+            controller.Move(moveSpeed * Time.deltaTime);
+            yield return null;
+        }
+
+        // Ensure the player falls after the jump
+        moveSpeed.y = 0; // Reset vertical speed
     }
 }
