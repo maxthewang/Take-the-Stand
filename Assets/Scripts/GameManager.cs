@@ -16,12 +16,17 @@ public class GameManager : MonoBehaviour
 
     public bool touchedObjects { get; set; }
 
-    private int interactionCount = 0 ;
+	[SerializeField]
+	private Canvas EscapeWindow;
+
+	public Dictionary<string, bool> Inventory = new Dictionary<string, bool>();
+
+	 private int interactionCount = 0 ;
 
     private enum Scenes{
         CrimeScene,
-        Interrogation,
-        Intro,
+        InterrogationScene,
+        StartScene,
     }
 
     void Awake(){
@@ -36,12 +41,18 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currScene = Scenes.Intro;
+		Cursor.lockState = CursorLockMode.Locked;
+        currScene = Scenes.StartScene;
+		CloseEscapeWindow();
     }
 
     // Update is called once per frame
     void Update()
     {
+		if(Input.GetKeyDown(KeyCode.Escape)){
+			Debug.Log("Hitting esc key");
+			ToggleEscapeWindow();		
+		}
     }
 
     public void ChangeSceneTest(){
@@ -59,6 +70,26 @@ public class GameManager : MonoBehaviour
             yield return null;
         }
     }
+
+	public void QuitGame(){
+		Application.Quit();
+	}
+
+	public void CloseEscapeWindow(){
+		EscapeWindow.enabled = false;
+		Cursor.lockState = CursorLockMode.Locked;	
+	}
+
+	public void ToggleEscapeWindow(){
+		Debug.Log("Toggled escape window");
+		EscapeWindow.enabled = !EscapeWindow.enabled;
+		if(EscapeWindow.enabled){
+			Cursor.lockState = CursorLockMode.Confined;
+		}
+		else{
+			Cursor.lockState = CursorLockMode.Locked;
+		}
+	}
 
     // Method to increment interaction count
     public void AddInteraction()
