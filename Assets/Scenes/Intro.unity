@@ -197,7 +197,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fdf1363e0375a24e8cce13fb30e2cc6, type: 2}
+  - {fileID: 2100000, guid: 47625bebe9d58244a985ad7376e8c0b1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -832,7 +832,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
+  m_TargetTexture: {fileID: 8400000, guid: 3ad2e04ccc833f34b8ce7b2a173aee49, type: 2}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
@@ -940,7 +940,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fdf1363e0375a24e8cce13fb30e2cc6, type: 2}
+  - {fileID: 2100000, guid: 47625bebe9d58244a985ad7376e8c0b1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1045,7 +1045,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fdf1363e0375a24e8cce13fb30e2cc6, type: 2}
+  - {fileID: 2100000, guid: 47625bebe9d58244a985ad7376e8c0b1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1102,7 +1102,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: ccc9894f34df6457eb5c2688b196b747, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 100ff65746bf9a64886448415bed8199, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -1267,6 +1267,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 13f71b487d9117449b5e6dc9a8239352, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e31798231a22f594ab9fff311055dba1, type: 2}
     - target: {fileID: 919132149155446097, guid: 13f71b487d9117449b5e6dc9a8239352, type: 3}
       propertyPath: m_Name
       value: TempHuman (2)
@@ -1343,7 +1347,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 46b0674e2441df64b80827af9e66e1c7, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 9df2e8a4d4dc006449987fbbc955675c, type: 2}
+      objectReference: {fileID: 2100000, guid: 5965dde3157bf814cb77fc44f79c0d46, type: 2}
     - target: {fileID: 919132149155446097, guid: 46b0674e2441df64b80827af9e66e1c7, type: 3}
       propertyPath: m_Name
       value: TempDesk
@@ -1668,7 +1672,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -1714,6 +1718,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 2096324940}
   - {fileID: 140651133}
   - {fileID: 230201133}
   m_Father: {fileID: 0}
@@ -2303,7 +2308,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fdf1363e0375a24e8cce13fb30e2cc6, type: 2}
+  - {fileID: 2100000, guid: 47625bebe9d58244a985ad7376e8c0b1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2731,6 +2736,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 13f71b487d9117449b5e6dc9a8239352, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e31798231a22f594ab9fff311055dba1, type: 2}
     - target: {fileID: 919132149155446097, guid: 13f71b487d9117449b5e6dc9a8239352, type: 3}
       propertyPath: m_Name
       value: TempHuman (1)
@@ -3061,6 +3070,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 13f71b487d9117449b5e6dc9a8239352, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e31798231a22f594ab9fff311055dba1, type: 2}
     - target: {fileID: 919132149155446097, guid: 13f71b487d9117449b5e6dc9a8239352, type: 3}
       propertyPath: m_Name
       value: TempHuman
@@ -3138,6 +3151,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7944464966991204428, guid: c8cfdfff49e6a634692ac3ea7a03eb3c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bd8b8d717fb5f1d479da47499a41c7b9, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 5050422055867433376, guid: c8cfdfff49e6a634692ac3ea7a03eb3c, type: 3}
@@ -3222,7 +3239,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c16c38644df168a4cbf798aea5a41132, type: 2}
+  - {fileID: 2100000, guid: 47625bebe9d58244a985ad7376e8c0b1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
