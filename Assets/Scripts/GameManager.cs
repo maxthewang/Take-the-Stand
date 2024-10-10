@@ -8,16 +8,11 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance { get; private set;}
 
-    private Scenes currScene;
-
     private bool switchingScenes = false;
 
     public bool notifiedPolice { get; set; }
 
     public bool touchedObjects { get; set; }
-
-	[SerializeField]
-	private Canvas EscapeWindow;
 
 	public Dictionary<string, bool> Inventory = new Dictionary<string, bool>();
 
@@ -42,17 +37,6 @@ public class GameManager : MonoBehaviour
     void Start()
     {
 		Cursor.lockState = CursorLockMode.Locked;
-        currScene = Scenes.StartScene;
-		CloseEscapeWindow();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-		if(Input.GetKeyDown(KeyCode.Escape)){
-			Debug.Log("Hitting esc key");
-			ToggleEscapeWindow();		
-		}
     }
 
     public void ChangeSceneTest(){
@@ -70,26 +54,6 @@ public class GameManager : MonoBehaviour
             yield return null;
         }
     }
-
-	public void QuitGame(){
-		Application.Quit();
-	}
-
-	public void CloseEscapeWindow(){
-		EscapeWindow.enabled = false;
-		Cursor.lockState = CursorLockMode.Locked;	
-	}
-
-	public void ToggleEscapeWindow(){
-		Debug.Log("Toggled escape window");
-		EscapeWindow.enabled = !EscapeWindow.enabled;
-		if(EscapeWindow.enabled){
-			Cursor.lockState = CursorLockMode.Confined;
-		}
-		else{
-			Cursor.lockState = CursorLockMode.Locked;
-		}
-	}
 
     // Method to increment interaction count
     public void AddInteraction()
