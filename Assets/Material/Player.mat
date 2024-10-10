@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-7207135888621501361
+--- !u!114 &-8517701825907912218
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9,10 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Script: {fileID: 11500000, guid: da692e001514ec24dbc4cca1949ff7e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 7
+  version: 13
+  hdPluginSubTargetMaterialVersions:
+    m_Keys: []
+    m_Values: 
 --- !u!21 &2100000
 Material:
   serializedVersion: 8
@@ -20,7 +23,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: New Material 2
+  m_Name: Player
   m_Shader: {fileID: -6465566751694194690, guid: a4aec2d89ff109847a39df6cf26a33e5, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -28,7 +31,7 @@ Material:
   - _DISABLE_DECALS
   - _DISABLE_SSR_TRANSPARENT
   m_InvalidKeywords: []
-  m_LightmapFlags: 4
+  m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: 2000
@@ -102,9 +105,9 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - HardEdgeAlpha: 0
-    - HardEdgeFalloff: 0
-    - HardEdgeSize: 0.4
+    - HardEdgeAlpha: 0.772
+    - HardEdgeFalloff: 0.803
+    - HardEdgeSize: 0.747
     - SoftEdgeAlpha: 0
     - SoftEdgeFalloff: 0
     - SoftEdgeSize: 28
@@ -128,23 +131,25 @@ Material:
     - _EnableFogOnTransparent: 1
     - _ExcludeFromTUAndAA: 0
     - _FresnelBrightness: 1
-    - _FresnelPower: 0.545
-    - _FresnelShadowDropoff: 0.753
+    - _FresnelPower: 0.263
+    - _FresnelShadowDropoff: 0.827
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _HighIntensity: 6.83
-    - _LightScalar: 1
-    - _LowIntensity: 5.16
+    - _GradIntensity: 0
+    - _GradYCap: 0
+    - _HighIntensity: 10
+    - _LightScalar: 3.87
+    - _LowIntensity: 1.82
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
     - _OpaqueCullMode: 2
-    - _OutlineSize: 38.4
+    - _OutlineSize: 3.02
     - _Parallax: 0.02
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _RampLevels: 20
+    - _RampLevels: 40
     - _RayTracing: 0
     - _ReceivesSSR: 1
     - _ReceivesSSRTransparent: 0
@@ -152,8 +157,8 @@ Material:
     - _RenderQueueType: 1
     - _RequireSplitLighting: 0
     - _RimAlpha: 1
-    - _RimDropOff: 0
-    - _RimPower: 1
+    - _RimDropOff: 0.978
+    - _RimPower: 0.859
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
@@ -183,19 +188,19 @@ Material:
     - _ZTestTransparent: 4
     - _ZWrite: 1
     m_Colors:
-    - HardEdgeColor: {r: 1, g: 1, b: 1, a: 0}
+    - HardEdgeColor: {r: 0.92698824, g: 0.93962264, b: 0.8722534, a: 0}
     - SoftEdgeColor: {r: 1, g: 1, b: 1, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissColor: {r: 1, g: 1, b: 1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _FresnelColor: {r: 0.5622641, g: 0.5622641, b: 0.5622641, a: 1}
-    - _HighColor: {r: 1, g: 0.83763826, b: 0.7660377, a: 1}
-    - _LowColor: {r: 0, g: 0.031490542, b: 0.12075472, a: 1}
-    - _OutlineColor: {r: 0, g: 0.2603773, b: 0.1939808, a: 1}
-    - _RimColor: {r: 0, g: 0.056178447, b: 0.5698112, a: 1}
+    - _FresnelColor: {r: 1, g: 0.029645165, b: 0, a: 1}
+    - _HighColor: {r: 0.49056602, g: 0.4560544, b: 0.13143471, a: 1}
+    - _LowColor: {r: 0.007858155, g: 0, b: 0.2905661, a: 1}
+    - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
+    - _RimColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []
---- !u!114 &8010680571692883510
+--- !u!114 &7149303721199443930
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -204,10 +209,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da692e001514ec24dbc4cca1949ff7e8, type: 3}
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 13
-  hdPluginSubTargetMaterialVersions:
-    m_Keys: []
-    m_Values: 
+  version: 7

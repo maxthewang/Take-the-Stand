@@ -17,8 +17,6 @@ public class InteractableObject : MonoBehaviour
 
     void Update()
     {
-        // Set the pixelation scale factor (adjust this based on the level of pixelation)
-
         // Check for mouse click
         if (Input.GetMouseButtonDown(0))
         {
