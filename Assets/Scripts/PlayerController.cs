@@ -10,12 +10,14 @@ public class PlayerController : MonoBehaviour
     public float rotateSpeed = 120.0f; 
     public float jumpForce = 20.0f; 
     public float mouseSensitivity = 1.0f; // Sensitivity for mouse look
+    public AudioSource walkingSound;
     public PlayerInputActions playerControls;
+
     private InputAction move;
     private InputAction look;
     private InputAction jump;
+    private float targetVolume = 0f;
     private Rigidbody rb;
-
     private CharacterController controller;
     private Vector3 moveSpeed;
     private int controllerFlag = 0; // 0 for rigidbody, 1 for character controller
@@ -56,6 +58,8 @@ public class PlayerController : MonoBehaviour
             controller = GetComponent<CharacterController>();
         }
         Debug.Log("controllerFlag: " + controllerFlag);
+
+        walkingSound.volume = 0f;
     }
 
     // Update is called once per frame
@@ -76,6 +80,23 @@ public class PlayerController : MonoBehaviour
         {
             CharacterControllerMovement();
         }
+
+
+        if (controller.velocity.magnitude != 0)
+        {
+            targetVolume = 1f;
+
+            if (!walkingSound.isPlaying)
+            {
+                walkingSound.Play();
+            }
+        }
+        else
+        {
+            targetVolume = 0f;
+        }
+
+        walkingSound.volume = Mathf.Lerp(walkingSound.volume, targetVolume, Time.deltaTime * 2f);
     }
 
     private void FixedUpdate() {

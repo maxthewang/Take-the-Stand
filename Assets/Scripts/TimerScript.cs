@@ -6,6 +6,8 @@ public class TimerScript : MonoBehaviour
 {
     public float TimeLeft;
     public bool TimerOn = false;
+    public AudioSource sirenSound;
+    private bool sirenPlaying = false;
 
     public TextMeshProUGUI TimerTxt;
    
@@ -22,6 +24,12 @@ public class TimerScript : MonoBehaviour
             {
                 TimeLeft -= Time.deltaTime;
                 updateTimer(TimeLeft);
+
+                if(TimeLeft <= 5f && !sirenPlaying)
+                {
+                    sirenSound.Play();
+                    sirenPlaying = true;
+                }
             }
             else
             {

@@ -8,20 +8,20 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance { get; private set;}
 
-    private Scenes currScene;
-
     private bool switchingScenes = false;
 
     public bool notifiedPolice { get; set; }
 
     public bool touchedObjects { get; set; }
 
-    private int interactionCount = 0 ;
+	public Dictionary<string, bool> Inventory = new Dictionary<string, bool>();
+
+	 private int interactionCount = 0 ;
 
     private enum Scenes{
         CrimeScene,
-        Interrogation,
-        Intro,
+        InterrogationScene,
+        StartScene,
     }
 
     void Awake(){
@@ -36,12 +36,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currScene = Scenes.Intro;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
+		Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void ChangeSceneTest(){
