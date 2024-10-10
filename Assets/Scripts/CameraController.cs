@@ -14,7 +14,7 @@ public class CameraController : MonoBehaviour
 	private GameObject playerCameraObject;
 	private Camera playerCamera;
 
-	private Interactable currentlyHoveredObject;
+	private Outlined currentlyHoveredObject;
 
     void Start()
     {
@@ -27,9 +27,6 @@ public class CameraController : MonoBehaviour
     {
         MouseAiming();
 		OutlineObject();
-		if(Input.GetKeyDown(KeyCode.E)){
-			Interact();
-		}
     }
 
     void MouseAiming ()
@@ -46,18 +43,22 @@ public class CameraController : MonoBehaviour
 	private void OutlineObject(){
 		
 		RaycastHit hit;
-        Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
+
+        float adjustedScreenWidth = 300;
+        float adjustedScreenHeight = 200;
+
+        Ray ray = Camera.main.ScreenPointToRay(new Vector3(adjustedScreenWidth / 2, adjustedScreenHeight / 2, 0));
         
         if (Physics.Raycast(ray, out hit)) {
             Transform objectHit = hit.transform;
-			if(Vector3.Distance(objectHit.position, transform.position) > 5f){
+			if(Vector3.Distance(objectHit.position, transform.position) > 10f){
 				if(currentlyHoveredObject != null){
 					currentlyHoveredObject.TurnOffShader();
 					currentlyHoveredObject = null;
 				}
 				return;
 			}
-			Interactable interactableObject = objectHit.GetComponent<Interactable>();
+			Outlined interactableObject = objectHit.GetComponent<Outlined>();
 			if((interactableObject != currentlyHoveredObject || interactableObject == null) && currentlyHoveredObject != null){
 				currentlyHoveredObject.TurnOffShader();
 				currentlyHoveredObject = null;
@@ -69,21 +70,4 @@ public class CameraController : MonoBehaviour
             // Do something with the object that was hit by the raycast.
         }
 	}
-
-	private void Interact(){
-		RaycastHit hit;
-        Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
-        
-        if (Physics.Raycast(ray, out hit)) {
-            Transform objectHit = hit.transform;
-			if(Vector3.Distance(objectHit.position, transform.position) > 5f){
-				return;
-			}
-			Interactable interactableObject = objectHit.GetComponent<Interactable>();
-			if(interactableObject != null){
-				interactableObject.Interact();
-			}
-            // Do something with the object that was hit by the raycast.
-        }
-	}	
 }

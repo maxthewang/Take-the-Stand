@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class Interactable : MonoBehaviour
+public class Outlined : MonoBehaviour
 {
 	Material outlineMat;
     // Start is called before the first frame update
@@ -18,10 +18,6 @@ public class Interactable : MonoBehaviour
     {
         
     }
-
-	public void Interact(){
-		Debug.Log("Interacted with interactable object");
-	}
 
 	public void TurnOnShader(){
 		MeshRenderer[] meshRenderers = GetComponents<MeshRenderer>();
