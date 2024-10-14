@@ -1741,7 +1741,7 @@ GameObject:
   - component: {fileID: 328132308}
   - component: {fileID: 328132307}
   m_Layer: 5
-  m_Name: Pause Menu
+  m_Name: Options Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1783,7 +1783,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.048787463, b: 0.2830189, a: 0.8862745}
+  m_Color: {r: 0, g: 0.008990151, b: 0.18490559, a: 0.49411765}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3857,7 +3857,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TimeLeft: 60
   TimerOn: 1
-  sirenSound: {fileID: 0}
+  sirenSound: {fileID: 1140794980}
   TimerTxt: {fileID: 328001199}
 --- !u!114 &924988076
 MonoBehaviour:
@@ -11342,7 +11342,7 @@ GameObject:
   - component: {fileID: 1864174676}
   - component: {fileID: 1864174675}
   m_Layer: 5
-  m_Name: Game Paused
+  m_Name: Top Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11387,7 +11387,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Game Paused
+  m_text: Options
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

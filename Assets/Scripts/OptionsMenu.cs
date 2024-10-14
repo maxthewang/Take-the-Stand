@@ -1,13 +1,34 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
-public class PauseManager : MonoBehaviour
+public class OptionsMenu : MonoBehaviour
 {
-    public GameObject pauseMenuUI;  // Reference to the pause menu UI panel
-    private bool isPaused = false;  // Track if the game is currently paused
+    public GameObject pauseMenuUI;
+    [SerializeField]
+    private PlayerInputActions playerControls;
+    private bool isPaused = false;
+
+    void Awake()
+    {
+        playerControls = new PlayerInputActions();
+    }
+
+    void OnEnable()
+    {
+        playerControls.UI.Options.performed += OnPause;  // Subscribe to the Pause action
+        playerControls.Enable();
+    }
+
+    void OnDisable()
+    {
+        playerControls.UI.Options.performed -= OnPause;  // Unsubscribe when disabled
+        playerControls.Disable();
+    }
 
     void Start()
     {
+        // Lock/unlock cursor based on the active scene
         if (SceneManager.GetActiveScene().name == "CrimeScene")
         {
             Cursor.visible = false;
@@ -20,20 +41,16 @@ public class PauseManager : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    // Callback function for the Pause action
+    private void OnPause(InputAction.CallbackContext context)
     {
-        // Check if the player presses the Esc key
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (isPaused)
         {
-            if (isPaused)
-            {
-                ResumeGame();  // If the game is paused, resume it
-            }
-            else
-            {
-                PauseGame();   // If the game is running, pause it
-            }
+            ResumeGame();  // If the game is paused, resume it
+        }
+        else
+        {
+            PauseGame();   // If the game is running, pause it
         }
     }
 
@@ -49,6 +66,7 @@ public class PauseManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
     }
 
+    // Function to pause the game
     public void PauseGame()
     {
         if (pauseMenuUI != null)
