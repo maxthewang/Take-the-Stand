@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class DialogManager : MonoBehaviour
 {
@@ -16,9 +17,32 @@ public class DialogManager : MonoBehaviour
 
 	public List<TMP_Text> buttonTexts;
 
+    [SerializeField]
+    private PlayerInputActions playerControls;
+    private InputAction nextMessageAction;
+
     Message[] currentMessages;
     Actor[] currentActors;
     public int activeMessage = 0;
+
+    void Awake()
+    {
+        playerControls = new PlayerInputActions();
+        nextMessageAction = playerControls.UI.AdvanceDialogue;
+    }
+
+    void OnEnable()
+    {
+        nextMessageAction.performed += OnNextMessage;
+        playerControls.Enable();
+    }
+
+    void OnDisable()
+    {
+        nextMessageAction.performed -= OnNextMessage;
+        playerControls.Disable();
+    }
+
     public void OpenDialog(Message[] messages, Actor[] actors)
     {
         currentMessages = messages;
@@ -101,6 +125,11 @@ public class DialogManager : MonoBehaviour
             Debug.Log("Conversation Ended");
             isActive = false;
 
+            if (SceneManager.GetActiveScene().name == "Intro")
+            {
+                SceneManager.LoadScene("CrimeScene");
+            }
+
             int interactionCount = GameManager.instance.GetInteractionCount();
             if (interactionCount == 0)
             {
@@ -108,12 +137,10 @@ public class DialogManager : MonoBehaviour
             }
         }
     }
-
-
-    // Update is called once per frame
-    void Update()
+    
+    private void OnNextMessage(InputAction.CallbackContext context)
     {
-        if (Input.GetKeyDown(KeyCode.Space) && isActive == true)
+        if (isActive)
         {
             NextMessage();
         }

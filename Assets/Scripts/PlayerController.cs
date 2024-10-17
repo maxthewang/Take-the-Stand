@@ -96,7 +96,7 @@ public class PlayerController : MonoBehaviour
             targetVolume = 0f;
         }
 
-        walkingSound.volume = Mathf.Lerp(walkingSound.volume, targetVolume, Time.deltaTime * 2f);
+        walkingSound.volume = Mathf.Lerp(walkingSound.volume, targetVolume, Time.deltaTime * 5f);
     }
 
     private void FixedUpdate() {
