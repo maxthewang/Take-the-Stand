@@ -611,6 +611,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionText: Click to interact.
   clueMessage: The family used this to dispose of... trash.
+  unfoundClueMessage: The ______ used this to _______ of... _____.
   interactionMessageText: {fileID: 873861778}
 --- !u!65 &250546345
 BoxCollider:
@@ -1495,6 +1496,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionText: Click to interact.
   clueMessage: "He attempted to break into the house without the family\u2019s knowledge."
+  unfoundClueMessage: "He attempted to _____ into the _____ without the family\u2019s
+    _________."
   interactionMessageText: {fileID: 873861778}
 --- !u!65 &300416665
 BoxCollider:
@@ -1942,6 +1945,8 @@ MonoBehaviour:
   interactionText: Click to interact.
   clueMessage: He knew the layout of the area beforehand and targeted this house
     specifically.
+  unfoundClueMessage: He knew the ______ of the area __________ and targeted this
+    _____ specifically.
   interactionMessageText: {fileID: 873861778}
 --- !u!65 &396307401
 BoxCollider:
@@ -2933,6 +2938,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionText: Click to interact.
   clueMessage: He secretly planned his actions in the darkness.
+  unfoundClueMessage: He secretly _______ his _______ in the ________.
   interactionMessageText: {fileID: 873861778}
 --- !u!65 &781834919
 BoxCollider:
@@ -9298,6 +9304,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionText: Click to interact.
   clueMessage: The family used this to dispose of... trash.
+  unfoundClueMessage: The ______ used this to _______ of... _____.
   interactionMessageText: {fileID: 873861778}
 --- !u!65 &1111753967
 BoxCollider:
@@ -10131,6 +10138,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionText: Click to interact.
   clueMessage: It's made of glass, and it's empty.
+  unfoundClueMessage: It's made of _____, and it's _____.
   interactionMessageText: {fileID: 873861778}
 --- !u!65 &1434731168
 BoxCollider:
@@ -10310,6 +10318,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionText: Click to interact.
   clueMessage: It's on fire.
+  unfoundClueMessage: This ______ doesn't give you any ___________.
   interactionMessageText: {fileID: 873861778}
 --- !u!65 &1502068334
 BoxCollider:
@@ -10495,6 +10504,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionText: Click to interact.
   clueMessage: The family used this to dispose of... trash.
+  unfoundClueMessage: The ______ used this to _______ of... _____.
   interactionMessageText: {fileID: 873861778}
 --- !u!65 &1540674872
 BoxCollider:
@@ -10563,6 +10573,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionText: Click to interact.
   clueMessage: It looks strangely modern.
+  unfoundClueMessage: It looks strangely ______.
   interactionMessageText: {fileID: 873861778}
 --- !u!65 &1619028406
 BoxCollider:
@@ -10838,6 +10849,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionText: Click to interact.
   clueMessage: It's made of glass, and it's empty.
+  unfoundClueMessage: It's made of _____, and it's _____.
   interactionMessageText: {fileID: 873861778}
 --- !u!4 &1768918212 stripped
 Transform:

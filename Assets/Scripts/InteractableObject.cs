@@ -6,6 +6,7 @@ public class InteractableObject : MonoBehaviour
 {
     public string interactionText = "Click to interact.";
     public string clueMessage = "This object doesn't give you any information.";
+	public string unfoundClueMessage = "This ______ doesn't give you any ___________.";
     public TextMeshProUGUI interactionMessageText;
     [SerializeField]
     private PlayerInputActions playerControls;
@@ -35,6 +36,9 @@ public class InteractableObject : MonoBehaviour
         // Hide interaction text initially
         notepadManager = FindObjectOfType<NotepadManager>();
         HideInteractionText();
+		  if(notepadManager != null){
+			notepadManager.AddInformation(name, new string('_', name.Length), unfoundClueMessage);
+		  }
     }
 
     private void OnInteract(InputAction.CallbackContext context)
@@ -69,7 +73,7 @@ public class InteractableObject : MonoBehaviour
 
         if (notepadManager != null)
         {
-            notepadManager.AddInformation(gameObject.name, clueMessage);
+            notepadManager.AddInformation(name, gameObject.name, clueMessage);
         }
     }
 

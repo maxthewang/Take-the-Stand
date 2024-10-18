@@ -14,6 +14,9 @@ public class NotepadManager : MonoBehaviour
     private AudioSource notepadSound;
     private HashSet<string> notedObjects = new HashSet<string>();
 
+	private Dictionary<string, string> cluePairs = new Dictionary<string, string>();
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,16 +28,25 @@ public class NotepadManager : MonoBehaviour
         playerControls.UI.Notepad.performed += ctx => ToggleNotepad();
     }
 
-	public void AddInformation(string itemName, string itemDescription)
+	public void AddInformation(string dictionaryItemName, string textItemName, string itemDescription)
     {
         // Avoid duplicate entries by checking if the object has already been noted
-        if (!notedObjects.Contains(itemName))
+        if (cluePairs.ContainsKey(dictionaryItemName))
         {
-            notedObjects.Add(itemName); // Add to the set of noted objects
-            notepadInformation.text += $"\n{itemName}: {itemDescription}";
+            notedObjects.Add(dictionaryItemName); // Add to the set of noted objects
             DiscoverableManager.instance.DiscoverObject();
-        }
+		}
+            cluePairs[dictionaryItemName] = $"\n{textItemName}: {itemDescription}";
+		CompileNotepadInformation();
     }
+
+	private void CompileNotepadInformation(){
+		string newNotepadInfo = "";
+		foreach(var notepadInfo in cluePairs){
+			newNotepadInfo += notepadInfo.Value;
+		}
+		notepadInformation.text = newNotepadInfo;
+	}
 
 	private void ToggleNotepad(){
 		panelObject.SetActive(!panelObject.activeSelf);

@@ -14,8 +14,6 @@ public class GameManager : MonoBehaviour
 
     public bool touchedObjects { get; set; }
 
-	public Dictionary<string, bool> Inventory = new Dictionary<string, bool>();
-
 	 private int interactionCount = 0 ;
 
     private enum Scenes{
