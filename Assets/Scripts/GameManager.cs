@@ -13,10 +13,9 @@ public class GameManager : MonoBehaviour
     public bool notifiedPolice { get; set; }
 
     public bool touchedObjects { get; set; }
+    public AudioSource sharedDiscoverySound;
 
-	public Dictionary<string, bool> Inventory = new Dictionary<string, bool>();
-
-	 private int interactionCount = 0 ;
+	private int interactionCount = 0;
 
     private enum Scenes{
         CrimeScene,
@@ -37,6 +36,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
 		Cursor.lockState = CursorLockMode.Locked;
+        InteractableObject.discoverySound = sharedDiscoverySound;
     }
 
     public void ChangeSceneTest(){

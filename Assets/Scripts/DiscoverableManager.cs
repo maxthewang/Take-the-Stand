@@ -40,6 +40,6 @@ public class DiscoverableManager : MonoBehaviour
 
     private void UpdateUI()
     {
-        discoverableCountText.text = $"Discovered: {discoveredCount}/{totalDiscoverables}";
+        discoverableCountText.text = $"Discovered:\n{discoveredCount}/{totalDiscoverables}";
     }
 }

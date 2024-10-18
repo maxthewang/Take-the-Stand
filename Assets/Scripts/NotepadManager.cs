@@ -11,38 +11,72 @@ public class NotepadManager : MonoBehaviour
 	[SerializeField]
     PlayerInputActions playerControls;
     [SerializeField]
-    private AudioSource notepadSound;
+    private AudioSource openingSound;
+    [SerializeField]
+    private AudioSource closingSound;
     private HashSet<string> notedObjects = new HashSet<string>();
+	private Dictionary<string, string> cluePairs = new Dictionary<string, string>();
+
+    void Awake()
+    {
+        playerControls = new PlayerInputActions();
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        // Enable the input actions
-        playerControls = new PlayerInputActions();
         playerControls.Enable();
 
         // Subscribe to the notepad toggle action
         playerControls.UI.Notepad.performed += ctx => ToggleNotepad();
     }
 
-	public void AddInformation(string itemName, string itemDescription)
+	public void AddInformation(string dictionaryItemName, string textItemName, string itemDescription)
     {
-        // Avoid duplicate entries by checking if the object has already been noted
-        if (!notedObjects.Contains(itemName))
-        {
-            notedObjects.Add(itemName); // Add to the set of noted objects
-            notepadInformation.text += $"\n{itemName}: {itemDescription}";
+        // Only discover the object if it's new and not already noted
+        if (cluePairs.ContainsKey(dictionaryItemName))
+        {;
             DiscoverableManager.instance.DiscoverObject();
+        }
+
+        cluePairs[dictionaryItemName] = $"\n{textItemName}: {itemDescription}";
+        CompileNotepadInformation();
+    }
+
+	private void CompileNotepadInformation(){
+		string newNotepadInfo = "";
+		foreach(var notepadInfo in cluePairs){
+			newNotepadInfo += notepadInfo.Value;
+		}
+		notepadInformation.text = newNotepadInfo;
+	}
+
+
+	private void ToggleNotepad()
+    {
+        bool isActive = panelObject.activeSelf; // Store current state
+
+        if (isActive)
+        {
+            // Notepad closed
+            panelObject.SetActive(false);
+            Time.timeScale = 1f;
+            closingSound.Play();
+        }
+        else
+        {
+            // Notepad opened
+            panelObject.SetActive(true);
+            Time.timeScale = 0f;
+            openingSound.Play();
         }
     }
 
-	private void ToggleNotepad(){
-		panelObject.SetActive(!panelObject.activeSelf);
-        notepadSound.Play();
-	}
-
     private void OnDisable()
     {
-        playerControls.UI.Notepad.performed -= ctx => ToggleNotepad();
+        if (playerControls != null)
+        {
+            playerControls.UI.Notepad.performed -= ctx => ToggleNotepad();
+        }
     }
 }

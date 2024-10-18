@@ -30,9 +30,7 @@ public class ImageFader : MonoBehaviour
 
             yield return null; // Wait for the next frame
         }
-
-        // Ensure the image is fully transparent at the end
-        imageColor.a = 0f;
-        imageToFade.color = imageColor;
+        
+        imageToFade.gameObject.SetActive(false);
     }
 }
