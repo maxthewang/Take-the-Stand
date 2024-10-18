@@ -13,7 +13,7 @@ public class DialogManager : MonoBehaviour
     public TMP_Text messageText;
     public GameObject regularDialogueBox;
 	public GameObject choiceBox;
-    public static bool isActive = false;
+    public static bool isActive = true;
 
 	public List<TMP_Text> buttonTexts;
 
