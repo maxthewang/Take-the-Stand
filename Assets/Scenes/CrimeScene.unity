@@ -643,6 +643,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionText: Click to interact.
   clueMessage: The family used this to dispose of... trash.
+  unfoundClueMessage: The ______ used this to ___________... _____.
 --- !u!65 &250546345
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1529,6 +1530,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionText: Click to interact.
   clueMessage: "He attempted to break into the house without the family\u2019s knowledge."
+  unfoundClueMessage: He attempted to _____ into __________ without the __________________.
 --- !u!65 &300416665
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1999,6 +2001,7 @@ MonoBehaviour:
   interactionText: Click to interact.
   clueMessage: He knew the layout of the area beforehand and targeted this house
     specifically.
+  unfoundClueMessage: He knew the _______________ beforehand and __________________specifically.
 --- !u!65 &396307401
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2323,6 +2326,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionText: Click to interact.
   clueMessage: He used this to secretly plan his actions in the darkness.
+  unfoundClueMessage: He used this to ______________________ in the _________.
 --- !u!1001 &514250935
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9422,6 +9426,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionText: Click to interact.
   clueMessage: There's a lighter at the bottom.
+  unfoundClueMessage: This ______ doesn't give you any ___________.
 --- !u!65 &1111753967
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10254,6 +10259,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionText: Click to interact.
   clueMessage: It's empty, but has the scent of alcohol.
+  unfoundClueMessage: It's ______, but has the ______________.
 --- !u!65 &1434731168
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10560,6 +10566,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionText: Click to interact.
   clueMessage: The family lives in here. They are currently asleep.
+  unfoundClueMessage: The family ____________. They are _______________.
 --- !u!65 &1502068334
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10899,6 +10906,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionText: Click to interact.
   clueMessage: There's a pair of gloves and a journal at the bottom.
+  unfoundClueMessage: There's a ______________ and a ________ at the _______.
 --- !u!65 &1540674872
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10966,6 +10974,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionText: Click to interact.
   clueMessage: It seems completely untouched.
+  unfoundClueMessage: It seems _______________________.
 --- !u!65 &1619028406
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11507,6 +11516,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionText: Click to interact.
   clueMessage: It's empty, but has the scent of alcohol.
+  unfoundClueMessage: It's ______, but has the ______________.
 --- !u!4 &1768918212 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ae42df4e5023643df929999461d8e2d3, type: 3}

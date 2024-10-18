@@ -13,8 +13,6 @@ public class GameManager : MonoBehaviour
     public bool notifiedPolice { get; set; }
 
     public bool touchedObjects { get; set; }
-
-	public Dictionary<string, bool> Inventory = new Dictionary<string, bool>();
     public AudioSource sharedDiscoverySound;
 
 	private int interactionCount = 0;

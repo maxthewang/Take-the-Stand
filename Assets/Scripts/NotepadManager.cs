@@ -15,6 +15,7 @@ public class NotepadManager : MonoBehaviour
     [SerializeField]
     private AudioSource closingSound;
     private HashSet<string> notedObjects = new HashSet<string>();
+	private Dictionary<string, string> cluePairs = new Dictionary<string, string>();
 
     void Awake()
     {
@@ -30,16 +31,26 @@ public class NotepadManager : MonoBehaviour
         playerControls.UI.Notepad.performed += ctx => ToggleNotepad();
     }
 
-	public void AddInformation(string itemName, string itemDescription)
+	public void AddInformation(string dictionaryItemName, string textItemName, string itemDescription)
     {
-        // Avoid duplicate entries by checking if the object has already been noted
-        if (!notedObjects.Contains(itemName))
-        {
-            notedObjects.Add(itemName); // Add to the set of noted objects
-            notepadInformation.text += $"\n{itemName}: {itemDescription}";
+        // Only discover the object if it's new and not already noted
+        if (cluePairs.ContainsKey(dictionaryItemName))
+        {;
             DiscoverableManager.instance.DiscoverObject();
         }
+
+        cluePairs[dictionaryItemName] = $"\n{textItemName}: {itemDescription}";
+        CompileNotepadInformation();
     }
+
+	private void CompileNotepadInformation(){
+		string newNotepadInfo = "";
+		foreach(var notepadInfo in cluePairs){
+			newNotepadInfo += notepadInfo.Value;
+		}
+		notepadInformation.text = newNotepadInfo;
+	}
+
 
 	private void ToggleNotepad()
     {

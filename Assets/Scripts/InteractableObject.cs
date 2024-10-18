@@ -5,11 +5,13 @@ public class InteractableObject : MonoBehaviour
 {
     public string interactionText = "Click to interact.";
     public string clueMessage = "This object doesn't give you any information.";
+	public string unfoundClueMessage = "This ______ doesn't give you any ___________.";
     public static AudioSource discoverySound;
     [SerializeField]
     private PlayerInputActions playerControls;
     private NotepadManager notepadManager;
     private InputAction interactAction;
+    private bool isDiscovered = false;
 
     void Awake()
     {
@@ -33,6 +35,9 @@ public class InteractableObject : MonoBehaviour
     {
         // Hide interaction text initially
         notepadManager = FindObjectOfType<NotepadManager>();
+        if(notepadManager != null){
+            notepadManager.AddInformation(name, new string('_', name.Length), unfoundClueMessage);
+        }
     }
 
     private void OnInteract(InputAction.CallbackContext context)
@@ -51,7 +56,6 @@ public class InteractableObject : MonoBehaviour
             // Check if the clicked object is this object
             if (hit.collider != null && hit.collider.gameObject == gameObject)
             {
-                Debug.Log("Hit object: " + hit.collider.gameObject.name);
                 Interact();
             }
         }
@@ -59,17 +63,21 @@ public class InteractableObject : MonoBehaviour
 
     private void Interact()
     {   
-        discoverySound.Play();
-        
-        // Use the centralized text manager to show the interaction message
-        InteractionTextManager.instance.ShowInteractionText($"{gameObject.name} discovered!\nCheck the notepad to see the clue you revealed.");
-
-        // Notify the GameManager that an interaction has occurred
-        GameManager.instance.AddInteraction();
-
-        if (notepadManager != null)
+        if (!isDiscovered)  // Ensure discovery logic only happens once per item
         {
-            notepadManager.AddInformation(gameObject.name, clueMessage);
+            discoverySound.Play();
+
+            // Use the centralized text manager to show the interaction message
+            InteractionTextManager.instance.ShowInteractionText($"{gameObject.name} discovered!\nCheck the notepad to see the clue you revealed.");
+
+            if (notepadManager != null)
+            {
+                // Update the notepad with the actual clue information
+                notepadManager.AddInformation(name, gameObject.name, clueMessage);
+            }
+
+            GameManager.instance.AddInteraction();
+            isDiscovered = true; // Mark the item as discovered
         }
     }
 }
