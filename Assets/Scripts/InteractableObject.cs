@@ -1,5 +1,4 @@
 using UnityEngine;
-using TMPro;
 using UnityEngine.InputSystem;
 
 public class InteractableObject : MonoBehaviour
@@ -7,7 +6,6 @@ public class InteractableObject : MonoBehaviour
     public string interactionText = "Click to interact.";
     public string clueMessage = "This object doesn't give you any information.";
     public static AudioSource discoverySound;
-    public TextMeshProUGUI interactionMessageText;
     [SerializeField]
     private PlayerInputActions playerControls;
     private NotepadManager notepadManager;
@@ -35,7 +33,6 @@ public class InteractableObject : MonoBehaviour
     {
         // Hide interaction text initially
         notepadManager = FindObjectOfType<NotepadManager>();
-        HideInteractionText();
     }
 
     private void OnInteract(InputAction.CallbackContext context)
@@ -55,7 +52,6 @@ public class InteractableObject : MonoBehaviour
             if (hit.collider != null && hit.collider.gameObject == gameObject)
             {
                 Debug.Log("Hit object: " + hit.collider.gameObject.name);
-                ShowInteractionText();
                 Interact();
             }
         }
@@ -64,8 +60,10 @@ public class InteractableObject : MonoBehaviour
     private void Interact()
     {   
         discoverySound.Play();
-        // Define what happens when the player interacts
-        interactionMessageText.text = $"{gameObject.name} discovered!\n\n{clueMessage}";
+        
+        // Use the centralized text manager to show the interaction message
+        InteractionTextManager.instance.ShowInteractionText($"{gameObject.name} discovered!\nCheck the notepad to see the clue you revealed.");
+
         // Notify the GameManager that an interaction has occurred
         GameManager.instance.AddInteraction();
 
@@ -73,15 +71,5 @@ public class InteractableObject : MonoBehaviour
         {
             notepadManager.AddInformation(gameObject.name, clueMessage);
         }
-    }
-
-    private void ShowInteractionText()
-    {
-        interactionMessageText.text = interactionText; // Set the interaction text
-    }
-
-    private void HideInteractionText()
-    {
-        interactionMessageText.text = ""; // Clear the interaction text
     }
 }

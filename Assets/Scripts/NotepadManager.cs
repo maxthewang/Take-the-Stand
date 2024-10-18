@@ -11,14 +11,19 @@ public class NotepadManager : MonoBehaviour
 	[SerializeField]
     PlayerInputActions playerControls;
     [SerializeField]
-    private AudioSource notepadSound;
+    private AudioSource openingSound;
+    [SerializeField]
+    private AudioSource closingSound;
     private HashSet<string> notedObjects = new HashSet<string>();
+
+    void Awake()
+    {
+        playerControls = new PlayerInputActions();
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        // Enable the input actions
-        playerControls = new PlayerInputActions();
         playerControls.Enable();
 
         // Subscribe to the notepad toggle action
@@ -36,13 +41,31 @@ public class NotepadManager : MonoBehaviour
         }
     }
 
-	private void ToggleNotepad(){
-		panelObject.SetActive(!panelObject.activeSelf);
-        notepadSound.Play();
-	}
+	private void ToggleNotepad()
+    {
+        bool isActive = panelObject.activeSelf; // Store current state
+
+        if (isActive)
+        {
+            // Notepad closed
+            panelObject.SetActive(false);
+            Time.timeScale = 1f;
+            closingSound.Play();
+        }
+        else
+        {
+            // Notepad opened
+            panelObject.SetActive(true);
+            Time.timeScale = 0f;
+            openingSound.Play();
+        }
+    }
 
     private void OnDisable()
     {
-        playerControls.UI.Notepad.performed -= ctx => ToggleNotepad();
+        if (playerControls != null)
+        {
+            playerControls.UI.Notepad.performed -= ctx => ToggleNotepad();
+        }
     }
 }

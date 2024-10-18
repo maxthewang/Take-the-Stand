@@ -48,7 +48,6 @@ public class CameraController : MonoBehaviour
         float adjustedScreenHeight = 200;
 
         Ray ray = Camera.main.ScreenPointToRay(new Vector3(adjustedScreenWidth / 2, adjustedScreenHeight / 2, 0));
-        Debug.DrawRay(ray.origin, ray.direction * 100, Color.red, 5.0f);
         
         if (Physics.Raycast(ray, out hit)) {
             Transform objectHit = hit.transform;
