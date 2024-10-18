@@ -6,6 +6,7 @@ public class InteractableObject : MonoBehaviour
 {
     public string interactionText = "Click to interact.";
     public string clueMessage = "This object doesn't give you any information.";
+    public static AudioSource discoverySound;
     public TextMeshProUGUI interactionMessageText;
     [SerializeField]
     private PlayerInputActions playerControls;
@@ -61,7 +62,8 @@ public class InteractableObject : MonoBehaviour
     }
 
     private void Interact()
-    {
+    {   
+        discoverySound.Play();
         // Define what happens when the player interacts
         interactionMessageText.text = $"{gameObject.name} discovered!\n\n{clueMessage}";
         // Notify the GameManager that an interaction has occurred

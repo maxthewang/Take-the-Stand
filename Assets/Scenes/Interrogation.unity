@@ -275,8 +275,9 @@ GameObject:
   - component: {fileID: 140651135}
   - component: {fileID: 140651134}
   - component: {fileID: 140651137}
+  - component: {fileID: 140651138}
   m_Layer: 5
-  m_Name: Dialogue box
+  m_Name: Dialogue Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -370,6 +371,23 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 3
+--- !u!114 &140651138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 140651132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35ca6f95bacdd6146aadfafaa254a3ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actors:
+  - name: Interrogator
+    sprite: {fileID: 21300000, guid: 81ca779e8cdcf4d4098c3ee7f9552c06, type: 3}
+  - name: Player
+    sprite: {fileID: 21300000, guid: 796a0b94b3e07174cb2a74558a88d232, type: 3}
 --- !u!1 &153588036
 GameObject:
   m_ObjectHideFlags: 0
@@ -467,7 +485,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8f1799db1f362747afcd2ad02662c63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseMenuUI: {fileID: 0}
+  pauseMenuUI: {fileID: 719210846}
 --- !u!4 &184950874
 Transform:
   m_ObjectHideFlags: 0
@@ -1289,6 +1307,7 @@ MonoBehaviour:
   messageText: {fileID: 963367551}
   regularDialogueBox: {fileID: 0}
   choiceBox: {fileID: 0}
+  boxSound: {fileID: 1010721392}
   buttonTexts: []
   activeMessage: 0
 --- !u!1001 &603608837
@@ -1406,7 +1425,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000030517578, y: 0.000015258789}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &719210848
@@ -1523,33 +1542,8 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 5050422055867433376, guid: c8cfdfff49e6a634692ac3ea7a03eb3c, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c8cfdfff49e6a634692ac3ea7a03eb3c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 888510694}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c8cfdfff49e6a634692ac3ea7a03eb3c, type: 3}
---- !u!1 &888510693 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c8cfdfff49e6a634692ac3ea7a03eb3c, type: 3}
-  m_PrefabInstance: {fileID: 888510692}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &888510694
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 888510693}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35ca6f95bacdd6146aadfafaa254a3ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  actors:
-  - name: Interrogator
-    sprite: {fileID: 21300000, guid: 81ca779e8cdcf4d4098c3ee7f9552c06, type: 3}
-  - name: Player
-    sprite: {fileID: 21300000, guid: 796a0b94b3e07174cb2a74558a88d232, type: 3}
 --- !u!1 &963367549
 GameObject:
   m_ObjectHideFlags: 0
@@ -1934,7 +1928,7 @@ GameObject:
   - component: {fileID: 1010721391}
   - component: {fileID: 1010721392}
   m_Layer: 5
-  m_Name: Box noise
+  m_Name: Box Sound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1969,10 +1963,10 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: d8189e9acb6bf184fb8143bc9904149a, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 44460dc50add6284ea40c0c848ce0958, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
+  m_Volume: 0.562
+  m_Pitch: 1.99
   Loop: 0
   Mute: 0
   Spatialize: 0

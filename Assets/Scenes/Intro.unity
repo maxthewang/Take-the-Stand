@@ -409,7 +409,7 @@ GameObject:
   - component: {fileID: 80274111}
   - component: {fileID: 80274110}
   m_Layer: 5
-  m_Name: RawImage
+  m_Name: Pixelated
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -481,6 +481,7 @@ GameObject:
   - component: {fileID: 140651135}
   - component: {fileID: 140651134}
   - component: {fileID: 140651137}
+  - component: {fileID: 140651138}
   m_Layer: 5
   m_Name: Dialogue box
   m_TagString: Untagged
@@ -509,7 +510,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -80}
-  m_SizeDelta: {x: 500, y: 100}
+  m_SizeDelta: {x: 569.6, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &140651134
 MonoBehaviour:
@@ -576,6 +577,23 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 3
+--- !u!114 &140651138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 140651132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35ca6f95bacdd6146aadfafaa254a3ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actors:
+  - name: Interrogator
+    sprite: {fileID: 21300000, guid: 81ca779e8cdcf4d4098c3ee7f9552c06, type: 3}
+  - name: Player
+    sprite: {fileID: 21300000, guid: 796a0b94b3e07174cb2a74558a88d232, type: 3}
 --- !u!1 &153588036
 GameObject:
   m_ObjectHideFlags: 0
@@ -1672,9 +1690,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 140651133}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 15}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 199.3, y: 15}
   m_SizeDelta: {x: 323.2, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &444018346
@@ -1730,7 +1748,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -2031,6 +2049,7 @@ MonoBehaviour:
   messageText: {fileID: 963367551}
   regularDialogueBox: {fileID: 0}
   choiceBox: {fileID: 0}
+  boxSound: {fileID: 1010721392}
   buttonTexts: []
   activeMessage: 0
 --- !u!114 &511636239
@@ -2610,8 +2629,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 225, y: -15}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 314.4, y: -15}
+  m_SizeDelta: {x: 407.8, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &963367551
 MonoBehaviour:
@@ -2633,7 +2652,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Text
+  m_text: TextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextText
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2666,7 +2685,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -2959,7 +2978,7 @@ GameObject:
   - component: {fileID: 1010721391}
   - component: {fileID: 1010721392}
   m_Layer: 5
-  m_Name: Box noise
+  m_Name: Box Sound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2996,8 +3015,8 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 44460dc50add6284ea40c0c848ce0958, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
+  m_Volume: 0.637
+  m_Pitch: 1.99
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -3365,7 +3384,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   imageToFade: {fileID: 1554065927}
-  fadeDuration: 2
+  fadeDuration: 3
 --- !u!1 &1129631737
 GameObject:
   m_ObjectHideFlags: 0
@@ -3471,28 +3490,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1131508834 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c8cfdfff49e6a634692ac3ea7a03eb3c, type: 3}
-  m_PrefabInstance: {fileID: 1837911620}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1131508839
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1131508834}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35ca6f95bacdd6146aadfafaa254a3ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  actors:
-  - name: Interrogator
-    sprite: {fileID: 21300000, guid: 81ca779e8cdcf4d4098c3ee7f9552c06, type: 3}
-  - name: Player
-    sprite: {fileID: 21300000, guid: 796a0b94b3e07174cb2a74558a88d232, type: 3}
 --- !u!1 &1192145408
 GameObject:
   m_ObjectHideFlags: 0
@@ -4265,10 +4262,7 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 5050422055867433376, guid: c8cfdfff49e6a634692ac3ea7a03eb3c, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c8cfdfff49e6a634692ac3ea7a03eb3c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1131508839}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c8cfdfff49e6a634692ac3ea7a03eb3c, type: 3}
 --- !u!1 &2008060156
 GameObject:

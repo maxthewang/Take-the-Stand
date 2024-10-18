@@ -13,6 +13,7 @@ public class DialogManager : MonoBehaviour
     public TMP_Text messageText;
     public GameObject regularDialogueBox;
 	public GameObject choiceBox;
+    public AudioSource boxSound;
     public static bool isActive = true;
 
 	public List<TMP_Text> buttonTexts;
@@ -117,6 +118,7 @@ public class DialogManager : MonoBehaviour
     public void NextMessage()
     {
         activeMessage++;
+        boxSound.Play();
         if (activeMessage < currentMessages.Length)
         {
             DisplayMessage();

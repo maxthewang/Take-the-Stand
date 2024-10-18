@@ -278,7 +278,7 @@ RectTransform:
   m_GameObject: {fileID: 29932728}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.54, y: 2.54, z: 2.54}
+  m_LocalScale: {x: 2.32, y: 2.32, z: 2.32}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 924988074}
@@ -2305,6 +2305,59 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &456536399 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 635547659545568360, guid: 895efa7a7ba5d8848b38aea295fb12d0, type: 3}
+  m_PrefabInstance: {fileID: 1881683865}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &456536403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 456536399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68e484bdc9910c94ea58f3385d3e7ed4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &456536404
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 456536399}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.0004278927, y: 0.0025232532, z: 0.0004280807}
+  m_Center: {x: -0.000000020154403, y: 0.0005736979, z: 0.00022136567}
+--- !u!114 &456536405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 456536399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9287154d1c2cf054c9fea93783e7bcc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionText: Click to interact.
+  clueMessage: He secretly planned his actions in the darkness.
+  interactionMessageText: {fileID: 873861778}
 --- !u!1001 &514250935
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3004,59 +3057,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: ab2e556b62273434dad486c1e0a4ebf9, type: 3}
   m_PrefabInstance: {fileID: 2137972504}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &781834914 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -1827928219432720515, guid: 895efa7a7ba5d8848b38aea295fb12d0, type: 3}
-  m_PrefabInstance: {fileID: 1881683865}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &781834918
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 781834914}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9287154d1c2cf054c9fea93783e7bcc2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactionText: Click to interact.
-  clueMessage: He secretly planned his actions in the darkness.
-  interactionMessageText: {fileID: 873861778}
---- !u!65 &781834919
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 781834914}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.0005619278, y: 0.002190104, z: 0.0005619279}
-  m_Center: {x: 0.000000101237674, y: 0.0003879288, z: 0.00022130026}
---- !u!114 &781834923
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 781834914}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68e484bdc9910c94ea58f3385d3e7ed4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &798312367
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11621,6 +11621,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -1827928219432720515, guid: 895efa7a7ba5d8848b38aea295fb12d0, type: 3}
       propertyPath: m_Name
+      value: Lens
+      objectReference: {fileID: 0}
+    - target: {fileID: 635547659545568360, guid: 895efa7a7ba5d8848b38aea295fb12d0, type: 3}
+      propertyPath: m_Name
       value: Flashlight
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 895efa7a7ba5d8848b38aea295fb12d0, type: 3}
@@ -11631,15 +11635,15 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: -1827928219432720515, guid: 895efa7a7ba5d8848b38aea295fb12d0, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 635547659545568360, guid: 895efa7a7ba5d8848b38aea295fb12d0, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 781834919}
-    - targetCorrespondingSourceObject: {fileID: -1827928219432720515, guid: 895efa7a7ba5d8848b38aea295fb12d0, type: 3}
+      addedObject: {fileID: 456536404}
+    - targetCorrespondingSourceObject: {fileID: 635547659545568360, guid: 895efa7a7ba5d8848b38aea295fb12d0, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 781834918}
-    - targetCorrespondingSourceObject: {fileID: -1827928219432720515, guid: 895efa7a7ba5d8848b38aea295fb12d0, type: 3}
+      addedObject: {fileID: 456536403}
+    - targetCorrespondingSourceObject: {fileID: 635547659545568360, guid: 895efa7a7ba5d8848b38aea295fb12d0, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 781834923}
+      addedObject: {fileID: 456536405}
   m_SourcePrefab: {fileID: 100100000, guid: 895efa7a7ba5d8848b38aea295fb12d0, type: 3}
 --- !u!1001 &1892295095
 PrefabInstance:
@@ -12134,7 +12138,7 @@ GameObject:
   - component: {fileID: 2048415938}
   - component: {fileID: 2048415937}
   m_Layer: 5
-  m_Name: RawImage
+  m_Name: Pixelated
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
