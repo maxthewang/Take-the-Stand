@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Linq;
 
 public class DialogTrigger : MonoBehaviour
 {
@@ -26,7 +27,9 @@ public class DialogTrigger : MonoBehaviour
         }
         else
         {
-            int interactionCount = GameManager.instance.GetInteractionCount();
+            // int interactionCount = GameManager.instance.GetInteractionCount();
+            int interactionCount = 1;
+            
             if (interactionCount == 0)
             {
                 messages = new Message[]
@@ -39,13 +42,44 @@ public class DialogTrigger : MonoBehaviour
             }
             else
             {
-                messages = new Message[]
+                // Create a list to hold the questions
+                List<MultipleChoice> questions = new List<MultipleChoice>
                 {
-                    new Message(0, "Is it all coming back to you now?"),
-                    new Message(1, "Yeah, I remember what I did."),
-                    new Message(0, "Our investigators have evidence of " + interactionCount + " suspicious things you did on the scene."),
-                    new Message(0, "Care to explain all that?")
+                    new MultipleChoice(0, "How do you know the victims?", 2, new Dictionary<string, Message[]>
+                    {
+                        {"I'm a close friend.", new Message[] {new Message(0, "Sounds about right."), new Message(1, "uh huh")}},
+                        {"Never known them.", new Message[] {new Message(0, "Appalling. Send him to jail."), new Message(1, "wait let me expla-")}}
+                    }),
+
+                    new MultipleChoice(0, "What were you doing last night?", 2, new Dictionary<string, Message[]>
+                    {
+                        {"I was at home.", new Message[] {new Message(0, "Alone?"), new Message(1, "I don't see how that's relevant.")}},
+                        {"I was out with friends.", new Message[] {new Message(0, "Who were you with?"), new Message(1, "They'll back me up!")}}
+                    }),
+
+                    new MultipleChoice(0, "Why should we believe you?", 2, new Dictionary<string, Message[]>
+                    {
+                        {"I have nothing to hide.", new Message[] {new Message(0, "Then prove it."), new Message(1, "I swear, I'm innocent!")}},
+                        {"This is a setup!", new Message[] {new Message(0, "Every suspect says that."), new Message(1, "But I'm telling the truth!")}}
+                    })
                 };
+
+                // Shuffle the questions randomly
+                questions = questions.OrderBy(x => Random.Range(0, 100)).ToList();
+
+                // Create a final messages array combining fixed messages with the randomized questions
+                List<Message> finalMessages = new List<Message>();
+                finalMessages.Add(new Message(0, "Is it all coming back to you now?")); // Optional fixed message before questions
+                finalMessages.Add(new Message(1, "Yeah, I remember what I did."));
+                finalMessages.Add(new Message(0, "Our investigators have evidence of " + interactionCount + " suspicious things you did on the scene."));
+
+                // Add shuffled questions to final messages
+                foreach (var question in questions)
+                {
+                    finalMessages.Add(question);
+                }
+
+                messages = finalMessages.ToArray(); // Convert back to array
             }
         }
 

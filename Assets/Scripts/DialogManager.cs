@@ -13,6 +13,7 @@ public class DialogManager : MonoBehaviour
     public TMP_Text messageText;
     public GameObject regularDialogueBox;
 	public GameObject choiceBox;
+    public TMP_Text choiceMessageText;
     public AudioSource boxSound;
     public static bool isActive = true;
 
@@ -25,6 +26,7 @@ public class DialogManager : MonoBehaviour
     Message[] currentMessages;
     Actor[] currentActors;
     public int activeMessage = 0;
+    private bool isChoosing = false;
 
     void Awake()
     {
@@ -88,54 +90,71 @@ public class DialogManager : MonoBehaviour
 		choiceBox.SetActive(true);
 	}
 
-	private void DisplayOptions(){
-		HideRegularDialogueBox();
-		MultipleChoice multipleChoiceToDisplay = (MultipleChoice)currentMessages[activeMessage];
-		int i = 0;
-		foreach (string key in multipleChoiceToDisplay.optionStrings.Keys){
-			buttonTexts[i].text = key;
-			i++;
-		}
-		ShowChoiceBox();
-	}
+	private void DisplayOptions()
+    {
+        HideRegularDialogueBox();
+        MultipleChoice multipleChoiceToDisplay = (MultipleChoice)currentMessages[activeMessage];
+        choiceMessageText.text = multipleChoiceToDisplay.message;
+
+        int i = 0;
+        foreach (string key in multipleChoiceToDisplay.optionStrings.Keys)
+        {
+            buttonTexts[i].text = key;
+            i++;
+        }
+
+        ShowChoiceBox();
+        isChoosing = true;
+    }
 
     void DisplayMessage()
     {
-        Message messageToDisplay = currentMessages[activeMessage];
-		if(messageToDisplay.message == "Choose an Option"){
-			// Display the options menu and hide the dialogue menu
-			DisplayOptions();
-			return;
-		}
-        messageText.text = messageToDisplay.message;
+        // Only display options if it's a MultipleChoice message
+        if (activeMessage < currentMessages.Length)
+        {
+            Message messageToDisplay = currentMessages[activeMessage];
+            if (messageToDisplay is MultipleChoice)
+            {
+                DisplayOptions();
+                return;
+            }
 
-        Actor actorToDisplay = currentActors[messageToDisplay.actorid];
-        actorName.text = actorToDisplay.name;
-        actorImage.sprite = actorToDisplay.sprite;
+            messageText.text = messageToDisplay.message;
 
+            Actor actorToDisplay = currentActors[messageToDisplay.actorid];
+            actorName.text = actorToDisplay.name;
+            actorImage.sprite = actorToDisplay.sprite;
+
+            isChoosing = false; // Reset choosing state
+        }
     }
 
     public void NextMessage()
     {
-        activeMessage++;
-        boxSound.Play();
-        if (activeMessage < currentMessages.Length)
+        if (!isChoosing) // Only advance if we're not in the choosing state
         {
-            DisplayMessage();
-        } else
-        {
-            Debug.Log("Conversation Ended");
-            isActive = false;
-
-            if (SceneManager.GetActiveScene().name == "Intro")
+            activeMessage++;
+            boxSound.Play();
+            if (activeMessage < currentMessages.Length)
             {
-                SceneManager.LoadScene("CrimeScene");
+                DisplayMessage();
             }
-
-            int interactionCount = GameManager.instance.GetInteractionCount();
-            if (interactionCount == 0)
+            else
             {
-                SceneManager.LoadScene("CrimeScene");
+                Debug.Log("Conversation Ended");
+                isActive = false;
+
+                if (SceneManager.GetActiveScene().name == "Intro")
+                {
+                    SceneManager.LoadScene("CrimeScene");
+                }
+
+                // int interactionCount = GameManager.instance.GetInteractionCount();
+                int interactionCount = 1;
+                if (interactionCount == 0)
+                {
+                    SceneManager.LoadScene("CrimeScene");
+                }
             }
         }
     }
