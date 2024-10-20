@@ -16,7 +16,8 @@ public class GameManager : MonoBehaviour
     public AudioSource sharedDiscoverySound;
 
 	private int interactionCount = 0;
-
+    private bool win = false;
+    
     private enum Scenes{
         CrimeScene,
         InterrogationScene,
@@ -65,5 +66,11 @@ public class GameManager : MonoBehaviour
     public int GetInteractionCount()
     {
         return interactionCount;
+    }
+
+    // Method to set the win condition
+    public void SetWin(bool winCondition)
+    {
+        win = winCondition;
     }
 }
