@@ -46,20 +46,16 @@ public class CameraController : MonoBehaviour
 		RaycastHit hit;
 
 		Ray ray = playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
-		Debug.Log("trying to outline");
         
         if (Physics.Raycast(ray, out hit)) {
             Transform objectHit = hit.transform;
-			Debug.Log(objectHit.position);
-			if(Vector3.Distance(objectHit.position, transform.position) > 5f){
-				Debug.Log(currentlyHoveredObject.name + " | currently hovered");
+			if(Vector3.Distance(objectHit.position, transform.position) > 10f){
 				if(currentlyHoveredObject != null){
 					currentlyHoveredObject.TurnOffShader();
 					currentlyHoveredObject = null;
 				}
 				return;
 			}
-			Debug.Log("Hit something");
 			Outlined interactableObject = objectHit.GetComponent<Outlined>();
 			if((interactableObject != currentlyHoveredObject || interactableObject == null) && currentlyHoveredObject != null){
 				currentlyHoveredObject.TurnOffShader();
