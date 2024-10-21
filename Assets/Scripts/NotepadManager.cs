@@ -55,7 +55,6 @@ public class NotepadManager : MonoBehaviour
 		string finalReplacement = "";
 		for(int i = 0; i < newDescriptionArray.Length; i++){
 			if(Array.IndexOf(oldDescriptionArray, newDescriptionArray[i]) == -1){
-				Debug.Log("Not found in old: " + newDescriptionArray[i]);
 				finalReplacement += "<color=red><b>" + newDescriptionArray[i] + "</b></color>" + " ";
 			}
 			else{
