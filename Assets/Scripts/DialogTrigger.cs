@@ -42,44 +42,38 @@ public class DialogTrigger : MonoBehaviour
             }
             else
             {
-                // Create a list to hold the questions
-                List<MultipleChoice> questions = new List<MultipleChoice>
+                messages = new Message[]
                 {
+                    new Message(0, "Is it all coming back to you now?"),
+                    new Message(1, "Yeah, I remember what I did."),
+                    new Message(0, "Our investigators have evidence of some suspicious things you did on the scene."),
+                    
                     new MultipleChoice(0, "How do you know the victims?", 2, new Dictionary<string, Message[]>
                     {
-                        {"I'm a close friend.", new Message[] {new Message(0, "Sounds about right."), new Message(1, "uh huh")}},
-                        {"Never known them.", new Message[] {new Message(0, "Appalling. Send him to jail."), new Message(1, "wait let me expla-")}}
+                        {"I'm a close friend.", new Message[] {new Message(0, "Sounds about right.")}},
+                        {"Never known them.", new Message[] {new Message(0, "Appalling. We're suspicious.")}}
                     }),
-
-                    new MultipleChoice(0, "What were you doing last night?", 2, new Dictionary<string, Message[]>
+                    new Message(0, "We have evidence you knew them."),
+                    new MultipleChoice(0, "And what happened to the house?", 2, new Dictionary<string, Message[]>
                     {
-                        {"I was at home.", new Message[] {new Message(0, "Alone?"), new Message(1, "I don't see how that's relevant.")}},
-                        {"I was out with friends.", new Message[] {new Message(0, "Who were you with?"), new Message(1, "They'll back me up!")}}
+                        {"It was blown up.", new Message[] {new Message(0, "Don't pretend to be naive here.")}},
+                        {"It was set ablaze.", new Message[] {new Message(0, "Indeed.")}}
                     }),
-
-                    new MultipleChoice(0, "Why should we believe you?", 2, new Dictionary<string, Message[]>
+                    new MultipleChoice(0, "How many things did you notice on the scene?", 2, new Dictionary<string, Message[]>
                     {
-                        {"I have nothing to hide.", new Message[] {new Message(0, "Then prove it."), new Message(1, "I swear, I'm innocent!")}},
-                        {"This is a setup!", new Message[] {new Message(0, "Every suspect says that."), new Message(1, "But I'm telling the truth!")}}
-                    })
+                        {$"{interactionCount}", new Message[] {new Message(0, "Correct.")}},
+                        {$"{interactionCount + 2}", new Message[] {new Message(0, "Not quite.")}}
+                    }),
+                    new Message(1, "I don't see how that's relevant."),
+                    new Message(0, "Let's move on."),
+                    new Message(1, "Fine."),
+                    new Message(0, "Listen, so you know the victims."),
+                    new MultipleChoice(0, "Did they have any rivals?", 2, new Dictionary<string, Message[]>
+                    {
+                        {"Uh, not that I know of.", new Message[] {new Message(0, "Really? You're absolutely hiding something from us.")}},
+                        {"Well, one argued with his brother a lot.", new Message[] {new Message(0, "That checks out.")}}
+                    }),
                 };
-
-                // Shuffle the questions randomly
-                questions = questions.OrderBy(x => Random.Range(0, 100)).ToList();
-
-                // Create a final messages array combining fixed messages with the randomized questions
-                List<Message> finalMessages = new List<Message>();
-                finalMessages.Add(new Message(0, "Is it all coming back to you now?")); // Optional fixed message before questions
-                finalMessages.Add(new Message(1, "Yeah, I remember what I did."));
-                finalMessages.Add(new Message(0, "Our investigators have evidence of " + interactionCount + " suspicious things you did on the scene."));
-
-                // Add shuffled questions to final messages
-                foreach (var question in questions)
-                {
-                    finalMessages.Add(question);
-                }
-
-                messages = finalMessages.ToArray(); // Convert back to array
             }
         }
 

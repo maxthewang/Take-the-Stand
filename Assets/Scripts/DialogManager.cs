@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
+using System.Linq;
 
 public class DialogManager : MonoBehaviour
 {
@@ -26,7 +27,6 @@ public class DialogManager : MonoBehaviour
     Message[] currentMessages;
     Actor[] currentActors;
     public int activeMessage = 0;
-    private bool isChoosing = false;
 
     void Awake()
     {
@@ -58,7 +58,9 @@ public class DialogManager : MonoBehaviour
     }
 
 	public void ChooseOptionFromOptionsMenu(Dictionary<string, Message[]> optionStrings, string selectedMessage){
-		currentMessages = optionStrings[selectedMessage];
+		Message[] remainingMessages = currentMessages.Skip(activeMessage + 1).ToArray();
+        currentMessages = optionStrings[selectedMessage].Concat(remainingMessages).ToArray();
+
 		activeMessage = 0;
 		DisplayMessage();
 		ShowRegularDialogueBox();
@@ -66,9 +68,28 @@ public class DialogManager : MonoBehaviour
 	}
 
 	public void SelectOption(TMP_Text buttonName){
+        DisableButtons();
 		MultipleChoice multipleChoiceToDisplay = (MultipleChoice)currentMessages[activeMessage];
-		ChooseOptionFromOptionsMenu(multipleChoiceToDisplay.optionStrings, buttonName.text);	
+		ChooseOptionFromOptionsMenu(multipleChoiceToDisplay.optionStrings, buttonName.text);
 	}
+
+    // Method to disable buttons
+    private void DisableButtons()
+    {
+        foreach (var buttonText in buttonTexts)
+        {
+            buttonText.transform.parent.GetComponent<Button>().interactable = false;
+        }
+    }
+
+    // Method to re-enable buttons before showing new options
+    private void EnableButtons()
+    {
+        foreach (var buttonText in buttonTexts)
+        {
+            buttonText.transform.parent.GetComponent<Button>().interactable = true;
+        }
+    }
 
 	private void HideRegularDialogueBox(){
 		// Hide the dialogue box
@@ -95,6 +116,7 @@ public class DialogManager : MonoBehaviour
         HideRegularDialogueBox();
         MultipleChoice multipleChoiceToDisplay = (MultipleChoice)currentMessages[activeMessage];
         choiceMessageText.text = multipleChoiceToDisplay.message;
+        EnableButtons();
 
         int i = 0;
         foreach (string key in multipleChoiceToDisplay.optionStrings.Keys)
@@ -104,12 +126,10 @@ public class DialogManager : MonoBehaviour
         }
 
         ShowChoiceBox();
-        isChoosing = true;
     }
 
     void DisplayMessage()
     {
-        // Only display options if it's a MultipleChoice message
         if (activeMessage < currentMessages.Length)
         {
             Message messageToDisplay = currentMessages[activeMessage];
@@ -124,37 +144,32 @@ public class DialogManager : MonoBehaviour
             Actor actorToDisplay = currentActors[messageToDisplay.actorid];
             actorName.text = actorToDisplay.name;
             actorImage.sprite = actorToDisplay.sprite;
-
-            isChoosing = false; // Reset choosing state
         }
     }
 
     public void NextMessage()
     {
-        if (!isChoosing) // Only advance if we're not in the choosing state
+        activeMessage++;
+        boxSound.Play();
+        if (activeMessage < currentMessages.Length)
         {
-            activeMessage++;
-            boxSound.Play();
-            if (activeMessage < currentMessages.Length)
+            DisplayMessage();
+        }
+        else
+        {
+            Debug.Log("Conversation Ended");
+            isActive = false;
+
+            if (SceneManager.GetActiveScene().name == "Intro")
             {
-                DisplayMessage();
+                SceneManager.LoadScene("CrimeScene");
             }
-            else
+
+            // int interactionCount = GameManager.instance.GetInteractionCount();
+            int interactionCount = 1;
+            if (interactionCount == 0)
             {
-                Debug.Log("Conversation Ended");
-                isActive = false;
-
-                if (SceneManager.GetActiveScene().name == "Intro")
-                {
-                    SceneManager.LoadScene("CrimeScene");
-                }
-
-                // int interactionCount = GameManager.instance.GetInteractionCount();
-                int interactionCount = 1;
-                if (interactionCount == 0)
-                {
-                    SceneManager.LoadScene("CrimeScene");
-                }
+                SceneManager.LoadScene("CrimeScene");
             }
         }
     }
