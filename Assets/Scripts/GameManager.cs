@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public AudioSource sharedDiscoverySound;
 
 	private int interactionCount = 0;
+    private int trust = 5;
 
     private enum Scenes{
         CrimeScene,
@@ -65,5 +66,20 @@ public class GameManager : MonoBehaviour
     public int GetInteractionCount()
     {
         return interactionCount;
+    }
+
+    public void IncreaseTrust()
+    {
+        trust++;
+    }
+
+    public void DecreaseTrust()
+    {
+        trust--;
+    }
+
+    public int GetTrust()
+    {
+        return trust;
     }
 }
