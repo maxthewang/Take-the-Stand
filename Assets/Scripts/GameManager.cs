@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public AudioSource sharedDiscoverySound;
 
 	private int interactionCount = 0;
+    //Police trust player amount
     private int trust = 5;
 
     private enum Scenes{
@@ -68,6 +69,7 @@ public class GameManager : MonoBehaviour
         return interactionCount;
     }
 
+    // Increase and Decrease Trust value for interrogation scene
     public void IncreaseTrust()
     {
         trust++;
