@@ -56,5 +56,6 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Take-the-Stand.sln"
+    "dotnet.defaultSolution": "Take-the-Stand.sln",
+    "dotnet.preferCSharpExtension": true
 }

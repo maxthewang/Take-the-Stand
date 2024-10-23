@@ -2071,6 +2071,7 @@ GameObject:
   - component: {fileID: 511636234}
   - component: {fileID: 511636238}
   - component: {fileID: 511636239}
+  - component: {fileID: 511636240}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2181,10 +2182,13 @@ MonoBehaviour:
   actorImage: {fileID: 1192145410}
   actorName: {fileID: 444018346}
   messageText: {fileID: 963367551}
-  regularDialogueBox: {fileID: 0}
-  choiceBox: {fileID: 0}
+  regularDialogueBox: {fileID: 140651132}
+  choiceBox: {fileID: 230201129}
+  choiceMessageText: {fileID: 2057180253}
   boxSound: {fileID: 1010721392}
-  buttonTexts: []
+  buttonTexts:
+  - {fileID: 904007400}
+  - {fileID: 37487885}
   activeMessage: 0
 --- !u!114 &511636239
 MonoBehaviour:
@@ -2201,6 +2205,20 @@ MonoBehaviour:
   dialogManager: {fileID: 511636238}
   mainCamera: {fileID: 302230901}
   altCamera: {fileID: 635762823}
+--- !u!114 &511636240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 511636233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0c69ca80d1a9b643bb110adecf1f10e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  imageToFade: {fileID: 1554065927}
+  fadeDuration: 3
 --- !u!1 &573100510
 GameObject:
   m_ObjectHideFlags: 0
@@ -3239,7 +3257,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1053688658}
   - component: {fileID: 1053688657}
-  - component: {fileID: 1053688659}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -3276,20 +3293,6 @@ Transform:
   - {fileID: 779916087}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1053688659
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1053688655}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0c69ca80d1a9b643bb110adecf1f10e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  imageToFade: {fileID: 1554065927}
-  fadeDuration: 3
 --- !u!1 &1129631737
 GameObject:
   m_ObjectHideFlags: 0
@@ -4713,7 +4716,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000030517578, y: -0.000015258789}
+  m_AnchoredPosition: {x: -0.000030517578, y: -0.000030517578}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2079410485
