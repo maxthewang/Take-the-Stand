@@ -15,6 +15,7 @@ public class DialogManager : MonoBehaviour
 	public GameObject choiceBox;
     public AudioSource boxSound;
     public static bool isActive = true;
+    public List<string> correctStrings = new List<string> {"first option"};
 
 	public List<TMP_Text> buttonTexts;
 
@@ -58,6 +59,11 @@ public class DialogManager : MonoBehaviour
 	public void ChooseOptionFromOptionsMenu(Dictionary<string, Message[]> optionStrings, string selectedMessage){
 		currentMessages = optionStrings[selectedMessage];
 		activeMessage = 0;
+        if (correctStrings.Contains(selectedMessage)) {
+            GameManager.instance.IncreaseTrust();
+        } else {
+            GameManager.instance.DecreaseTrust();
+        }
 		DisplayMessage();
 		ShowRegularDialogueBox();
 		HideChoiceBox();
