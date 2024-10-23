@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 
@@ -35,13 +37,33 @@ public class NotepadManager : MonoBehaviour
     {
         // Only discover the object if it's new and not already noted
         if (cluePairs.ContainsKey(dictionaryItemName))
-        {;
+        {
             DiscoverableManager.instance.DiscoverObject();
+			ReplaceInformation(dictionaryItemName, textItemName, itemDescription);
         }
+		else{
+        	cluePairs[dictionaryItemName] = $"\n{textItemName}: {itemDescription}";
+		}
 
-        cluePairs[dictionaryItemName] = $"\n{textItemName}: {itemDescription}";
         CompileNotepadInformation();
     }
+
+	private void ReplaceInformation(string dictionaryItemName, string textItemName, string newItemDescription){
+		string oldDescription = cluePairs[dictionaryItemName];
+		string[] oldDescriptionArray = oldDescription.Split(" ");
+		string[] newDescriptionArray = newItemDescription.Split(" ");
+		string finalReplacement = "";
+		for(int i = 0; i < newDescriptionArray.Length; i++){
+			if(Array.IndexOf(oldDescriptionArray, newDescriptionArray[i]) == -1){
+				finalReplacement += "<color=red><b>" + newDescriptionArray[i] + "</b></color>" + " ";
+			}
+			else{
+				finalReplacement += newDescriptionArray[i] + " ";
+			}
+		}
+
+        cluePairs[dictionaryItemName] = $"\n<color=red><b>{textItemName}</b></color>: {finalReplacement}";
+	}
 
 	private void CompileNotepadInformation(){
 		string newNotepadInfo = "";
