@@ -82,3 +82,5 @@ crashlytics-build.properties
 .fake
 
 .DS_Store
+.DS_Store
+Assets/.DS_Store
