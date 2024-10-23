@@ -2206,7 +2206,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000030517578, y: -0.000015258789}
+  m_AnchoredPosition: {x: 0, y: -0.000030517578}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &355693745
@@ -3552,7 +3552,10 @@ MonoBehaviour:
   mouseSensitivity: 6
   minTurnAngle: -90
   maxTurnAngle: 90
+  xNum: 0
+  yNum: 5
   playerCameraObject: {fileID: 963194225}
+  playerCamera: {fileID: 963194227}
 --- !u!114 &747610647
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3570,6 +3573,7 @@ MonoBehaviour:
   jumpForce: 15
   mouseSensitivity: 0.1
   walkingSound: {fileID: 20253882}
+  playerCamera: {fileID: 963194227}
   gravity: -200
   fallMultiplier: 2
 --- !u!33 &747610648
