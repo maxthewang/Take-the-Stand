@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
+using System.Linq;
 
 public class DialogManager : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class DialogManager : MonoBehaviour
     public TMP_Text messageText;
     public GameObject regularDialogueBox;
 	public GameObject choiceBox;
+    public TMP_Text choiceMessageText;
     public AudioSource boxSound;
     public static bool isActive = true;
     public List<string> correctStrings = new List<string> {"Admit"};
@@ -57,7 +59,9 @@ public class DialogManager : MonoBehaviour
     }
 
 	public void ChooseOptionFromOptionsMenu(Dictionary<string, Message[]> optionStrings, string selectedMessage){
-		currentMessages = optionStrings[selectedMessage];
+		Message[] remainingMessages = currentMessages.Skip(activeMessage + 1).ToArray();
+        currentMessages = optionStrings[selectedMessage].Concat(remainingMessages).ToArray();
+
 		activeMessage = 0;
         if (correctStrings.Contains(selectedMessage)) {
             GameManager.instance.IncreaseTrust();
@@ -70,9 +74,28 @@ public class DialogManager : MonoBehaviour
 	}
 
 	public void SelectOption(TMP_Text buttonName){
+        DisableButtons();
 		MultipleChoice multipleChoiceToDisplay = (MultipleChoice)currentMessages[activeMessage];
-		ChooseOptionFromOptionsMenu(multipleChoiceToDisplay.optionStrings, buttonName.text);	
+		ChooseOptionFromOptionsMenu(multipleChoiceToDisplay.optionStrings, buttonName.text);
 	}
+
+    // Method to disable buttons
+    private void DisableButtons()
+    {
+        foreach (var buttonText in buttonTexts)
+        {
+            buttonText.transform.parent.GetComponent<Button>().interactable = false;
+        }
+    }
+
+    // Method to re-enable buttons before showing new options
+    private void EnableButtons()
+    {
+        foreach (var buttonText in buttonTexts)
+        {
+            buttonText.transform.parent.GetComponent<Button>().interactable = true;
+        }
+    }
 
 	private void HideRegularDialogueBox(){
 		// Hide the dialogue box
@@ -94,31 +117,40 @@ public class DialogManager : MonoBehaviour
 		choiceBox.SetActive(true);
 	}
 
-	private void DisplayOptions(){
-		HideRegularDialogueBox();
-		MultipleChoice multipleChoiceToDisplay = (MultipleChoice)currentMessages[activeMessage];
-		int i = 0;
-		foreach (string key in multipleChoiceToDisplay.optionStrings.Keys){
-			buttonTexts[i].text = key;
-			i++;
-		}
-		ShowChoiceBox();
-	}
+	private void DisplayOptions()
+    {
+        HideRegularDialogueBox();
+        MultipleChoice multipleChoiceToDisplay = (MultipleChoice)currentMessages[activeMessage];
+        choiceMessageText.text = multipleChoiceToDisplay.message;
+        EnableButtons();
+
+        int i = 0;
+        foreach (string key in multipleChoiceToDisplay.optionStrings.Keys)
+        {
+            buttonTexts[i].text = key;
+            i++;
+        }
+
+        ShowChoiceBox();
+    }
 
     void DisplayMessage()
     {
-        Message messageToDisplay = currentMessages[activeMessage];
-		if(messageToDisplay.message == "Choose an Option"){
-			// Display the options menu and hide the dialogue menu
-			DisplayOptions();
-			return;
-		}
-        messageText.text = messageToDisplay.message;
+        if (activeMessage < currentMessages.Length)
+        {
+            Message messageToDisplay = currentMessages[activeMessage];
+            if (messageToDisplay is MultipleChoice)
+            {
+                DisplayOptions();
+                return;
+            }
 
-        Actor actorToDisplay = currentActors[messageToDisplay.actorid];
-        actorName.text = actorToDisplay.name;
-        actorImage.sprite = actorToDisplay.sprite;
+            messageText.text = messageToDisplay.message;
 
+            Actor actorToDisplay = currentActors[messageToDisplay.actorid];
+            actorName.text = actorToDisplay.name;
+            actorImage.sprite = actorToDisplay.sprite;
+        }
     }
 
     public void NextMessage()
@@ -128,7 +160,8 @@ public class DialogManager : MonoBehaviour
         if (activeMessage < currentMessages.Length)
         {
             DisplayMessage();
-        } else
+        }
+        else
         {
             Debug.Log("Conversation Ended");
             isActive = false;
@@ -138,7 +171,8 @@ public class DialogManager : MonoBehaviour
                 SceneManager.LoadScene("CrimeScene");
             }
 
-            int interactionCount = GameManager.instance.GetInteractionCount();
+            // int interactionCount = GameManager.instance.GetInteractionCount();
+            int interactionCount = 1;
             if (interactionCount == 0)
             {
                 SceneManager.LoadScene("CrimeScene");
