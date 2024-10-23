@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
     public AudioSource sharedDiscoverySound;
 
 	private int interactionCount = 0;
+    private bool win = false;
+    
     //Police trust player amount
     private int trust = 5;
 
@@ -72,6 +74,11 @@ public class GameManager : MonoBehaviour
     {
         return interactionCount;
     }
+
+    // Method to set the win condition
+    public void SetWin(bool winCondition)
+    {
+        win = winCondition;
 
     // Increase and Decrease Trust value for interrogation scene
     public void IncreaseTrust()
