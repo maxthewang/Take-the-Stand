@@ -17,6 +17,7 @@ public class DialogManager : MonoBehaviour
     public TMP_Text choiceMessageText;
     public AudioSource boxSound;
     public static bool isActive = true;
+    public List<string> correctStrings = new List<string> {"Admit"};
 
 	public List<TMP_Text> buttonTexts;
 
@@ -62,6 +63,11 @@ public class DialogManager : MonoBehaviour
         currentMessages = optionStrings[selectedMessage].Concat(remainingMessages).ToArray();
 
 		activeMessage = 0;
+        if (correctStrings.Contains(selectedMessage)) {
+            GameManager.instance.IncreaseTrust();
+        } else {
+            GameManager.instance.DecreaseTrust();
+        }
 		DisplayMessage();
 		ShowRegularDialogueBox();
 		HideChoiceBox();

@@ -2186,7 +2186,11 @@ MonoBehaviour:
   choiceBox: {fileID: 0}
   choiceMessageText: {fileID: 0}
   boxSound: {fileID: 1010721392}
-  buttonTexts: []
+  correctStrings:
+  - a1
+  buttonTexts:
+  - {fileID: 904007400}
+  - {fileID: 37487885}
   activeMessage: 0
 --- !u!114 &511636239
 MonoBehaviour:
@@ -4714,7 +4718,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000030517578, y: -0.000015258789}
+  m_AnchoredPosition: {x: -0.000030517578, y: -0.000030517578}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2079410485

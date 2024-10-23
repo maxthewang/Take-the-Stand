@@ -84,4 +84,9 @@ public class OptionsMenu : MonoBehaviour
         Debug.Log("Quitting game...");
         Application.Quit();
     }
+
+	public void RestartGame(){
+		GameManager.instance.RestartGame();
+		SceneManager.LoadScene("CrimeScene");
+	}
 }

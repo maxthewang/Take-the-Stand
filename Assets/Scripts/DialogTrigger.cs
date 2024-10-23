@@ -13,12 +13,15 @@ public class DialogTrigger : MonoBehaviour
     public void StartDialogue()
     {
         string currScene = SceneManager.GetActiveScene().name;
+        Debug.Log(currScene);
         
         if (currScene == "Intro")
         {
             messages = new Message[]
             {
                 new Message(0, "As you know, you're the main suspect in the arson attack that took place last night."),
+				new MultipleChoice(1, "How would you like to respond?", 2, new Dictionary<string, Message[]>{{"Deny" , new Message[] {new Message(1, "What are you talking about?"), new Message(1, "I was home last night.")}}, 
+				{"Admit" , new Message[] {new Message(1, "I was there but I didn't do it."), new Message(1, "Whoever did... is despicable.")}}}),
                 new Message(0, "And you understand that we can use anything you say against you, right?"),
                 new Message(1, "Does it matter if I didn't do it?"),
                 new Message(0, "Well then these questions should be easy for you."),
@@ -122,5 +125,3 @@ public class Actor
     public string name;
     public Sprite sprite;
 }
-
-
