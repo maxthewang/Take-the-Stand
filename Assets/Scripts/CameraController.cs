@@ -9,17 +9,18 @@ public class CameraController : MonoBehaviour
     public float mouseSensitivity = 6.0f;
     public float minTurnAngle = -90.0f;
     public float maxTurnAngle = 90.0f;
+
+	public float xNum, yNum;
     private float rotX;
 	[SerializeField]
 	private GameObject playerCameraObject;
-	private Camera playerCamera;
+	public Camera playerCamera;
 
 	private Outlined currentlyHoveredObject;
 
     void Start()
     {
         
-		playerCamera = playerCameraObject.GetComponent<Camera>();
     }
 
     // Update is called once per frame
@@ -37,17 +38,14 @@ public class CameraController : MonoBehaviour
     // clamp the vertical rotation
     rotX = Mathf.Clamp(rotX, minTurnAngle, maxTurnAngle);
     // rotate the camera
-    transform.eulerAngles = new Vector3(-rotX, transform.eulerAngles.y + y, 0);
+    transform.eulerAngles = new Vector3(0, transform.eulerAngles.y + y, 0);
     }
 
 	private void OutlineObject(){
 		
 		RaycastHit hit;
 
-        float adjustedScreenWidth = 300;
-        float adjustedScreenHeight = 200;
-
-        Ray ray = Camera.main.ScreenPointToRay(new Vector3(adjustedScreenWidth / 2, adjustedScreenHeight / 2, 0));
+		Ray ray = playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         
         if (Physics.Raycast(ray, out hit)) {
             Transform objectHit = hit.transform;

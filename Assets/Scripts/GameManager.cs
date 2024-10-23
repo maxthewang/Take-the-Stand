@@ -61,6 +61,10 @@ public class GameManager : MonoBehaviour
         interactionCount++;
     }
 
+	public void RestartGame(){
+		interactionCount = 0;
+	}
+
     // Method to get the interaction count
     public int GetInteractionCount()
     {

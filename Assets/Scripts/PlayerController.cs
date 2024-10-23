@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public float mouseSensitivity = 1.0f; // Sensitivity for mouse look
     public AudioSource walkingSound;
     public PlayerInputActions playerControls;
+	public Camera playerCamera;
 
     private InputAction move;
     private InputAction look;
@@ -147,7 +148,9 @@ public class PlayerController : MonoBehaviour
         rotationX = Mathf.Clamp(rotationX, -80f, 80f); // Limit vertical rotation to avoid flipping
 
         // Apply the rotation to the camera
-        transform.localRotation = Quaternion.Euler(rotationX, transform.localEulerAngles.y + mouseX, 0);
+        transform.localRotation = Quaternion.Euler(0, transform.localEulerAngles.y + mouseX, 0);
+		playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
+
     }
 
     private IEnumerator Jump()
