@@ -2182,12 +2182,10 @@ MonoBehaviour:
   actorImage: {fileID: 1192145410}
   actorName: {fileID: 444018346}
   messageText: {fileID: 963367551}
-  regularDialogueBox: {fileID: 0}
-  choiceBox: {fileID: 0}
-  choiceMessageText: {fileID: 0}
+  regularDialogueBox: {fileID: 140651132}
+  choiceBox: {fileID: 230201129}
+  choiceMessageText: {fileID: 2057180253}
   boxSound: {fileID: 1010721392}
-  correctStrings:
-  - a1
   buttonTexts:
   - {fileID: 904007400}
   - {fileID: 37487885}

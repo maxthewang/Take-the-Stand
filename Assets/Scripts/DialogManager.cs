@@ -17,7 +17,7 @@ public class DialogManager : MonoBehaviour
     public TMP_Text choiceMessageText;
     public AudioSource boxSound;
     public static bool isActive = true;
-    public List<string> correctStrings = new List<string> {"Admit"};
+    private List<string> correctStrings = new List<string> {"I'm a close friend.", "It was set ablaze.", $"{GameManager.instance.GetInteractionCount()}", "Well, one argued with his brother a lot."};
 
 	public List<TMP_Text> buttonTexts;
 
@@ -171,11 +171,22 @@ public class DialogManager : MonoBehaviour
                 SceneManager.LoadScene("CrimeScene");
             }
 
-            // int interactionCount = GameManager.instance.GetInteractionCount();
-            int interactionCount = 1;
+            int interactionCount = GameManager.instance.GetInteractionCount();
             if (interactionCount == 0)
             {
                 SceneManager.LoadScene("CrimeScene");
+            }
+            else
+            {
+                int trust = GameManager.instance.GetTrust();
+                if (trust > 5)
+                {
+                    SceneManager.LoadScene("Win Scene");
+                }
+                else
+                {
+                    SceneManager.LoadScene("Lose Scene");
+                }
             }
         }
     }

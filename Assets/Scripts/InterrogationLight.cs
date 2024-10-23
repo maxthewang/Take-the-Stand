@@ -8,7 +8,7 @@ public class InterrogationLight : MonoBehaviour
     int trust = 5;
     private Light lightComponent;
     Color color0 = Color.red;
-    Color color1 = Color.blue;
+    Color color1 = Color.cyan;
     void Start()
     {
         lightComponent = GetComponent<Light>();
