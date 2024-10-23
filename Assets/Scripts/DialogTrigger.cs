@@ -19,8 +19,8 @@ public class DialogTrigger : MonoBehaviour
             messages = new Message[]
             {
                 new Message(0, "As you know, you're the main suspect in the arson attack that took place last night."),
-				new MultipleChoice(0, "Choose an Option", 2, new Dictionary<string, Message[]>{{"first option" , new Message[] {new Message(0, "this is the first test msg"), new Message(1, "This second")}}, 
-				{"second option" , new Message[] {new Message(0, "this is the third test msg"), new Message(1, "This fourth")}}}),
+				new MultipleChoice(1, "How would you like to respond?", 2, new Dictionary<string, Message[]>{{"Deny" , new Message[] {new Message(1, "What are you talking about?"), new Message(1, "I was home last night.")}}, 
+				{"Admit" , new Message[] {new Message(1, "I was there but I didn't do it."), new Message(1, "Whoever did... is despicable.")}}}),
                 new Message(0, "And you understand that we can use anything you say against you, right?"),
                 new Message(1, "Does it matter if I didn't do it?"),
                 new Message(0, "Well then these questions should be easy for you."),

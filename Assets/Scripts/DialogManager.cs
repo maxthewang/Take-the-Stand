@@ -15,7 +15,7 @@ public class DialogManager : MonoBehaviour
 	public GameObject choiceBox;
     public AudioSource boxSound;
     public static bool isActive = true;
-    public List<string> correctStrings = new List<string> {"first option"};
+    public List<string> correctStrings = new List<string> {"Admit"};
 
 	public List<TMP_Text> buttonTexts;
 
