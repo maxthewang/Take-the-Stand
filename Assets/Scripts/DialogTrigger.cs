@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Linq;
 
 public class DialogTrigger : MonoBehaviour
 {
@@ -12,12 +13,15 @@ public class DialogTrigger : MonoBehaviour
     public void StartDialogue()
     {
         string currScene = SceneManager.GetActiveScene().name;
+        Debug.Log(currScene);
         
         if (currScene == "Intro")
         {
             messages = new Message[]
             {
                 new Message(0, "As you know, you're the main suspect in the arson attack that took place last night."),
+				new MultipleChoice(1, "How would you like to respond?", 2, new Dictionary<string, Message[]>{{"Deny" , new Message[] {new Message(1, "What are you talking about?"), new Message(1, "I was home last night.")}}, 
+				{"Admit" , new Message[] {new Message(1, "I was there but I didn't do it."), new Message(1, "Whoever did... is despicable.")}}}),
                 new Message(0, "And you understand that we can use anything you say against you, right?"),
                 new Message(1, "Does it matter if I didn't do it?"),
                 new Message(0, "Well then these questions should be easy for you."),
@@ -26,7 +30,9 @@ public class DialogTrigger : MonoBehaviour
         }
         else
         {
-            int interactionCount = GameManager.instance.GetInteractionCount();
+            // int interactionCount = GameManager.instance.GetInteractionCount();
+            int interactionCount = 1;
+            
             if (interactionCount == 0)
             {
                 messages = new Message[]
@@ -43,8 +49,33 @@ public class DialogTrigger : MonoBehaviour
                 {
                     new Message(0, "Is it all coming back to you now?"),
                     new Message(1, "Yeah, I remember what I did."),
-                    new Message(0, "Our investigators have evidence of " + interactionCount + " suspicious things you did on the scene."),
-                    new Message(0, "Care to explain all that?")
+                    new Message(0, "Our investigators have evidence of some suspicious things you did on the scene."),
+                    
+                    new MultipleChoice(0, "How do you know the victims?", 2, new Dictionary<string, Message[]>
+                    {
+                        {"I'm a close friend.", new Message[] {new Message(0, "Sounds about right.")}},
+                        {"Never known them.", new Message[] {new Message(0, "Appalling. We're suspicious.")}}
+                    }),
+                    new Message(0, "We have evidence you knew them."),
+                    new MultipleChoice(0, "And what happened to the house?", 2, new Dictionary<string, Message[]>
+                    {
+                        {"It was blown up.", new Message[] {new Message(0, "Don't pretend to be naive here.")}},
+                        {"It was set ablaze.", new Message[] {new Message(0, "Indeed.")}}
+                    }),
+                    new MultipleChoice(0, "How many things did you notice on the scene?", 2, new Dictionary<string, Message[]>
+                    {
+                        {$"{interactionCount}", new Message[] {new Message(0, "Correct.")}},
+                        {$"{interactionCount + 2}", new Message[] {new Message(0, "Not quite.")}}
+                    }),
+                    new Message(1, "I don't see how that's relevant."),
+                    new Message(0, "Let's move on."),
+                    new Message(1, "Fine."),
+                    new Message(0, "Listen, so you know the victims."),
+                    new MultipleChoice(0, "Did they have any rivals?", 2, new Dictionary<string, Message[]>
+                    {
+                        {"Uh, not that I know of.", new Message[] {new Message(0, "Really? You're absolutely hiding something from us.")}},
+                        {"Well, one argued with his brother a lot.", new Message[] {new Message(0, "That checks out.")}}
+                    }),
                 };
             }
         }
@@ -94,5 +125,3 @@ public class Actor
     public string name;
     public Sprite sprite;
 }
-
-
