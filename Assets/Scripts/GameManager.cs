@@ -79,6 +79,7 @@ public class GameManager : MonoBehaviour
     public void SetWin(bool winCondition)
     {
         win = winCondition;
+    }
 
     // Increase and Decrease Trust value for interrogation scene
     public void IncreaseTrust()
