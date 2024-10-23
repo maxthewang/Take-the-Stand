@@ -4012,7 +4012,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a07ac907edf507c46b8167c54126b708, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TimeLeft: 5
+  TimeLeft: 60
   TimerOn: 1
   sirenSound: {fileID: 1140794980}
   TimerTxt: {fileID: 328001199}
