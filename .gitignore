@@ -80,3 +80,5 @@ crashlytics-build.properties
 /[Aa]ssets/HDRPDefaultResources
 
 .fake
+
+.DS_Store
