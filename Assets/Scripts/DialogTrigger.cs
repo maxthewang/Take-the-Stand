@@ -73,6 +73,7 @@ public class DialogTrigger : MonoBehaviour
                         {"Uh, not that I know of.", new Message[] {new Message(0, "Really? You're absolutely hiding something from us.")}},
                         {"Well, one argued with his brother a lot.", new Message[] {new Message(0, "That checks out.")}}
                     }),
+                    new Message(0, "We're finished here."),
                 };
             }
         }
