@@ -19,7 +19,7 @@ public class MenuUIHandler : MonoBehaviour
     }
 
     public void StartGame(){
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("Intro");
     }
 
     public void QuitGame(){
