@@ -10,6 +10,8 @@ public class TimerScript : MonoBehaviour
     private bool sirenPlaying = false;
 
     public TextMeshProUGUI TimerTxt;
+
+	public GameObject notepadObject;
    
     void Start()
     {

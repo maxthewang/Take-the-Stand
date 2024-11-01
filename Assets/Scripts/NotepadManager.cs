@@ -89,7 +89,7 @@ public class NotepadManager : MonoBehaviour
         {
             // Notepad opened
             panelObject.SetActive(true);
-            Time.timeScale = 0f;
+            Time.timeScale = 0.5f;
             openingSound.Play();
         }
     }

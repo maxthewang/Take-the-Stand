@@ -18,6 +18,8 @@ public class CameraController : MonoBehaviour
 
 	private Outlined currentlyHoveredObject;
 
+	public GameObject notepadGameObject;
+
     void Start()
     {
         
@@ -32,6 +34,9 @@ public class CameraController : MonoBehaviour
 
     void MouseAiming ()
     {
+		if(notepadGameObject.activeSelf){
+			return;
+		}
     // get the mouse inputs
     float y = Input.GetAxis("Mouse X") * mouseSensitivity;
     rotX += Input.GetAxis("Mouse Y") * mouseSensitivity;
