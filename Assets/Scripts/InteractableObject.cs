@@ -51,7 +51,7 @@ public class InteractableObject : MonoBehaviour
         Debug.DrawRay(ray.origin, ray.direction * 100, Color.red, 5.0f);
 
         // Perform the raycast
-        if (Physics.Raycast(ray, out RaycastHit hit))
+        if (Physics.Raycast(ray, out RaycastHit hit, 10f))
         {
             // Check if the clicked object is this object
             if (hit.collider != null && hit.collider.gameObject == gameObject)

@@ -662,8 +662,11 @@ MonoBehaviour:
   speed: 5
   rotateSpeed: 120
   jumpForce: 5
-  move_speed: {x: 0, y: 0, z: 0}
+  mouseSensitivity: 1
+  walkingSound: {fileID: 0}
+  playerCamera: {fileID: 0}
   gravity: -5.8
+  fallMultiplier: 5
 --- !u!114 &747610648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -679,7 +682,10 @@ MonoBehaviour:
   mouseSensitivity: 6
   minTurnAngle: -90
   maxTurnAngle: 90
+  xNum: 0
+  yNum: 0
   playerCameraObject: {fileID: 963194225}
+  playerCamera: {fileID: 0}
 --- !u!1 &808807252
 GameObject:
   m_ObjectHideFlags: 0
@@ -739,8 +745,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Resume
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3ec627daced3ed64e8a30b8c169ba982, type: 2}
+  m_sharedMaterial: {fileID: -8289206295682671000, guid: 3ec627daced3ed64e8a30b8c169ba982, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -774,7 +780,7 @@ MonoBehaviour:
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
-  m_characterSpacing: 0
+  m_characterSpacing: -7
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -1230,7 +1236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c01333f952db93245a21a774cc8060f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EscapeWindow: {fileID: 480613624}
+  sharedDiscoverySound: {fileID: 0}
 --- !u!4 &1105854988
 Transform:
   m_ObjectHideFlags: 0
@@ -1306,8 +1312,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Quit
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3ec627daced3ed64e8a30b8c169ba982, type: 2}
+  m_sharedMaterial: {fileID: -8289206295682671000, guid: 3ec627daced3ed64e8a30b8c169ba982, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1341,7 +1347,7 @@ MonoBehaviour:
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
-  m_characterSpacing: 0
+  m_characterSpacing: -7
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
