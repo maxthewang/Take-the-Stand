@@ -10,7 +10,7 @@ public class CameraController : MonoBehaviour
     public float minTurnAngle = -90.0f;
     public float maxTurnAngle = 90.0f;
     public float zoom1 = 60;
-    public float zoom2 = 80;
+    public float zoom2 = 100;
 
 	public float xNum, yNum;
     private float rotX;
@@ -21,6 +21,7 @@ public class CameraController : MonoBehaviour
 
     void Start()
     {
+        Camera.main.fieldOfView = zoom1;
     }
 
     // Update is called once per frame
@@ -28,12 +29,12 @@ public class CameraController : MonoBehaviour
     {
         MouseAiming();
 		OutlineObject();
-        if(Input.GetKey(KeyCode.LeftAlt))
+        if(Input.GetMouseButton(1)/* || Input.GetAxis("rightTrigger") == 1*/)
         {
-            Debug.Log("Zooming in...");
+            Debug.Log("Zooming in.");
             Camera.main.fieldOfView = zoom2;
         }
-        else
+        if(Input.GetMouseButtonUp(1) /* || Input.GetAxis("rightTrigger") == 0*/)
         {
             Debug.Log("Zooming out.");
             Camera.main.fieldOfView = zoom1;
