@@ -2,15 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CameraController : MonoBehaviour
 {
     // Start is called before the first frame update
-    public float mouseSensitivity = 6.0f;
     public float minTurnAngle = -90.0f;
     public float maxTurnAngle = 90.0f;
-    public float zoom1 = 60;
-    public float zoom2 = 30;
 
 	public float xNum, yNum;
     private float rotX;
@@ -18,38 +16,49 @@ public class CameraController : MonoBehaviour
 	private GameObject playerCameraObject;
 	public Camera playerCamera;
 	private Outlined currentlyHoveredObject;
+    public PlayerInputActions playerControls;
+    public PlayerController playerController;
+    private float zoomOutFOV = 60;
+    private float zoomInFOV = 25;
+    private float targetFOV;
+    private float currentFOV;
+    private InputAction zoom;
+
+    private void Awake()
+    {
+        playerControls = new PlayerInputActions();
+    }
 
     void Start()
     {
-        Camera.main.fieldOfView = zoom1;
+        currentFOV = zoomOutFOV;
+        targetFOV = zoomOutFOV;
+        Camera.main.fieldOfView = currentFOV;
+
+        zoom = playerControls.Player.Zoom;
+        zoom.Enable();
     }
 
     // Update is called once per frame
     void Update()
     {
-        MouseAiming();
 		OutlineObject();
-        if(Input.GetMouseButton(1)/* || Input.GetAxis("rightTrigger") == 1*/)
-        {
-            Debug.Log("Zooming in.");
-            Camera.main.fieldOfView = zoom2;
-        }
-        if(Input.GetMouseButtonUp(1) /* || Input.GetAxis("rightTrigger") == 0*/)
-        {
-            Debug.Log("Zooming out.");
-            Camera.main.fieldOfView = zoom1;
-        }
-    }
 
-    void MouseAiming ()
-    {
-    // get the mouse inputs
-    float y = Input.GetAxis("Mouse X") * mouseSensitivity;
-    rotX += Input.GetAxis("Mouse Y") * mouseSensitivity;
-    // clamp the vertical rotation
-    rotX = Mathf.Clamp(rotX, minTurnAngle, maxTurnAngle);
-    // rotate the camera
-    transform.eulerAngles = new Vector3(0, transform.eulerAngles.y + y, 0);
+        if(zoom.ReadValue<float>() > 0.5f)
+        {
+            // Zoom in
+            targetFOV = zoomInFOV;
+            playerController.SetSensitivity(0.1f);
+        }
+        else
+        {
+            // Zoom out
+            targetFOV = zoomOutFOV;
+            playerController.SetSensitivity(1.0f);
+        }
+
+        currentFOV = Mathf.Lerp(currentFOV, targetFOV, Time.deltaTime * 5.0f);
+        Camera.main.fieldOfView = currentFOV;
     }
 
 	private void OutlineObject(){
@@ -79,4 +88,14 @@ public class CameraController : MonoBehaviour
             // Do something with the object that was hit by the raycast.
         }
 	}
+
+    private void OnEnable()
+    {
+        playerControls.Enable();
+    }
+
+    private void OnDisable()
+    {
+        playerControls.Disable();
+    }
 }
