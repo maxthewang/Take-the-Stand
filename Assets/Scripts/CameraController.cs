@@ -9,18 +9,18 @@ public class CameraController : MonoBehaviour
     public float mouseSensitivity = 6.0f;
     public float minTurnAngle = -90.0f;
     public float maxTurnAngle = 90.0f;
+    public float zoom1 = 60;
+    public float zoom2 = 80;
 
 	public float xNum, yNum;
     private float rotX;
 	[SerializeField]
 	private GameObject playerCameraObject;
 	public Camera playerCamera;
-
 	private Outlined currentlyHoveredObject;
 
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -28,6 +28,16 @@ public class CameraController : MonoBehaviour
     {
         MouseAiming();
 		OutlineObject();
+        if(Input.GetKey(KeyCode.LeftAlt))
+        {
+            Debug.Log("Zooming in...");
+            Camera.main.fieldOfView = zoom2;
+        }
+        else
+        {
+            Debug.Log("Zooming out.");
+            Camera.main.fieldOfView = zoom1;
+        }
     }
 
     void MouseAiming ()
