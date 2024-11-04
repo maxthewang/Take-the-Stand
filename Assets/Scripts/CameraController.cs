@@ -10,7 +10,7 @@ public class CameraController : MonoBehaviour
     public float minTurnAngle = -90.0f;
     public float maxTurnAngle = 90.0f;
     public float zoom1 = 60;
-    public float zoom2 = 100;
+    public float zoom2 = 30;
 
 	public float xNum, yNum;
     private float rotX;
