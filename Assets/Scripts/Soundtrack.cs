@@ -25,7 +25,6 @@ public class Soundtrack : MonoBehaviour
     {
         // Wait for the audio clip to finish
         yield return new WaitForSeconds(myAudioSource.clip.length);
-        
         // Load the target scene
         SceneManager.LoadScene(sceneName);
         

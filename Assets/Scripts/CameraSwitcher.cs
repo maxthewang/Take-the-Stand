@@ -32,7 +32,7 @@ public class CameraSwitcher : MonoBehaviour
         if (dialogManager != null && DialogManager.isActive == false)
         {
             // Switch to the alternate camera
-            SceneManager.LoadScene("CrimeScene");
+			FadeTransition.instance.FadeToBlack("CrimeScene");
         }
         
     }

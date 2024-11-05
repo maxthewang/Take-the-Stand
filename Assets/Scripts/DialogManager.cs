@@ -168,24 +168,24 @@ public class DialogManager : MonoBehaviour
 
             if (SceneManager.GetActiveScene().name == "Intro")
             {
-                SceneManager.LoadScene("CrimeScene");
+				FadeTransition.instance.FadeToBlack("CrimeScene");
             }
 
             int interactionCount = GameManager.instance.GetInteractionCount();
             if (interactionCount == 0)
             {
-                SceneManager.LoadScene("CrimeScene");
+				FadeTransition.instance.FadeToBlack("CrimeScene");
             }
             else
             {
                 int trust = GameManager.instance.GetTrust();
                 if (trust > 5)
                 {
-                    SceneManager.LoadScene("Win Scene");
+					FadeTransition.instance.FadeToBlack("Win Scene");
                 }
                 else
                 {
-                    SceneManager.LoadScene("Lose Scene");
+					FadeTransition.instance.FadeToBlack("Lose Scene");
                 }
             }
         }
