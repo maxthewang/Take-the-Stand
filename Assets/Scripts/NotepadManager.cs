@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
@@ -11,11 +12,14 @@ public class NotepadManager : MonoBehaviour
 	[SerializeField]
 	GameObject panelObject;
 	[SerializeField]
+	CanvasGroup timeSlowedObject;
+	[SerializeField]
     PlayerInputActions playerControls;
     [SerializeField]
     private AudioSource openingSound;
     [SerializeField]
     private AudioSource closingSound;
+    private Coroutine fadeCoroutine;
     private HashSet<string> notedObjects = new HashSet<string>();
 	private Dictionary<string, string> cluePairs = new Dictionary<string, string>();
 
@@ -89,8 +93,32 @@ public class NotepadManager : MonoBehaviour
         {
             // Notepad opened
             panelObject.SetActive(true);
-            Time.timeScale = 0f;
+            Time.timeScale = 0.25f;
             openingSound.Play();
+            if (fadeCoroutine != null)
+            {
+                StopCoroutine(fadeCoroutine);  // Stop any existing fade coroutine
+            }
+
+            timeSlowedObject.alpha = 1.0f;  // Ensure the text is fully visible
+            fadeCoroutine = StartCoroutine(FadeSlowedText());
+        }
+    }
+
+    private IEnumerator FadeSlowedText()
+    {
+        // Show the text for 2 seconds
+        yield return new WaitForSeconds(0.1f);
+
+        // Gradually fade out the text over 2 seconds
+        float fadeDuration = 0.1f;
+        float elapsedTime = 0.0f;
+
+        while (elapsedTime < fadeDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            timeSlowedObject.alpha = Mathf.Lerp(1.0f, 0.0f, elapsedTime / fadeDuration);
+            yield return null;
         }
     }
 
