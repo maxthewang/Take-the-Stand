@@ -17,7 +17,7 @@ public class DialogManager : MonoBehaviour
     public TMP_Text choiceMessageText;
     public AudioSource boxSound;
     public static bool isActive = true;
-    private List<string> correctStrings = new List<string> {"I'm a close friend.", "It was set ablaze.", $"{GameManager.instance.GetInteractionCount()}", "Well, one argued with his brother a lot."};
+    private List<string> correctStrings = new List<string> {"I'm a close friend.", "It was set ablaze.", "A wooden house.", $"{GameManager.instance.GetInteractionCount()}", "Well, one argued with his brother a lot.", "We stopped at a gas station.", "The flames would've disintegrated it all.", "In the nighttime.", "I was the only one.", "Just a few times."};
 
 	public List<TMP_Text> buttonTexts;
 
