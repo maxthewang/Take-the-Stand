@@ -62,8 +62,11 @@ public class OptionsMenu : MonoBehaviour
             pauseMenuUI.SetActive(false);   // Hide the pause menu
         }
         isPaused = false;                   // Mark the game as not paused
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        if (SceneManager.GetActiveScene().name == "CrimeScene")
+        {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
     }
 
     // Function to pause the game
@@ -74,8 +77,11 @@ public class OptionsMenu : MonoBehaviour
             pauseMenuUI.SetActive(true);    // Show the pause menu
         }
         isPaused = true;                    // Mark the game as paused
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
+        if (SceneManager.GetActiveScene().name == "CrimeScene")
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
     }
 
     // Optional: Add a method to quit the game from the pause menu

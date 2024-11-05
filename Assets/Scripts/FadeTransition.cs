@@ -37,9 +37,14 @@ public class FadeTransition : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(fading){
-			if(fadingToBlack){
-				if(canvasGroup.alpha >= alphaToReach){
+        if (fading)
+        {
+            canvasGroup.gameObject.SetActive(true);
+
+			if (fadingToBlack)
+            {
+				if (canvasGroup.alpha >= alphaToReach)
+                {
 					fading = false;
 					SceneManager.LoadScene(sceneToLoadAfterFade);
 					FadeToClear();
@@ -47,9 +52,12 @@ public class FadeTransition : MonoBehaviour
 				}
 				canvasGroup.alpha += alphaToAdd;
 			}
-			else{
-				if(canvasGroup.alpha <= alphaToReach){
+			else
+            {
+				if (canvasGroup.alpha <= alphaToReach)
+                {
 					fading = false;
+                    canvasGroup.gameObject.SetActive(false);
 					return;
 				}
 				canvasGroup.alpha += alphaToAdd;
