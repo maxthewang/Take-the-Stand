@@ -59,14 +59,14 @@ public class NotepadManager : MonoBehaviour
 		string finalReplacement = "";
 		for(int i = 0; i < newDescriptionArray.Length; i++){
 			if(Array.IndexOf(oldDescriptionArray, newDescriptionArray[i]) == -1){
-				finalReplacement += "<color=red><b>" + newDescriptionArray[i] + "</b></color>" + " ";
+				finalReplacement += "<color=#8B0000><b>" + newDescriptionArray[i] + "</b></color>" + " ";
 			}
 			else{
 				finalReplacement += newDescriptionArray[i] + " ";
 			}
 		}
 
-        cluePairs[dictionaryItemName] = $"\n<color=red><b>{textItemName}</b></color>: {finalReplacement}";
+        cluePairs[dictionaryItemName] = $"\n<color=#8B0000><b>{textItemName}</b></color>: {finalReplacement}";
 	}
 
 	private void CompileNotepadInformation(){
@@ -108,7 +108,7 @@ public class NotepadManager : MonoBehaviour
     private IEnumerator FadeSlowedText()
     {
         // Show the text for 2 seconds
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.2f);
 
         // Gradually fade out the text over 2 seconds
         float fadeDuration = 0.1f;
