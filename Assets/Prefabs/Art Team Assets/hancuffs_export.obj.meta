@@ -3,7 +3,72 @@ guid: 8b3707f8010fe4542913c71d58a05b10
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: body_L_body_of_handcuffs_grpMat
+    second: {fileID: 2100000, guid: ae49d94dfcfe84d9db0c4dcac47f1377, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: body_of_handcuffs_grp_body_RMat
+    second: {fileID: 2100000, guid: f73b53288cef44a65923cb719eacda70, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: denting_R_denting_details_grpMat
+    second: {fileID: 2100000, guid: 890f67615b4ee4f188c401eccd5c54eb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: denting_details_grp_denting_LMat
+    second: {fileID: 2100000, guid: 8b3e53d5be1d8458795d1c588a8cccea, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pCube1Mat
+    second: {fileID: 2100000, guid: 248777b7843fc47a49cb8991b15bad1b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pCube2Mat
+    second: {fileID: 2100000, guid: 5d85a606f788a429c8dbb243bb122460, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pCube3Mat
+    second: {fileID: 2100000, guid: 5f01dc95998a64dea8af67306ca8b337, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: polySurface14Mat
+    second: {fileID: 2100000, guid: d260a74ec8a76462e846fad0feb374f0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: polySurface15Mat
+    second: {fileID: 2100000, guid: df131875651bc490088a11d7c0b5f309, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: polySurface16Mat
+    second: {fileID: 2100000, guid: 891cd67fe4aee463396374672b10892e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: polySurface18Mat
+    second: {fileID: 2100000, guid: 61f0a39ed793e45f1bca054c27cb5aa0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: polySurface19Mat
+    second: {fileID: 2100000, guid: e52da1ef0440748debada52c101f4da1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: polySurface7Mat
+    second: {fileID: 2100000, guid: 3c6dad846a92d4c298fe9d7d40c41aa6, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

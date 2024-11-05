@@ -3,7 +3,12 @@ guid: 51a99b0011846ff4494ee6cf75194395
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ruins_finlal_with_uvs_StepantsevaNiola_ruins_Final_ruins_finale_2_lambert2
+    second: {fileID: 2100000, guid: 741e0aa3e158a49839fe8fe1ddc8b374, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
