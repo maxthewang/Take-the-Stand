@@ -16,6 +16,7 @@ public class TimerScript : MonoBehaviour
     void Start()
     {
         TimerOn = true;
+		
     }
 
     void Update()
@@ -38,7 +39,7 @@ public class TimerScript : MonoBehaviour
                 Debug.Log("Time is UP!");
                 TimeLeft = 0;
                 TimerOn = false;
-                SceneManager.LoadScene("Interrogation");
+				FadeTransition.instance.FadeToBlack("Interrogation");
             }
         }
     }

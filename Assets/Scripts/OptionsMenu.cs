@@ -87,6 +87,6 @@ public class OptionsMenu : MonoBehaviour
 
 	public void RestartGame(){
 		GameManager.instance.RestartGame();
-		SceneManager.LoadScene("CrimeScene");
+		FadeTransition.instance.FadeToBlack("CrimeScene");
 	}
 }
