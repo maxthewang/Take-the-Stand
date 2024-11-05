@@ -27,6 +27,8 @@ public class PlayerController : MonoBehaviour
     public float gravity = -9.8f;
     private float rotationX = 0.0f; // X rotation for looking up/down
 
+	public GameObject notepadGameObject;
+
     private void Awake()
     {
         playerControls = new PlayerInputActions();
@@ -117,6 +119,9 @@ public class PlayerController : MonoBehaviour
 
     private void CharacterControllerMovement() 
     {
+		if(notepadGameObject.activeSelf){
+			return;
+		}
         Vector2 moveInput = move.ReadValue<Vector2>();
         moveSpeed = (transform.forward * moveInput.y + transform.right * moveInput.x).normalized * speed;
 
@@ -146,6 +151,9 @@ public class PlayerController : MonoBehaviour
 
     private void LookAround(Vector2 lookInput)
     {
+		if(notepadGameObject.activeSelf){
+			return;
+		}
         // Get the mouse delta input for looking
         float mouseX = lookInput.x * turnSensitivity;
         float mouseY = lookInput.y * turnSensitivity;

@@ -29,6 +29,8 @@ public class CameraController : MonoBehaviour
         playerControls = new PlayerInputActions();
     }
 
+	public GameObject notepadGameObject;
+
     void Start()
     {
         currentFOV = zoomOutFOV;
@@ -42,8 +44,8 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		OutlineObject();
-
+		    OutlineObject();
+        
         if(zoom.ReadValue<float>() > 0.5f)
         {
             // Zoom in
