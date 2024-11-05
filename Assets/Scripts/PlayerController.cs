@@ -9,7 +9,6 @@ public class PlayerController : MonoBehaviour
     public float speed = 5.0f; 
     public float rotateSpeed = 120.0f; 
     public float jumpForce = 20.0f; 
-    public float mouseSensitivity = 1.0f; // Sensitivity for mouse look
     public AudioSource walkingSound;
     public PlayerInputActions playerControls;
 	public Camera playerCamera;
@@ -17,6 +16,8 @@ public class PlayerController : MonoBehaviour
     private InputAction move;
     private InputAction look;
     private InputAction jump;
+    private float baseSensitivity = 0.5f;
+    private float turnSensitivity;
     private float targetVolume = 0f;
     private Rigidbody rb;
     private CharacterController controller;
@@ -63,6 +64,7 @@ public class PlayerController : MonoBehaviour
         Debug.Log("controllerFlag: " + controllerFlag);
 
         walkingSound.volume = 0f;
+        turnSensitivity = baseSensitivity;
     }
 
     // Update is called once per frame
@@ -142,14 +144,19 @@ public class PlayerController : MonoBehaviour
         controller.Move(moveSpeed * Time.deltaTime);     
     }
 
+    public void SetSensitivity(float sensitivityMultiplier)
+    {
+        turnSensitivity = baseSensitivity * sensitivityMultiplier;
+    }
+
     private void LookAround(Vector2 lookInput)
     {
 		if(notepadGameObject.activeSelf){
 			return;
 		}
         // Get the mouse delta input for looking
-        float mouseX = lookInput.x * mouseSensitivity;
-        float mouseY = lookInput.y * mouseSensitivity * 5;
+        float mouseX = lookInput.x * turnSensitivity;
+        float mouseY = lookInput.y * turnSensitivity;
 
         // Update the rotation for looking up/down (pitch)
         rotationX -= mouseY;

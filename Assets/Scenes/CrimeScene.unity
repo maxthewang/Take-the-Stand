@@ -4064,6 +4064,8 @@ MonoBehaviour:
   mouseSensitivity: 6
   minTurnAngle: -90
   maxTurnAngle: 90
+  zoom1: 60
+  zoom2: 30
   xNum: 0
   yNum: 5
   playerCameraObject: {fileID: 963194225}
