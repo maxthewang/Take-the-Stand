@@ -3,7 +3,17 @@ guid: 6ee48ce11337723428102458b40be92e
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ChasisBody_SM_LighterMat
+    second: {fileID: 2100000, guid: a853e7cf3848a4773a267689c7769b47, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SM_Lighter_ChasisLidMat
+    second: {fileID: 2100000, guid: a853e7cf3848a4773a267689c7769b47, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
