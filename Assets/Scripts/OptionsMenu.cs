@@ -7,6 +7,8 @@ public class OptionsMenu : MonoBehaviour
     public GameObject pauseMenuUI;
     [SerializeField]
     private PlayerInputActions playerControls;
+    private InputAction pauseAction;
+    [SerializeField] private GameObject settingsPanel;
     private bool isPaused = false;
 
     void Awake()
@@ -67,6 +69,31 @@ public class OptionsMenu : MonoBehaviour
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
         }
+    }
+
+    // Setting page
+    public void OpenSettingsPage(){
+        PauseGame ();   // Pause the game
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        playerControls.Enable();
+        if (pauseMenuUI != null)
+        {
+            pauseMenuUI.SetActive(false);   // Hide the pause menu
+        }
+        if (settingsPanel != null)
+        {
+            settingsPanel.SetActive(true);   // Show the settings panel
+        }
+
+    }
+
+    public void CloseSettingsPage(){
+        if (settingsPanel != null)
+        {
+            settingsPanel.SetActive(false);   // Hide the settings panel
+        }
+        PauseGame();   // Pause the game
     }
 
     // Function to pause the game
