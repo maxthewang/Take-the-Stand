@@ -9,6 +9,8 @@ public class NotepadManager : MonoBehaviour
 {
 	[SerializeField]
 	TextMeshProUGUI notepadInformation;
+
+	
 	[SerializeField]
 	GameObject panelObject;
 	[SerializeField]
@@ -21,8 +23,19 @@ public class NotepadManager : MonoBehaviour
     private AudioSource closingSound;
     private Coroutine fadeCoroutine;
     private HashSet<string> notedObjects = new HashSet<string>();
-	private Dictionary<string, string> cluePairs = new Dictionary<string, string>();
+	private Dictionary<string, string[]> cluePairs = new Dictionary<string, string[]>();
 
+	private List<string> orderOfObjects = new List<string>();
+	private int currentPage = 0;
+
+	[SerializeField]
+	TextMeshProUGUI notepadNameLeft;
+	[SerializeField]
+	TextMeshProUGUI notepadInfoLeft;
+	[SerializeField]
+	TextMeshProUGUI notepadNameRight;
+	[SerializeField]
+	TextMeshProUGUI notepadInfoRight;
     void Awake()
     {
         playerControls = new PlayerInputActions();
@@ -35,6 +48,8 @@ public class NotepadManager : MonoBehaviour
 
         // Subscribe to the notepad toggle action
         playerControls.UI.Notepad.performed += ctx => ToggleNotepad();
+		playerControls.UI.FlipPageLeft.performed += ctx => flipPage(true);
+		playerControls.UI.FlipPageRight.performed += ctx => flipPage(false);
     }
 
 	public void AddInformation(string dictionaryItemName, string textItemName, string itemDescription)
@@ -46,14 +61,14 @@ public class NotepadManager : MonoBehaviour
 			ReplaceInformation(dictionaryItemName, textItemName, itemDescription);
         }
 		else{
-        	cluePairs[dictionaryItemName] = $"\n{textItemName}: {itemDescription}";
+			orderOfObjects.Add(dictionaryItemName);
+        	cluePairs[dictionaryItemName] = new string[2]{textItemName, itemDescription};
 		}
 
-        CompileNotepadInformation();
     }
 
 	private void ReplaceInformation(string dictionaryItemName, string textItemName, string newItemDescription){
-		string oldDescription = cluePairs[dictionaryItemName];
+		string oldDescription = cluePairs[dictionaryItemName][1];
 		string[] oldDescriptionArray = oldDescription.Split(" ");
 		string[] newDescriptionArray = newItemDescription.Split(" ");
 		string finalReplacement = "";
@@ -66,7 +81,52 @@ public class NotepadManager : MonoBehaviour
 			}
 		}
 
-        cluePairs[dictionaryItemName] = $"\n<color=#8B0000><b>{textItemName}</b></color>: {finalReplacement}";
+		currentPage = FindPageOfItem(dictionaryItemName);
+		if(currentPage % 2 != 0){
+			currentPage--;
+		}
+
+        cluePairs[dictionaryItemName][0] = $"<color=#8B0000><b>{textItemName}</b></color>";
+		cluePairs[dictionaryItemName][1] = finalReplacement;
+	}
+
+	private int FindPageOfItem(string itemName){
+		for(int i = 0; i < orderOfObjects.Count; i++){
+			if(orderOfObjects[i].Equals(itemName)){
+				return i;
+			}
+		}
+		return -1;
+	}
+
+	private void ShowPages(int firstPageNum){
+		string firstPageName = cluePairs[orderOfObjects[firstPageNum]][0];
+		string firstPageInfo = cluePairs[orderOfObjects[firstPageNum]][1];
+		notepadNameLeft.text = firstPageName;
+		notepadInfoLeft.text = firstPageInfo;
+		notepadNameRight.text = "";
+		notepadInfoRight.text = "";
+		if(firstPageNum + 1 < orderOfObjects.Count){
+			string secondPageName = cluePairs[orderOfObjects[firstPageNum + 1]][0];
+			string secondPageInfo = cluePairs[orderOfObjects[firstPageNum + 1]][1];
+			notepadNameRight.text = secondPageName;
+			notepadInfoRight.text = secondPageInfo;
+		}
+	}
+
+	public void flipPage(bool flipLeft){
+		if(!flipLeft){
+			if(currentPage + 2 >= orderOfObjects.Count)
+				return;
+			currentPage += 2;
+			ShowPages(currentPage);
+		}
+		else{
+			if(currentPage - 2 < 0)
+				return;
+			currentPage -= 2;
+			ShowPages(currentPage);
+		}
 	}
 
 	private void CompileNotepadInformation(){
@@ -81,6 +141,7 @@ public class NotepadManager : MonoBehaviour
 	private void ToggleNotepad()
     {
         bool isActive = panelObject.activeSelf; // Store current state
+		ShowPages(currentPage);
 
         if (isActive)
         {

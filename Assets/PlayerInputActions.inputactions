@@ -293,6 +293,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "FlipPageLeft",
+                    "type": "Button",
+                    "id": "7c911829-a9fe-4ba7-93d0-1b405d86c56b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "FlipPageRight",
+                    "type": "Button",
+                    "id": "1348e324-37f9-4d3a-aace-63a405a56f70",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -359,6 +377,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Advance Dialogue",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "892fe14b-04a2-4951-b721-f7d0fdf081cb",
+                    "path": "<Gamepad>/dpad/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "FlipPageLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bed22baf-16d4-4b61-9574-1c26b49f3ef4",
+                    "path": "<Gamepad>/dpad/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "FlipPageRight",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
