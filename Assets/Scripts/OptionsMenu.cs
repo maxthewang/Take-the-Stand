@@ -1,31 +1,24 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.InputSystem;
 
 public class OptionsMenu : MonoBehaviour
 {
-    public GameObject pauseMenuUI;
-    [SerializeField]
-    private PlayerInputActions playerControls;
-    private InputAction pauseAction;
-    [SerializeField] private GameObject settingsPanel;
+    public GameObject settingsPanel;
     private bool isPaused = false;
+    private bool isSettings = false;
+    public GameObject pointer;
+    public GameObject pauseMenuUI;
 
-    void Awake()
-    {
-        playerControls = new PlayerInputActions();
-    }
-
-    void OnEnable()
-    {
-        playerControls.UI.Options.performed += OnPause;  // Subscribe to the Pause action
-        playerControls.Enable();
-    }
-
-    void OnDisable()
-    {
-        playerControls.UI.Options.performed -= OnPause;  // Unsubscribe when disabled
-        playerControls.Disable();
+    void Update() {
+        if (Input.GetKeyDown(KeyCode.Tab)) {
+            print("Pause pressed");
+            if (isSettings) {
+                CloseSettingsPage();
+            }
+            else {
+                OnPause();
+            }
+        }
     }
 
     void Start()
@@ -44,9 +37,9 @@ public class OptionsMenu : MonoBehaviour
     }
 
     // Callback function for the Pause action
-    private void OnPause(InputAction.CallbackContext context)
+    public void OnPause()
     {
-        if (isPaused)
+        if (isPaused && !isSettings)
         {
             ResumeGame();  // If the game is paused, resume it
         }
@@ -59,6 +52,7 @@ public class OptionsMenu : MonoBehaviour
     // Function to resume the game
     public void ResumeGame()
     {
+        Time.timeScale = 1f;                // Resume time
         if (pauseMenuUI != null)
         {
             pauseMenuUI.SetActive(false);   // Hide the pause menu
@@ -69,17 +63,18 @@ public class OptionsMenu : MonoBehaviour
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
         }
+        pointer.SetActive(true);
     }
 
     // Setting page
     public void OpenSettingsPage(){
-        PauseGame ();   // Pause the game
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
-        playerControls.Enable();
-        if (pauseMenuUI != null)
-        {
-            pauseMenuUI.SetActive(false);   // Hide the pause menu
+        isSettings = true;
+        while (!Cursor.visible) {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
+        while (pauseMenuUI && pauseMenuUI.activeSelf) {
+            pauseMenuUI.SetActive(false);
         }
         if (settingsPanel != null)
         {
@@ -89,16 +84,19 @@ public class OptionsMenu : MonoBehaviour
     }
 
     public void CloseSettingsPage(){
-        if (settingsPanel != null)
+        while (settingsPanel && settingsPanel.activeSelf)
         {
             settingsPanel.SetActive(false);   // Hide the settings panel
         }
+        isSettings = false;
         PauseGame();   // Pause the game
     }
 
     // Function to pause the game
     public void PauseGame()
     {
+        Time.timeScale = 0f;                // Stop time
+        pointer.SetActive(false);
         if (pauseMenuUI != null)
         {
             pauseMenuUI.SetActive(true);    // Show the pause menu
@@ -114,7 +112,9 @@ public class OptionsMenu : MonoBehaviour
     // Optional: Add a method to quit the game from the pause menu
     public void QuitGame()
     {
-        Debug.Log("Quitting game...");
+        #if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+        #endif
         Application.Quit();
     }
 
