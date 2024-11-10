@@ -39,7 +39,7 @@ public class TimerScript : MonoBehaviour
                 Debug.Log("Time is UP!");
                 TimeLeft = 0;
                 TimerOn = false;
-				FadeTransition.instance.FadeToBlack("Interrogation");
+				FadeTransition.instance.FadeToBlack("NotepadScene");
             }
         }
     }

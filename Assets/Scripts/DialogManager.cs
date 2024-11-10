@@ -6,6 +6,7 @@ using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 using System.Linq;
+using Unity.VisualScripting;
 
 public class DialogManager : MonoBehaviour
 {
@@ -193,7 +194,7 @@ public class DialogManager : MonoBehaviour
     
     private void OnNextMessage(InputAction.CallbackContext context)
     {
-        if (isActive)
+        if (isActive && !(currentMessages[activeMessage] is MultipleChoice))
         {
             NextMessage();
         }

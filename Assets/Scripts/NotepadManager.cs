@@ -3,10 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class NotepadManager : MonoBehaviour
 {
+	public static NotepadManager instance;
 	[SerializeField]
 	TextMeshProUGUI notepadInformation;
 
@@ -44,6 +47,12 @@ public class NotepadManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+		if(instance != null){
+			Destroy(this);
+			return;
+		}
+		instance = this;
+		DontDestroyOnLoad(this);
         playerControls.Enable();
 
         // Subscribe to the notepad toggle action
@@ -140,6 +149,9 @@ public class NotepadManager : MonoBehaviour
 
 	private void ToggleNotepad()
     {
+		if(SceneManager.GetActiveScene().name != "CrimeScene"){
+			return;
+		}
         bool isActive = panelObject.activeSelf; // Store current state
 		ShowPages(currentPage);
 
@@ -165,6 +177,15 @@ public class NotepadManager : MonoBehaviour
             fadeCoroutine = StartCoroutine(FadeSlowedText());
         }
     }
+
+	public void OpenNotepad(){
+		ShowPages(currentPage);
+		panelObject.SetActive(true);
+	}
+
+	public void CloseNotepad(){
+		panelObject.SetActive(false);
+	}
 
     private IEnumerator FadeSlowedText()
     {
