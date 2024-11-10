@@ -43,8 +43,8 @@ public class InteractableObject : MonoBehaviour
     private void OnInteract(InputAction.CallbackContext context)
     {
         // Adjust the screen center based on pixelation scale
-        float adjustedScreenWidth = 300;
-        float adjustedScreenHeight = 200;
+        float adjustedScreenWidth = 426;
+        float adjustedScreenHeight = 240;
 
         // Create a ray from the camera using the adjusted center point
         Ray ray = Camera.main.ScreenPointToRay(new Vector3(adjustedScreenWidth / 2, adjustedScreenHeight / 2, 0));
