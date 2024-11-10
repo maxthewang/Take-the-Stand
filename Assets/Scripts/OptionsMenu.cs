@@ -6,7 +6,7 @@ public class OptionsMenu : MonoBehaviour
     public GameObject settingsPanel;
     private bool isPaused = false;
     private bool isSettings = false;
-    public GameObject pointer;
+    // public GameObject pointer;
     public GameObject pauseMenuUI;
 
     void Update() {
@@ -63,7 +63,7 @@ public class OptionsMenu : MonoBehaviour
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
         }
-        pointer.SetActive(true);
+        // pointer.SetActive(true);
     }
 
     // Setting page
@@ -96,8 +96,8 @@ public class OptionsMenu : MonoBehaviour
     public void PauseGame()
     {
         Time.timeScale = 0f;                // Stop time
-        pointer.SetActive(false);
-        if (pauseMenuUI != null)
+        // pointer.SetActive(false);
+        if (pauseMenuUI != null && SceneManager.GetActiveScene().name != "StartMenu")
         {
             pauseMenuUI.SetActive(true);    // Show the pause menu
         }

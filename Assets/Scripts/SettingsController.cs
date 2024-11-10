@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class SettingsController : MonoBehaviour
 {
@@ -16,7 +17,10 @@ public class SettingsController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.Find("Player").GetComponent<PlayerController>();
+        if (SceneManager.GetActiveScene().name == "CrimeScene")
+        {
+            player = GameObject.Find("Player").GetComponent<PlayerController>();
+        }
         audioSource = audioPanel.GetComponent<AudioSource>();
     }
 
