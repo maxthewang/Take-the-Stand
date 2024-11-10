@@ -3,7 +3,67 @@ guid: 15ac74f4d5f057840a1c8703cfd436ed
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Back_Lights_003
+    second: {fileID: 2100000, guid: 1002aa7ccf2794d26af4d958da09c46b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Back_Lights_004
+    second: {fileID: 2100000, guid: 84b82ad21a0a04b5ba8bcaf776d3d114, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bumper
+    second: {fileID: 2100000, guid: 35c13cc924f7c4877807e0330e6f4365, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: front_lights
+    second: {fileID: 2100000, guid: a3ceb1a572cac4cea9fe2203546aafd3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: front_lights_base
+    second: {fileID: 2100000, guid: be2811ff2939a4d5798a7401ccd07df5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert3
+    second: {fileID: 2100000, guid: 88d71f904e8f041228143d1af8b3d142, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: police_lights_001
+    second: {fileID: 2100000, guid: 5a373a482169f4ae3b2f3635b99a6009, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: police_lights_002
+    second: {fileID: 2100000, guid: f89ac81491a5044c7b52278c2dbfce66, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: police_lights_base
+    second: {fileID: 2100000, guid: 0e884eb837cec4471bb4ee58cc8202b7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tire_001
+    second: {fileID: 2100000, guid: ddd5c37acfc854fd9bcd0f73936c30d0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tire_002
+    second: {fileID: 2100000, guid: 8bf407073eb644bf0be05d154bf435c7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: windows
+    second: {fileID: 2100000, guid: e9999284c83c9419d9531811cc770e86, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

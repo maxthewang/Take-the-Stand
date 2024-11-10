@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 5a9cb9c829e3f5244a98fdbbf3b6ee19
+=======
+guid: 018f2e81620de4c89b06f5e8771359ca
+>>>>>>> dd425fa875ee0e48dd7a6f21e2d0a957fbf08650
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -8,12 +12,20 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: lambert3
+<<<<<<< HEAD
     second: {fileID: 2100000, guid: 5537b519c967d7b499b34f36f4f59830, type: 2}
+=======
+    second: {fileID: 2100000, guid: 07a2d97d4d49945d3a0065080606ac73, type: 2}
+>>>>>>> dd425fa875ee0e48dd7a6f21e2d0a957fbf08650
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: standardSurface1
+<<<<<<< HEAD
     second: {fileID: 2100000, guid: f4535373be0072f41aa7cb5862c53f5b, type: 2}
+=======
+    second: {fileID: 2100000, guid: 7eead6aaf8d4a46ce9eade9c880c3cbf, type: 2}
+>>>>>>> dd425fa875ee0e48dd7a6f21e2d0a957fbf08650
   materials:
     materialImportMode: 2
     materialName: 0
@@ -47,7 +59,11 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
+<<<<<<< HEAD
     addColliders: 0
+=======
+    addColliders: 1
+>>>>>>> dd425fa875ee0e48dd7a6f21e2d0a957fbf08650
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
     importPhysicalCameras: 1
