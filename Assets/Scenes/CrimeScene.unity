@@ -1764,7 +1764,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
-<<<<<<< HEAD
 --- !u!1001 &287851400
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2621,8 +2620,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1502068336}
   m_SourcePrefab: {fileID: 100100000, guid: 5a9cb9c829e3f5244a98fdbbf3b6ee19, type: 3}
-=======
->>>>>>> dd425fa875ee0e48dd7a6f21e2d0a957fbf08650
 --- !u!1 &300416660 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 78301c4475acfc3428aa4ef520177b87, type: 3}
@@ -7856,7 +7853,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1768918215}
   m_SourcePrefab: {fileID: 100100000, guid: ae42df4e5023643df929999461d8e2d3, type: 3}
-<<<<<<< HEAD
 --- !u!1 &1502068326 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 5a9cb9c829e3f5244a98fdbbf3b6ee19, type: 3}
@@ -7963,8 +7959,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 13.96, y: 9.49, z: 8}
   m_Center: {x: -1.9, y: 4.89, z: 3.95}
-=======
->>>>>>> dd425fa875ee0e48dd7a6f21e2d0a957fbf08650
 --- !u!1001 &1511247148
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10570,11 +10564,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-<<<<<<< HEAD
   m_BoundingSphereOverride: {x: 0, y: NaN, z: NaN, w: 0}
-=======
-  m_BoundingSphereOverride: {x: 0, y: 1e-45, z: 1.02e-43, w: 4e-45}
->>>>>>> dd425fa875ee0e48dd7a6f21e2d0a957fbf08650
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0

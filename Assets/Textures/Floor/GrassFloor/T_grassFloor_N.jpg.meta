@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
 guid: e087c636145dc6c4bb50fa4fe833e0bb
-=======
-guid: e6f7cf485734a4c438f2eab9572425b3
->>>>>>> dd425fa875ee0e48dd7a6f21e2d0a957fbf08650
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -11,11 +7,7 @@ TextureImporter:
   mipmaps:
     mipMapMode: 0
     enableMipMap: 1
-<<<<<<< HEAD
-    sRGBTexture: 1
-=======
     sRGBTexture: 0
->>>>>>> dd425fa875ee0e48dd7a6f21e2d0a957fbf08650
     linearTexture: 0
     fadeOut: 0
     borderMipMap: 0
@@ -62,11 +54,7 @@ TextureImporter:
   alphaUsage: 1
   alphaIsTransparency: 0
   spriteTessellationDetail: -1
-<<<<<<< HEAD
-  textureType: 0
-=======
   textureType: 1
->>>>>>> dd425fa875ee0e48dd7a6f21e2d0a957fbf08650
   textureShape: 1
   singleChannelComponent: 0
   flipbookRows: 1
@@ -75,9 +63,9 @@ TextureImporter:
   compressionQualitySet: 0
   textureFormatSet: 0
   ignorePngGamma: 0
-  applyGammaDecoding: 0
+  applyGammaDecoding: 1
   swizzle: 50462976
-  cookieLightType: 0
+  cookieLightType: 2
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
