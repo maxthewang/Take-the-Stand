@@ -28,10 +28,12 @@ public class TimerScript : MonoBehaviour
                 TimeLeft -= Time.deltaTime;
                 updateTimer(TimeLeft);
 
-                if(TimeLeft <= 5f && !sirenPlaying)
+                if(TimeLeft <= 30f && !sirenPlaying)
                 {
                     sirenSound.Play();
                     sirenPlaying = true;
+                } else if (sirenPlaying) {
+                    sirenSound.volume = (30 - TimeLeft) / 30;
                 }
             }
             else
