@@ -4983,7 +4983,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b07ca12fa5e07a84e84a0cf7bf118fea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 7
+  speed: 4
+  runSpeed: 7
   rotateSpeed: 120
   jumpForce: 15
   walkingSound: {fileID: 20253882}
@@ -6245,7 +6246,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a07ac907edf507c46b8167c54126b708, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TimeLeft: 90
+  TimeLeft: 180
   TimerOn: 1
   sirenSound: {fileID: 1140794980}
   introVoiceLine: {fileID: 1125691451}
