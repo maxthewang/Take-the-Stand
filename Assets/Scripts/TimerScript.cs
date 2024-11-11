@@ -7,7 +7,10 @@ public class TimerScript : MonoBehaviour
     public float TimeLeft;
     public bool TimerOn = false;
     public AudioSource sirenSound;
+    public AudioSource introVoiceLine;
+    public AudioSource sirenVoiceLine;
     private bool sirenPlaying = false;
+    private bool voicePlayed = false;
 
     public TextMeshProUGUI TimerTxt;
 
@@ -16,7 +19,6 @@ public class TimerScript : MonoBehaviour
     void Start()
     {
         TimerOn = true;
-		
     }
 
     void Update()
@@ -31,6 +33,7 @@ public class TimerScript : MonoBehaviour
                 if(TimeLeft <= 30f && !sirenPlaying)
                 {
                     sirenSound.Play();
+                    sirenVoiceLine.Play();
                     sirenPlaying = true;
                 } else if (sirenPlaying) {
                     sirenSound.volume = (30 - TimeLeft) / 30;
@@ -48,6 +51,10 @@ public class TimerScript : MonoBehaviour
 
     void updateTimer(float currentTime)
     {
+        if (!voicePlayed) {
+            introVoiceLine.Play();
+            voicePlayed = true;
+        }
         currentTime += 1;
 
         float minutes = Mathf.FloorToInt(currentTime / 60);
