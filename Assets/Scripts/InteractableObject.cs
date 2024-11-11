@@ -80,6 +80,7 @@ public class InteractableObject : MonoBehaviour
             GameManager.instance.AddInteraction();
             isDiscovered = true; // Mark the item as discovered
 
+            voiceLine.volume = 
             voiceLine.Play();
         }
     }
