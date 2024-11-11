@@ -89,7 +89,9 @@ public class OptionsMenu : MonoBehaviour
             settingsPanel.SetActive(false);   // Hide the settings panel
         }
         isSettings = false;
-        PauseGame();   // Pause the game
+        if (SceneManager.GetActiveScene().name != "StartMenu"){
+            PauseGame();   // Pause the game
+        }
     }
 
     // Function to pause the game
