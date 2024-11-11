@@ -121,7 +121,10 @@ public class DialogManager : MonoBehaviour
     {
         HideRegularDialogueBox();
         MultipleChoice multipleChoiceToDisplay = (MultipleChoice)currentMessages[activeMessage];
-        choiceMessageText.text = multipleChoiceToDisplay.message;
+        
+        StopAllCoroutines();
+        StartCoroutine(TypeMessage(choiceMessageText, multipleChoiceToDisplay.message));
+
         EnableButtons();
 
         int i = 0;
@@ -145,11 +148,12 @@ public class DialogManager : MonoBehaviour
                 return;
             }
 
-            messageText.text = messageToDisplay.message;
-
             Actor actorToDisplay = currentActors[messageToDisplay.actorid];
             actorName.text = actorToDisplay.name;
             actorImage.sprite = actorToDisplay.sprite;
+
+            StopAllCoroutines();
+            StartCoroutine(TypeMessage(messageText, messageToDisplay.message));
         }
     }
 
@@ -198,4 +202,14 @@ public class DialogManager : MonoBehaviour
             NextMessage();
         }
     }
+
+	IEnumerator TypeMessage(TMP_Text textObject, string message)
+	{
+		textObject.text = "";
+		foreach (char letter in message.ToCharArray())
+		{
+			textObject.text += letter;
+			yield return null;
+		}
+	}
 }
