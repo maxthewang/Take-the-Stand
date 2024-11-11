@@ -28,8 +28,6 @@ public class PlayerController : MonoBehaviour
     private float rotationX = 0.0f; // X rotation for looking up/down
 
 	public GameObject notepadGameObject;
-    public GameObject settingsGameObject;
-    public GameObject pauseGameObject;
 
     private void Awake()
     {
@@ -121,9 +119,7 @@ public class PlayerController : MonoBehaviour
 
     private void CharacterControllerMovement() 
     {
-		if(notepadGameObject.activeSelf 
-        || settingsGameObject.activeSelf 
-        || pauseGameObject.activeSelf){
+		if(notepadGameObject.activeSelf){
 			return;
 		}
         Vector2 moveInput = move.ReadValue<Vector2>();
@@ -155,9 +151,7 @@ public class PlayerController : MonoBehaviour
 
     private void LookAround(Vector2 lookInput)
     {
-		if(notepadGameObject.activeSelf
-        || settingsGameObject.activeSelf 
-        || pauseGameObject.activeSelf){
+		if(notepadGameObject.activeSelf){
 			return;
 		}
         // Get the mouse delta input for looking

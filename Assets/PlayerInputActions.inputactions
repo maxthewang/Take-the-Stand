@@ -293,15 +293,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "Settings",
-                    "type": "Button",
-                    "id": "d8a4128f-cc57-417c-a911-17fdfc7ec827",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -309,6 +300,17 @@
                     "name": "",
                     "id": "3a0bbd52-071c-4991-b5b9-f90ae0d8fe01",
                     "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Options",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c2e14ec0-30bd-4a38-99db-ae59277983cd",
+                    "path": "<Keyboard>/tab",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -357,17 +359,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "Advance Dialogue",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "3c336f97-7a68-44fc-b159-30f04edb9085",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "Settings",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
