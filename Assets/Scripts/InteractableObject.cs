@@ -7,6 +7,7 @@ public class InteractableObject : MonoBehaviour
     public string clueMessage = "This object doesn't give you any information.";
 	public string unfoundClueMessage = "This ______ doesn't give you any ___________.";
     public static AudioSource discoverySound;
+    public AudioSource voiceLine;
     [SerializeField]
     private PlayerInputActions playerControls;
     private NotepadManager notepadManager;
@@ -79,6 +80,8 @@ public class InteractableObject : MonoBehaviour
 
             GameManager.instance.AddInteraction();
             isDiscovered = true; // Mark the item as discovered
+
+            voiceLine.Play();
         }
     }
 }

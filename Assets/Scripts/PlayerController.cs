@@ -6,7 +6,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    public float speed = 5.0f; 
+    public float speed = 4.0f; 
+    public float runSpeed = 7.0f;
     public float rotateSpeed = 120.0f; 
     public float jumpForce = 20.0f; 
     public AudioSource walkingSound;
