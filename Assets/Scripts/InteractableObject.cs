@@ -65,6 +65,7 @@ public class InteractableObject : MonoBehaviour
     {   
         if (!isDiscovered)  // Ensure discovery logic only happens once per item
         {
+            discoverySound.pitch = Random.Range(0.8f, 1.0f);
             discoverySound.Play();
 
             // Use the centralized text manager to show the interaction message

@@ -160,6 +160,7 @@ public class DialogManager : MonoBehaviour
     public void NextMessage()
     {
         activeMessage++;
+        boxSound.pitch = Random.Range(1.0f, 1.8f);
         boxSound.Play();
         if (activeMessage < currentMessages.Length)
         {

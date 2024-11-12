@@ -1279,7 +1279,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 2ec3cf6f6f1b07740804a13f653a3a07, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1758,10 +1758,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -7511558181221131132, guid: 46b0674e2441df64b80827af9e66e1c7, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 5965dde3157bf814cb77fc44f79c0d46, type: 2}
     - target: {fileID: -8679921383154817045, guid: 7b6429259328ad443822084f96e7eb34, type: 3}
       propertyPath: m_LocalScale.x
       value: 9.41
@@ -1822,6 +1818,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: whitewoodendeskandchair
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 46b0674e2441df64b80827af9e66e1c7, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5965dde3157bf814cb77fc44f79c0d46, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2341,10 +2341,10 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 44460dc50add6284ea40c0c848ce0958, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 4e3718a2e35b26241aba49f05fc4a3a1, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.562
-  m_Pitch: 1.99
+  m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0

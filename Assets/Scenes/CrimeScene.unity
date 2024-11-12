@@ -588,6 +588,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OptionMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 4252032728400698532, guid: f16ed6ade58a144a5a42625b2c72a50b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6934130397653925934, guid: f16ed6ade58a144a5a42625b2c72a50b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -633,6 +637,16 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f16ed6ade58a144a5a42625b2c72a50b, type: 3}
+--- !u!1 &42256422 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4252032728400698532, guid: f16ed6ade58a144a5a42625b2c72a50b, type: 3}
+  m_PrefabInstance: {fileID: 42256421}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &42256423 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3209310649854337255, guid: f16ed6ade58a144a5a42625b2c72a50b, type: 3}
+  m_PrefabInstance: {fileID: 42256421}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &50106675
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -813,10 +827,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1140753822}
     m_Modifications:
-    - target: {fileID: -7511558181221131132, guid: b1525ebb37100074e9117eea86d5a0ea, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 84bb5a20442bd1643bd89821ca9fc3a1, type: 2}
     - target: {fileID: -8679921383154817045, guid: 78301c4475acfc3428aa4ef520177b87, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.08
@@ -877,6 +887,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Master Key
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: b1525ebb37100074e9117eea86d5a0ea, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 84bb5a20442bd1643bd89821ca9fc3a1, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1377,14 +1391,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1140753822}
     m_Modifications:
-    - target: {fileID: -7972127631495061029, guid: cc4dc72aff64d453da3c63cad42078c9, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 1726d3284ed2c7f4aa95962e69998210, type: 2}
-    - target: {fileID: 412738641791304340, guid: cc4dc72aff64d453da3c63cad42078c9, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: e31798231a22f594ab9fff311055dba1, type: 2}
     - target: {fileID: -8679921383154817045, guid: e9adb978afcb59343830e8ce62272530, type: 3}
       propertyPath: m_LocalScale.x
       value: 62.999996
@@ -1465,6 +1471,14 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 2f270cc455ca042d7a0e50e11085ccd7, type: 2}
+    - target: {fileID: -7972127631495061029, guid: cc4dc72aff64d453da3c63cad42078c9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1726d3284ed2c7f4aa95962e69998210, type: 2}
+    - target: {fileID: 412738641791304340, guid: cc4dc72aff64d453da3c63cad42078c9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e31798231a22f594ab9fff311055dba1, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2387,9 +2401,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: aaf2adf8f5bafdf4c979b254bd4492c3, type: 3}
+  m_audioClip: {fileID: 8300000, guid: e7595ed9458a2b7468ad15b8f4197f45, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.8
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -2979,8 +2993,8 @@ MonoBehaviour:
   playerCamera: {fileID: 963194227}
   gravity: -200
   notepadGameObject: {fileID: 1188834729}
-  settingsGameObject: {fileID: 0}
-  pauseGameObject: {fileID: 0}
+  settingsGameObject: {fileID: 42256422}
+  pauseGameObject: {fileID: 42256423}
   fallMultiplier: 2
 --- !u!33 &747610648
 MeshFilter:
@@ -3646,18 +3660,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1140753822}
     m_Modifications:
-    - target: {fileID: -7511558181221131132, guid: 2515074efcc044acf82695233142c046, type: 3}
-      propertyPath: m_Materials.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -7511558181221131132, guid: 2515074efcc044acf82695233142c046, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 1726d3284ed2c7f4aa95962e69998210, type: 2}
-    - target: {fileID: -7511558181221131132, guid: 2515074efcc044acf82695233142c046, type: 3}
-      propertyPath: m_Materials.Array.data[1]
-      value: 
-      objectReference: {fileID: 2100000, guid: 79131f69c96cbe44c8af142e50dd4369, type: 2}
     - target: {fileID: -8679921383154817045, guid: b0e066286de15784aa017bc5776251e3, type: 3}
       propertyPath: m_LocalScale.x
       value: 2.57
@@ -3722,6 +3724,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Molotov Cocktail
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 2515074efcc044acf82695233142c046, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 2515074efcc044acf82695233142c046, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1726d3284ed2c7f4aa95962e69998210, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 2515074efcc044acf82695233142c046, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 79131f69c96cbe44c8af142e50dd4369, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
