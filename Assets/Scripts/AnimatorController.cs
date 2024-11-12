@@ -6,6 +6,7 @@ public class AnimatorController : MonoBehaviour
 {
 
     public Animator animator;
+    public PlayerController playerController;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +16,7 @@ public class AnimatorController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey("w") || Input.GetKey("a") || Input.GetKey("s") || Input.GetKey("d"))
+        if (playerController.shouldAnimateMovement())
         {
             animator.SetBool("Walking", true);
         }
