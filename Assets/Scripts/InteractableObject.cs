@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class InteractableObject : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class InteractableObject : MonoBehaviour
     private NotepadManager notepadManager;
     private InputAction interactAction;
     private bool isDiscovered = false;
+	public Sprite itemSprite;
 
     void Awake()
     {
@@ -36,7 +38,7 @@ public class InteractableObject : MonoBehaviour
         // Hide interaction text initially
         notepadManager = FindObjectOfType<NotepadManager>();
         if(notepadManager != null){
-            notepadManager.AddInformation(name, new string('_', name.Length), unfoundClueMessage);
+            notepadManager.AddInformation(name, new string('_', name.Length), unfoundClueMessage, null);
         }
     }
 
@@ -73,7 +75,7 @@ public class InteractableObject : MonoBehaviour
             if (notepadManager != null)
             {
                 // Update the notepad with the actual clue information
-                notepadManager.AddInformation(name, gameObject.name, clueMessage);
+                notepadManager.AddInformation(name, gameObject.name, clueMessage, itemSprite);
             }
 
             GameManager.instance.AddInteraction();

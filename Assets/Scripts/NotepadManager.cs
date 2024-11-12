@@ -6,6 +6,7 @@ using TMPro;
 using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class NotepadManager : MonoBehaviour
 {
@@ -27,6 +28,7 @@ public class NotepadManager : MonoBehaviour
     private Coroutine fadeCoroutine;
     private HashSet<string> notedObjects = new HashSet<string>();
 	private Dictionary<string, string[]> cluePairs = new Dictionary<string, string[]>();
+	private Dictionary<string, Sprite> clueImages = new Dictionary<string, Sprite>();
 
 	private List<string> orderOfObjects = new List<string>();
 	private int currentPage = 0;
@@ -39,6 +41,10 @@ public class NotepadManager : MonoBehaviour
 	TextMeshProUGUI notepadNameRight;
 	[SerializeField]
 	TextMeshProUGUI notepadInfoRight;
+	[SerializeField]
+	Image leftImage;
+	[SerializeField]
+	Image rightImage;
     void Awake()
     {
         playerControls = new PlayerInputActions();
@@ -61,26 +67,28 @@ public class NotepadManager : MonoBehaviour
 		playerControls.UI.FlipPageRight.performed += ctx => flipPage(false);
     }
 
-	public void AddInformation(string dictionaryItemName, string textItemName, string itemDescription)
+	public void AddInformation(string dictionaryItemName, string textItemName, string itemDescription, Sprite itemSprite)
     {
         // Only discover the object if it's new and not already noted
         if (cluePairs.ContainsKey(dictionaryItemName))
         {
             DiscoverableManager.instance.DiscoverObject();
-			ReplaceInformation(dictionaryItemName, textItemName, itemDescription);
+			ReplaceInformation(dictionaryItemName, textItemName, itemDescription, itemSprite);
         }
 		else{
 			orderOfObjects.Add(dictionaryItemName);
         	cluePairs[dictionaryItemName] = new string[2]{textItemName, itemDescription};
+			clueImages[dictionaryItemName] = itemSprite;
 		}
 
     }
 
-	private void ReplaceInformation(string dictionaryItemName, string textItemName, string newItemDescription){
+	private void ReplaceInformation(string dictionaryItemName, string textItemName, string newItemDescription, Sprite itemSprite){
 		string oldDescription = cluePairs[dictionaryItemName][1];
 		string[] oldDescriptionArray = oldDescription.Split(" ");
 		string[] newDescriptionArray = newItemDescription.Split(" ");
 		string finalReplacement = "";
+		clueImages[dictionaryItemName] = itemSprite;
 		for(int i = 0; i < newDescriptionArray.Length; i++){
 			if(Array.IndexOf(oldDescriptionArray, newDescriptionArray[i]) == -1){
 				finalReplacement += "<color=#8B0000><b>" + newDescriptionArray[i] + "</b></color>" + " ";
@@ -115,11 +123,23 @@ public class NotepadManager : MonoBehaviour
 		notepadInfoLeft.text = firstPageInfo;
 		notepadNameRight.text = "";
 		notepadInfoRight.text = "";
+		if(clueImages[orderOfObjects[firstPageNum]] != null){
+			leftImage.sprite = clueImages[orderOfObjects[firstPageNum]];
+		}
+		else{
+			leftImage.sprite = null;
+		}
 		if(firstPageNum + 1 < orderOfObjects.Count){
 			string secondPageName = cluePairs[orderOfObjects[firstPageNum + 1]][0];
 			string secondPageInfo = cluePairs[orderOfObjects[firstPageNum + 1]][1];
 			notepadNameRight.text = secondPageName;
 			notepadInfoRight.text = secondPageInfo;
+			if(clueImages[orderOfObjects[firstPageNum + 1]] != null){
+				rightImage.sprite = clueImages[orderOfObjects[firstPageNum + 1]];
+			}
+			else{
+				rightImage.sprite = null;
+			}
 		}
 	}
 
