@@ -295,9 +295,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Settings",
+                    "name": "FlipPageLeft",
                     "type": "Button",
-                    "id": "d8a4128f-cc57-417c-a911-17fdfc7ec827",
+                    "id": "7c911829-a9fe-4ba7-93d0-1b405d86c56b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "FlipPageRight",
+                    "type": "Button",
+                    "id": "1348e324-37f9-4d3a-aace-63a405a56f70",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -373,12 +382,45 @@
                 },
                 {
                     "name": "",
-                    "id": "3c336f97-7a68-44fc-b159-30f04edb9085",
-                    "path": "",
+                    "id": "892fe14b-04a2-4951-b721-f7d0fdf081cb",
+                    "path": "<Gamepad>/dpad/left",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "Settings",
+                    "groups": "",
+                    "action": "FlipPageLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "39af0107-ef55-4725-91a4-9c855a8bf6b9",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "FlipPageLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bed22baf-16d4-4b61-9574-1c26b49f3ef4",
+                    "path": "<Gamepad>/dpad/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "FlipPageRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "606c04aa-229e-409a-88a3-9b611576d078",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "FlipPageRight",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

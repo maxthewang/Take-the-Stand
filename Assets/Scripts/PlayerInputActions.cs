@@ -317,9 +317,18 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Settings"",
+                    ""name"": ""FlipPageLeft"",
                     ""type"": ""Button"",
-                    ""id"": ""d8a4128f-cc57-417c-a911-17fdfc7ec827"",
+                    ""id"": ""7c911829-a9fe-4ba7-93d0-1b405d86c56b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""FlipPageRight"",
+                    ""type"": ""Button"",
+                    ""id"": ""1348e324-37f9-4d3a-aace-63a405a56f70"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -395,12 +404,45 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""3c336f97-7a68-44fc-b159-30f04edb9085"",
-                    ""path"": """",
+                    ""id"": ""892fe14b-04a2-4951-b721-f7d0fdf081cb"",
+                    ""path"": ""<Gamepad>/dpad/left"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Settings"",
+                    ""groups"": """",
+                    ""action"": ""FlipPageLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""39af0107-ef55-4725-91a4-9c855a8bf6b9"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""FlipPageLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bed22baf-16d4-4b61-9574-1c26b49f3ef4"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""FlipPageRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""606c04aa-229e-409a-88a3-9b611576d078"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""FlipPageRight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -482,7 +524,8 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_UI_Options = m_UI.FindAction("Options", throwIfNotFound: true);
         m_UI_Notepad = m_UI.FindAction("Notepad", throwIfNotFound: true);
         m_UI_AdvanceDialogue = m_UI.FindAction("Advance Dialogue", throwIfNotFound: true);
-        m_UI_Settings = m_UI.FindAction("Settings", throwIfNotFound: true);
+        m_UI_FlipPageLeft = m_UI.FindAction("FlipPageLeft", throwIfNotFound: true);
+        m_UI_FlipPageRight = m_UI.FindAction("FlipPageRight", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -625,7 +668,8 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_UI_Options;
     private readonly InputAction m_UI_Notepad;
     private readonly InputAction m_UI_AdvanceDialogue;
-    private readonly InputAction m_UI_Settings;
+    private readonly InputAction m_UI_FlipPageLeft;
+    private readonly InputAction m_UI_FlipPageRight;
     public struct UIActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -633,7 +677,8 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         public InputAction @Options => m_Wrapper.m_UI_Options;
         public InputAction @Notepad => m_Wrapper.m_UI_Notepad;
         public InputAction @AdvanceDialogue => m_Wrapper.m_UI_AdvanceDialogue;
-        public InputAction @Settings => m_Wrapper.m_UI_Settings;
+        public InputAction @FlipPageLeft => m_Wrapper.m_UI_FlipPageLeft;
+        public InputAction @FlipPageRight => m_Wrapper.m_UI_FlipPageRight;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -652,9 +697,12 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @AdvanceDialogue.started += instance.OnAdvanceDialogue;
             @AdvanceDialogue.performed += instance.OnAdvanceDialogue;
             @AdvanceDialogue.canceled += instance.OnAdvanceDialogue;
-            @Settings.started += instance.OnSettings;
-            @Settings.performed += instance.OnSettings;
-            @Settings.canceled += instance.OnSettings;
+            @FlipPageLeft.started += instance.OnFlipPageLeft;
+            @FlipPageLeft.performed += instance.OnFlipPageLeft;
+            @FlipPageLeft.canceled += instance.OnFlipPageLeft;
+            @FlipPageRight.started += instance.OnFlipPageRight;
+            @FlipPageRight.performed += instance.OnFlipPageRight;
+            @FlipPageRight.canceled += instance.OnFlipPageRight;
         }
 
         private void UnregisterCallbacks(IUIActions instance)
@@ -668,9 +716,12 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @AdvanceDialogue.started -= instance.OnAdvanceDialogue;
             @AdvanceDialogue.performed -= instance.OnAdvanceDialogue;
             @AdvanceDialogue.canceled -= instance.OnAdvanceDialogue;
-            @Settings.started -= instance.OnSettings;
-            @Settings.performed -= instance.OnSettings;
-            @Settings.canceled -= instance.OnSettings;
+            @FlipPageLeft.started -= instance.OnFlipPageLeft;
+            @FlipPageLeft.performed -= instance.OnFlipPageLeft;
+            @FlipPageLeft.canceled -= instance.OnFlipPageLeft;
+            @FlipPageRight.started -= instance.OnFlipPageRight;
+            @FlipPageRight.performed -= instance.OnFlipPageRight;
+            @FlipPageRight.canceled -= instance.OnFlipPageRight;
         }
 
         public void RemoveCallbacks(IUIActions instance)
@@ -746,6 +797,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         void OnOptions(InputAction.CallbackContext context);
         void OnNotepad(InputAction.CallbackContext context);
         void OnAdvanceDialogue(InputAction.CallbackContext context);
-        void OnSettings(InputAction.CallbackContext context);
+        void OnFlipPageLeft(InputAction.CallbackContext context);
+        void OnFlipPageRight(InputAction.CallbackContext context);
     }
 }
