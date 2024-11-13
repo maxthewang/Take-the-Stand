@@ -315,6 +315,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Settings"",
+                    ""type"": ""Button"",
+                    ""id"": ""d8a4128f-cc57-417c-a911-17fdfc7ec827"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -331,7 +340,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""c2e14ec0-30bd-4a38-99db-ae59277983cd"",
+                    ""id"": ""aef1e374-5d9e-485f-b972-e4d6a84a67e3"",
                     ""path"": ""<Keyboard>/tab"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -381,6 +390,17 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Advance Dialogue"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3c336f97-7a68-44fc-b159-30f04edb9085"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Settings"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -462,6 +482,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_UI_Options = m_UI.FindAction("Options", throwIfNotFound: true);
         m_UI_Notepad = m_UI.FindAction("Notepad", throwIfNotFound: true);
         m_UI_AdvanceDialogue = m_UI.FindAction("Advance Dialogue", throwIfNotFound: true);
+        m_UI_Settings = m_UI.FindAction("Settings", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -604,6 +625,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_UI_Options;
     private readonly InputAction m_UI_Notepad;
     private readonly InputAction m_UI_AdvanceDialogue;
+    private readonly InputAction m_UI_Settings;
     public struct UIActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -611,6 +633,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         public InputAction @Options => m_Wrapper.m_UI_Options;
         public InputAction @Notepad => m_Wrapper.m_UI_Notepad;
         public InputAction @AdvanceDialogue => m_Wrapper.m_UI_AdvanceDialogue;
+        public InputAction @Settings => m_Wrapper.m_UI_Settings;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -629,6 +652,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @AdvanceDialogue.started += instance.OnAdvanceDialogue;
             @AdvanceDialogue.performed += instance.OnAdvanceDialogue;
             @AdvanceDialogue.canceled += instance.OnAdvanceDialogue;
+            @Settings.started += instance.OnSettings;
+            @Settings.performed += instance.OnSettings;
+            @Settings.canceled += instance.OnSettings;
         }
 
         private void UnregisterCallbacks(IUIActions instance)
@@ -642,6 +668,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @AdvanceDialogue.started -= instance.OnAdvanceDialogue;
             @AdvanceDialogue.performed -= instance.OnAdvanceDialogue;
             @AdvanceDialogue.canceled -= instance.OnAdvanceDialogue;
+            @Settings.started -= instance.OnSettings;
+            @Settings.performed -= instance.OnSettings;
+            @Settings.canceled -= instance.OnSettings;
         }
 
         public void RemoveCallbacks(IUIActions instance)
@@ -717,5 +746,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         void OnOptions(InputAction.CallbackContext context);
         void OnNotepad(InputAction.CallbackContext context);
         void OnAdvanceDialogue(InputAction.CallbackContext context);
+        void OnSettings(InputAction.CallbackContext context);
     }
 }

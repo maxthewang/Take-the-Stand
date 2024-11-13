@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     private InputAction jump;
     private float baseSensitivity = 0.5f;
     private float turnSensitivity;
+    private float zoomMultiplier = 1.0f;
     private float targetVolume = 0f;
     private Rigidbody rb;
     private CharacterController controller;
@@ -29,6 +30,8 @@ public class PlayerController : MonoBehaviour
     private float rotationX = 0.0f; // X rotation for looking up/down
 
 	public GameObject notepadGameObject;
+    public GameObject settingsGameObject;
+    public GameObject pauseGameObject;
 
     private void Awake()
     {
@@ -120,7 +123,9 @@ public class PlayerController : MonoBehaviour
 
     private void CharacterControllerMovement() 
     {
-		if(notepadGameObject.activeSelf){
+		if(notepadGameObject.activeSelf 
+        || settingsGameObject.activeSelf 
+        || pauseGameObject.activeSelf){
 			return;
 		}
         Vector2 moveInput = move.ReadValue<Vector2>();
@@ -147,12 +152,26 @@ public class PlayerController : MonoBehaviour
 
     public void SetSensitivity(float sensitivityMultiplier)
     {
-        turnSensitivity = baseSensitivity * sensitivityMultiplier;
+        baseSensitivity = 0.5f * sensitivityMultiplier; // base sensitivity is adjustable by slider
+        UpdateTurnSensitivity();
+    }
+
+    public void SetSensitivityMultiplier(float multiplier)
+    {
+        zoomMultiplier = multiplier;
+        UpdateTurnSensitivity();
+    }
+
+    private void UpdateTurnSensitivity()
+    {
+        turnSensitivity = baseSensitivity * zoomMultiplier;
     }
 
     private void LookAround(Vector2 lookInput)
     {
-		if(notepadGameObject.activeSelf){
+		if(notepadGameObject.activeSelf
+        || settingsGameObject.activeSelf 
+        || pauseGameObject.activeSelf){
 			return;
 		}
         // Get the mouse delta input for looking

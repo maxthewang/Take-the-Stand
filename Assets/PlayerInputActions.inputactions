@@ -293,6 +293,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Settings",
+                    "type": "Button",
+                    "id": "d8a4128f-cc57-417c-a911-17fdfc7ec827",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -309,7 +318,7 @@
                 },
                 {
                     "name": "",
-                    "id": "c2e14ec0-30bd-4a38-99db-ae59277983cd",
+                    "id": "aef1e374-5d9e-485f-b972-e4d6a84a67e3",
                     "path": "<Keyboard>/tab",
                     "interactions": "",
                     "processors": "",
@@ -359,6 +368,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Advance Dialogue",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3c336f97-7a68-44fc-b159-30f04edb9085",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Settings",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

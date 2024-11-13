@@ -160,6 +160,7 @@ public class DialogManager : MonoBehaviour
     public void NextMessage()
     {
         activeMessage++;
+        boxSound.pitch = Random.Range(1.0f, 1.8f);
         boxSound.Play();
         if (activeMessage < currentMessages.Length)
         {
@@ -209,7 +210,11 @@ public class DialogManager : MonoBehaviour
 		foreach (char letter in message.ToCharArray())
 		{
 			textObject.text += letter;
-			yield return null;
+			yield return new WaitForSeconds(0.02f);
 		}
+        if (boxSound.isPlaying)
+        {
+            boxSound.Stop();
+        }
 	}
 }
