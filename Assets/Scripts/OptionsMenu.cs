@@ -4,47 +4,62 @@ using UnityEngine.InputSystem;
 
 public class OptionsMenu : MonoBehaviour
 {
-    public GameObject pauseMenuUI;
-    [SerializeField]
-    private PlayerInputActions playerControls;
+    public GameObject settingsPanel;
     private bool isPaused = false;
+    private bool isSettings = false;
+    public GameObject pauseMenuUI;
+	[SerializeField]
+    private PlayerInputActions playerControls;
 
-    void Awake()
+    private void Awake()
     {
+        // Initialize and enable the player controls
         playerControls = new PlayerInputActions();
     }
 
-    void OnEnable()
+    private void OnEnable()
     {
-        playerControls.UI.Options.performed += OnPause;  // Subscribe to the Pause action
+        // Enable the player controls and subscribe to the Options action
         playerControls.Enable();
+        playerControls.UI.Options.performed += OnOptionsPressed;
     }
 
-    void OnDisable()
+    private void OnDisable()
     {
-        playerControls.UI.Options.performed -= OnPause;  // Unsubscribe when disabled
+        // Unsubscribe to avoid memory leaks
+        playerControls.UI.Options.performed -= OnOptionsPressed;
         playerControls.Disable();
     }
 
     void Start()
     {
         // Lock/unlock cursor based on the active scene
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
         if (SceneManager.GetActiveScene().name == "CrimeScene")
         {
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
         }
+    }
+
+    // Callback function for the Options action
+    private void OnOptionsPressed(InputAction.CallbackContext context)
+    {
+        if (isSettings)
+        {
+            CloseSettingsPage();
+        }
         else
         {
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
+            OnPause();
         }
     }
 
     // Callback function for the Pause action
-    private void OnPause(InputAction.CallbackContext context)
+    public void OnPause()
     {
-        if (isPaused)
+        if (isPaused && !isSettings)
         {
             ResumeGame();  // If the game is paused, resume it
         }
@@ -57,6 +72,7 @@ public class OptionsMenu : MonoBehaviour
     // Function to resume the game
     public void ResumeGame()
     {
+        Time.timeScale = 1f;                // Resume time
         if (pauseMenuUI != null)
         {
             pauseMenuUI.SetActive(false);   // Hide the pause menu
@@ -67,27 +83,58 @@ public class OptionsMenu : MonoBehaviour
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
         }
+        // pointer.SetActive(true);
     }
 
     // Function to pause the game
     public void PauseGame()
     {
-        if (pauseMenuUI != null)
+        Time.timeScale = 0f;                // Stop time
+        // pointer.SetActive(false);
+        if (pauseMenuUI != null && SceneManager.GetActiveScene().name != "StartMenu")
         {
             pauseMenuUI.SetActive(true);    // Show the pause menu
         }
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        
         isPaused = true;                    // Mark the game as paused
-        if (SceneManager.GetActiveScene().name == "CrimeScene")
-        {
+    }
+
+    // Setting page
+    public void OpenSettingsPage(){
+        isSettings = true;
+        while (!Cursor.visible) {
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
+        }
+        while (pauseMenuUI && pauseMenuUI.activeSelf) {
+            pauseMenuUI.SetActive(false);
+        }
+        if (settingsPanel != null)
+        {
+            settingsPanel.SetActive(true);   // Show the settings panel
+        }
+
+    }
+
+    public void CloseSettingsPage(){
+        while (settingsPanel && settingsPanel.activeSelf)
+        {
+            settingsPanel.SetActive(false);   // Hide the settings panel
+        }
+        isSettings = false;
+        if (SceneManager.GetActiveScene().name != "StartMenu"){
+            PauseGame();   // Pause the game
         }
     }
 
     // Optional: Add a method to quit the game from the pause menu
     public void QuitGame()
     {
-        Debug.Log("Quitting game...");
+        #if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+        #endif
         Application.Quit();
     }
 

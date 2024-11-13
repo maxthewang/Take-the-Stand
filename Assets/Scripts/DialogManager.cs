@@ -6,6 +6,7 @@ using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 using System.Linq;
+using Unity.VisualScripting;
 
 public class DialogManager : MonoBehaviour
 {
@@ -17,7 +18,7 @@ public class DialogManager : MonoBehaviour
     public TMP_Text choiceMessageText;
     public AudioSource boxSound;
     public static bool isActive = true;
-    private List<string> correctStrings = new List<string> {"Quite well actually.", "Out the back of the house.", "Gasoline and a lighter.", "An old farmhouse.", $"{GameManager.instance.GetInteractionCount()}", "I think so.", "We stopped at a gas station.", "The flames would've disintegrated it all.", "In the nighttime.", "I was the only one.", "Yes, I believe so.", "It was Warren."};
+    private List<string> correctStrings = new List<string> {"Quite well actually.", "Out the side door.", "Gasoline and a lighter.", "An old farmhouse.", $"{GameManager.instance.GetInteractionCount()}", "I think so.", "We stopped at a gas station.", "The flames would've disintegrated it all.", "In the nighttime.", "I was the only one.", "Yes, I believe so.", "It was Warren."};
 
 	public List<TMP_Text> buttonTexts;
 
@@ -160,6 +161,7 @@ public class DialogManager : MonoBehaviour
     public void NextMessage()
     {
         activeMessage++;
+        boxSound.pitch = Random.Range(1.0f, 1.8f);
         boxSound.Play();
         if (activeMessage < currentMessages.Length)
         {
@@ -197,7 +199,7 @@ public class DialogManager : MonoBehaviour
     
     private void OnNextMessage(InputAction.CallbackContext context)
     {
-        if (isActive)
+        if (isActive && !(currentMessages[activeMessage] is MultipleChoice))
         {
             NextMessage();
         }
@@ -209,7 +211,11 @@ public class DialogManager : MonoBehaviour
 		foreach (char letter in message.ToCharArray())
 		{
 			textObject.text += letter;
-			yield return null;
+			yield return new WaitForSeconds(0.02f);
 		}
+        if (boxSound.isPlaying)
+        {
+            boxSound.Stop();
+        }
 	}
 }

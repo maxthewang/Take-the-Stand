@@ -36,7 +36,6 @@ public class Outlined : MonoBehaviour
 	}
 
 	public void TurnOffShader(){
-		
 		MeshRenderer[] meshRenderers = GetComponents<MeshRenderer>();
 		for(int i = 0; i < meshRenderers.Length; i++){
 			List<Material> tempList = meshRenderers[i].materials.ToList();

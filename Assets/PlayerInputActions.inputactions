@@ -293,6 +293,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "FlipPageLeft",
+                    "type": "Button",
+                    "id": "7c911829-a9fe-4ba7-93d0-1b405d86c56b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "FlipPageRight",
+                    "type": "Button",
+                    "id": "1348e324-37f9-4d3a-aace-63a405a56f70",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -309,7 +327,7 @@
                 },
                 {
                     "name": "",
-                    "id": "c2e14ec0-30bd-4a38-99db-ae59277983cd",
+                    "id": "aef1e374-5d9e-485f-b972-e4d6a84a67e3",
                     "path": "<Keyboard>/tab",
                     "interactions": "",
                     "processors": "",
@@ -359,6 +377,50 @@
                     "processors": "",
                     "groups": "",
                     "action": "Advance Dialogue",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "892fe14b-04a2-4951-b721-f7d0fdf081cb",
+                    "path": "<Gamepad>/dpad/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "FlipPageLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "39af0107-ef55-4725-91a4-9c855a8bf6b9",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "FlipPageLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bed22baf-16d4-4b61-9574-1c26b49f3ef4",
+                    "path": "<Gamepad>/dpad/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "FlipPageRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "606c04aa-229e-409a-88a3-9b611576d078",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "FlipPageRight",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

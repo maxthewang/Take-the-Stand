@@ -44,19 +44,19 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		    OutlineObject();
+		OutlineObject();
         
         if(zoom.ReadValue<float>() > 0.5f)
         {
             // Zoom in
             targetFOV = zoomInFOV;
-            playerController.SetSensitivity(0.1f);
+            playerController.SetSensitivityMultiplier(0.1f);
         }
         else
         {
             // Zoom out
             targetFOV = zoomOutFOV;
-            playerController.SetSensitivity(1.0f);
+            playerController.SetSensitivityMultiplier(1.0f);
         }
 
         currentFOV = Mathf.Lerp(currentFOV, targetFOV, Time.deltaTime * 5.0f);

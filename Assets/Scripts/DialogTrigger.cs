@@ -44,21 +44,20 @@ public class DialogTrigger : MonoBehaviour
             {
                 List<MultipleChoice> questions = new List<MultipleChoice>
                 {
-                    new MultipleChoice(0, "How do you know the victims?", 2, new Dictionary<string, Message[]>
+                    new MultipleChoice(0, "How well did you know the victims?", 2, new Dictionary<string, Message[]>
                     {
                         {"Quite well actually.", new Message[] {new Message(0, "Sounds about right.")}},
                         {"Only in passing.", new Message[] {new Message(0, "Appalling. We have evidence you were a close friend."), new Message(0, "We're suspicious.")}}
                     }),
-                    new MultipleChoice(0, "Which direction do you believe the fled the scene?", 2, new Dictionary<string, Message[]>
+                    new MultipleChoice(0, "In which direction do you believe they fled the scene?", 2, new Dictionary<string, Message[]>
                     {
-                        {"Out the side with the garbage cans.", new Message[] {new Message(0, "Is that right?")}},
-                        {"Out the side without the garbage cans.", new Message[] {new Message(0, "Interesting.")}},
-                        {"Out the back of the house.", new Message[] {new Message(0, "That checks with what our guy says.")}}
+                        {"Out the front door.", new Message[] {new Message(0, "Is that right?"), new Message(0, "Doesn't quite explain why that side door was left open.")}},
+                        {"Out the side door.", new Message[] {new Message(0, "That checks out with what our guy says."), new Message(0, "The side door was indeed open when we examined the scene.")}}
                     }),
                     new MultipleChoice(0, "How'd they do it?", 2, new Dictionary<string, Message[]>
                     {
-                        {"Gasoline and a molotov.", new Message[] {new Message(0, "Wow a dramatic flair, eh?"), new Message(0, "I'll believe it when I see it.")}},
-                        {"Gasoline and a lighter.", new Message[] {new Message(0, "Indeed.")}}
+                        {"Gasoline and a molotov.", new Message[] {new Message(0, "Wow, a dramatic flair, eh?"), new Message(0, "I'll believe it when I see it.")}},
+                        {"Gasoline and a lighter.", new Message[] {new Message(0, "Indeed."), new Message(0, "That molotov cocktail looked pretty... unused.")}}
                     }),
                     new MultipleChoice(0, "What sort of building were the victims in?", 2, new Dictionary<string, Message[]>
                     {
@@ -73,7 +72,7 @@ public class DialogTrigger : MonoBehaviour
                     new MultipleChoice(0, "Did the victims have any rivals?", 2, new Dictionary<string, Message[]>
                     {
                         {"I don't think so.", new Message[] {new Message(0, "Really? You had no idea, huh.")}},
-                        {"I think so.", new Message[] {new Message(0, "Hmph that must explain the brotherly tiffs witnesses reported on.")}}
+                        {"I think so.", new Message[] {new Message(0, "Hmph, that must explain the brotherly tiffs witnesses reported on.")}}
                     }),
                     new MultipleChoice(0, "Be real with us. What were you up to before the attack?", 2, new Dictionary<string, Message[]>
                     {
@@ -87,8 +86,8 @@ public class DialogTrigger : MonoBehaviour
                     }),
                     new MultipleChoice(0, "When did the crime happen?", 2, new Dictionary<string, Message[]>
                     {
-                        {"In the afternoon.", new Message[] {new Message(0, "Then how come the house wasn't dust at your feet when we got there?"), new Message(0, "OoooOOOooo and unburnable house, haha.")}},
-                        {"In the nighttime.", new Message[] {new Message(0, "It sure did.")}}
+                        {"In the afternoon.", new Message[] {new Message(0, "Then how come the house wasn't dust at your feet when we got there?"), new Message(0, "OoooOOOooo an unburnable house, haha.")}},
+                        {"In the nighttime.", new Message[] {new Message(0, "It sure did."), new Message(0, "Any earlier and you wouldn't have had time for your one-man investigation.")}}
                     }),
                     new MultipleChoice(0, "Aside from the victims, how many witnesses were there?", 2, new Dictionary<string, Message[]>
                     {
