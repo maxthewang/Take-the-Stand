@@ -802,10 +802,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'You are being taken into custody.
+  m_text: 'You are about to be taken into custody.
 
-    You may study your notepad before
-    progressing. '
+    You may study your notepad
+    before progressing. '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 01c44055a4e910d41847ab4db0963570, type: 2}
   m_sharedMaterial: {fileID: 1237439766050908488, guid: 01c44055a4e910d41847ab4db0963570, type: 2}

@@ -77,6 +77,8 @@ public class NotepadManager : MonoBehaviour
             DontDestroyOnLoad(canvas.gameObject);  // Keep only the Canvas persistent
         }
 
+        timeSlowedObject.alpha = 0.0f;
+
         playerControls.UI.Notepad.performed += ctx => ToggleNotepad();
         playerControls.UI.FlipPageLeft.performed += ctx => flipPage(true);
         playerControls.UI.FlipPageRight.performed += ctx => flipPage(false);
