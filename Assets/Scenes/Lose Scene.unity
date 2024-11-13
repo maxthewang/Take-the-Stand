@@ -576,6 +576,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: OptionMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 6383933941757608666, guid: f16ed6ade58a144a5a42625b2c72a50b, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 01c44055a4e910d41847ab4db0963570, type: 2}
+    - target: {fileID: 6383933941757608666, guid: f16ed6ade58a144a5a42625b2c72a50b, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6934130397653925934, guid: f16ed6ade58a144a5a42625b2c72a50b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -617,7 +625,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 2196109890806840808, guid: f16ed6ade58a144a5a42625b2c72a50b, type: 3}
+    - {fileID: 2243789237904462054, guid: f16ed6ade58a144a5a42625b2c72a50b, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f16ed6ade58a144a5a42625b2c72a50b, type: 3}

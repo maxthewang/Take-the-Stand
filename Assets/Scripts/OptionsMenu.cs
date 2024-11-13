@@ -6,12 +6,10 @@ public class OptionsMenu : MonoBehaviour
     public GameObject settingsPanel;
     private bool isPaused = false;
     private bool isSettings = false;
-    // public GameObject pointer;
     public GameObject pauseMenuUI;
 
     void Update() {
         if (Input.GetKeyDown(KeyCode.Tab)) {
-            print("Pause pressed");
             if (isSettings) {
                 CloseSettingsPage();
             }
@@ -24,15 +22,12 @@ public class OptionsMenu : MonoBehaviour
     void Start()
     {
         // Lock/unlock cursor based on the active scene
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
         if (SceneManager.GetActiveScene().name == "CrimeScene")
         {
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
-        }
-        else
-        {
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
         }
     }
 
@@ -66,6 +61,21 @@ public class OptionsMenu : MonoBehaviour
         // pointer.SetActive(true);
     }
 
+    // Function to pause the game
+    public void PauseGame()
+    {
+        Time.timeScale = 0f;                // Stop time
+        // pointer.SetActive(false);
+        if (pauseMenuUI != null && SceneManager.GetActiveScene().name != "StartMenu")
+        {
+            pauseMenuUI.SetActive(true);    // Show the pause menu
+        }
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        
+        isPaused = true;                    // Mark the game as paused
+    }
+
     // Setting page
     public void OpenSettingsPage(){
         isSettings = true;
@@ -91,23 +101,6 @@ public class OptionsMenu : MonoBehaviour
         isSettings = false;
         if (SceneManager.GetActiveScene().name != "StartMenu"){
             PauseGame();   // Pause the game
-        }
-    }
-
-    // Function to pause the game
-    public void PauseGame()
-    {
-        Time.timeScale = 0f;                // Stop time
-        // pointer.SetActive(false);
-        if (pauseMenuUI != null && SceneManager.GetActiveScene().name != "StartMenu")
-        {
-            pauseMenuUI.SetActive(true);    // Show the pause menu
-        }
-        isPaused = true;                    // Mark the game as paused
-        if (SceneManager.GetActiveScene().name == "CrimeScene")
-        {
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
         }
     }
 

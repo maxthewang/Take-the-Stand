@@ -210,7 +210,11 @@ public class DialogManager : MonoBehaviour
 		foreach (char letter in message.ToCharArray())
 		{
 			textObject.text += letter;
-			yield return null;
+			yield return new WaitForSeconds(0.02f);
 		}
+        if (boxSound.isPlaying)
+        {
+            boxSound.Stop();
+        }
 	}
 }
