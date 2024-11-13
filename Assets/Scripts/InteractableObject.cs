@@ -16,6 +16,7 @@ public class InteractableObject : MonoBehaviour
     private InputAction interactAction;
     private bool isDiscovered = false;
 	public Sprite itemSprite;
+    private Animator animator;
 
     void Awake()
     {
@@ -37,6 +38,7 @@ public class InteractableObject : MonoBehaviour
 
     void Start()
     {
+        animator = GameObject.Find("Player").GetComponent<Animator>();
         // Hide interaction text initially
         notepadManager = FindObjectOfType<NotepadManager>();
         if(notepadManager != null){
@@ -70,7 +72,9 @@ public class InteractableObject : MonoBehaviour
         if (!isDiscovered)  // Ensure discovery logic only happens once per item
         {
             discoverySound.pitch = Random.Range(0.8f, 1.0f);
+
             discoverySound.Play();
+            animator.SetTrigger("Grab");
 
             // Use the centralized text manager to show the interaction message
             InteractionTextManager.instance.ShowInteractionText($"{gameObject.name} discovered!\nCheck the notepad to see the clue you revealed.");
