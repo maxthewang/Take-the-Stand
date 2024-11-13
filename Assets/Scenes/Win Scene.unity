@@ -2340,8 +2340,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: Congratulations! Soon after the interrogation, you have avoided being charged
-    as guilty of arson, but can your friend ever be justly charged now that you're
-    free....?
+    as guilty of arson, now maybe, you can bring justice to one more person in your
+    life...
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 01c44055a4e910d41847ab4db0963570, type: 2}
   m_sharedMaterial: {fileID: 1237439766050908488, guid: 01c44055a4e910d41847ab4db0963570, type: 2}
