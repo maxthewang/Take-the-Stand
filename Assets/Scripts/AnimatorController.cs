@@ -6,11 +6,11 @@ public class AnimatorController : MonoBehaviour
 {
 
     public Animator animator;
-    public PlayerController playerController;
+    private PlayerController playerController;
     // Start is called before the first frame update
     void Start()
     {
-        
+        playerController = GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
@@ -22,5 +22,6 @@ public class AnimatorController : MonoBehaviour
         }
         else
             animator.SetBool("Walking", false);
+        
     }
 }
