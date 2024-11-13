@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class OptionsMenu : MonoBehaviour
 {
@@ -7,16 +8,27 @@ public class OptionsMenu : MonoBehaviour
     private bool isPaused = false;
     private bool isSettings = false;
     public GameObject pauseMenuUI;
+	[SerializeField]
+    private PlayerInputActions playerControls;
 
-    void Update() {
-        if (Input.GetKeyDown(KeyCode.Tab)) {
-            if (isSettings) {
-                CloseSettingsPage();
-            }
-            else {
-                OnPause();
-            }
-        }
+    private void Awake()
+    {
+        // Initialize and enable the player controls
+        playerControls = new PlayerInputActions();
+    }
+
+    private void OnEnable()
+    {
+        // Enable the player controls and subscribe to the Options action
+        playerControls.Enable();
+        playerControls.UI.Options.performed += OnOptionsPressed;
+    }
+
+    private void OnDisable()
+    {
+        // Unsubscribe to avoid memory leaks
+        playerControls.UI.Options.performed -= OnOptionsPressed;
+        playerControls.Disable();
     }
 
     void Start()
@@ -28,6 +40,19 @@ public class OptionsMenu : MonoBehaviour
         {
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
+        }
+    }
+
+    // Callback function for the Options action
+    private void OnOptionsPressed(InputAction.CallbackContext context)
+    {
+        if (isSettings)
+        {
+            CloseSettingsPage();
+        }
+        else
+        {
+            OnPause();
         }
     }
 

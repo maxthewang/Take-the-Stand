@@ -11,27 +11,39 @@ public class NotepadSceneManager : MonoBehaviour
     {
         playerControls = new PlayerInputActions();
     }
-    // Start is called before the first frame update
+
     void Start()
     {
         playerControls.Enable();
-        NotepadManager.instance.OpenNotepad();
+        
+        // Slide in the notepad when the scene starts
+        StartCoroutine(SlideNotepadIn());
+        
         playerControls.UI.AdvanceDialogue.performed += ctx => OpenNextScene();
     }
 
-    // Update is called once per frame
-    void Update()
+    void OpenNextScene()
     {
-        
+        if (SceneManager.GetActiveScene().name != "NotepadScene") return;
+
+        playerControls.UI.AdvanceDialogue.performed -= ctx => OpenNextScene();
+
+        // Slide out the notepad before switching scenes
+        StartCoroutine(SlideNotepadOut());
     }
 
-    void OpenNextScene(){
-        if(SceneManager.GetActiveScene().name != "NotepadScene"){
-            return;
-        }
-        playerControls.UI.AdvanceDialogue.performed -= ctx => OpenNextScene();
-        Destroy(this);
+    private IEnumerator SlideNotepadIn()
+    {
+        yield return NotepadManager.instance.SlideNotepad(true); // Open notepad with slide animation
+    }
+
+    private IEnumerator SlideNotepadOut()
+    {
+        yield return NotepadManager.instance.SlideNotepad(false); // Close notepad with slide animation
+
+        // Wait briefly to ensure animation completes before switching scenes
+        yield return new WaitForSeconds(0.1f); 
+
         FadeTransition.instance.FadeToBlack("Interrogation");
-        NotepadManager.instance.CloseNotepad();
     }
 }

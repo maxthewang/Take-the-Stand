@@ -46,6 +46,5 @@ public class MovingInteractable : InteractableObject
 	public override void Interact()
 	{
 		movingToDestination = true;
-		Debug.Log((moveToDestination - originalPosition).normalized);
 	}
 }

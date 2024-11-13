@@ -26,6 +26,7 @@ public class NotepadManager : MonoBehaviour
     [SerializeField]
     private AudioSource closingSound;
     private Coroutine fadeCoroutine;
+    private Coroutine slideCoroutine;
     private HashSet<string> notedObjects = new HashSet<string>();
 	private Dictionary<string, string[]> cluePairs = new Dictionary<string, string[]>();
 	private Dictionary<string, Sprite> clueImages = new Dictionary<string, Sprite>();
@@ -49,6 +50,11 @@ public class NotepadManager : MonoBehaviour
     [SerializeField]
     Sprite defaultIcon;
 
+    private RectTransform panelRectTransform;
+    private Vector3 offScreenPosition;
+    private Vector3 onScreenPosition;
+    private bool isNotepadOpen = false;
+
     void Awake()
     {
         playerControls = new PlayerInputActions();
@@ -57,11 +63,12 @@ public class NotepadManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-		if(instance != null){
-			Destroy(this);
-			return;
-		}
-		instance = this;
+		if (instance != null)
+        {
+            Destroy(this);
+            return;
+        }
+        instance = this;
         playerControls.Enable();
         
         canvas = GetComponentInChildren<Canvas>();
@@ -70,10 +77,17 @@ public class NotepadManager : MonoBehaviour
             DontDestroyOnLoad(canvas.gameObject);  // Keep only the Canvas persistent
         }
 
-        // Subscribe to the notepad toggle action
         playerControls.UI.Notepad.performed += ctx => ToggleNotepad();
-		playerControls.UI.FlipPageLeft.performed += ctx => flipPage(true);
-		playerControls.UI.FlipPageRight.performed += ctx => flipPage(false);
+        playerControls.UI.FlipPageLeft.performed += ctx => flipPage(true);
+        playerControls.UI.FlipPageRight.performed += ctx => flipPage(false);
+
+        panelRectTransform = panelObject.GetComponent<RectTransform>();
+
+        // Set off-screen and on-screen positions based on the height of the notepad panel
+        onScreenPosition = panelRectTransform.anchoredPosition;
+        float offScreenOffset = Screen.height * 0.75f;
+        offScreenPosition = onScreenPosition + new Vector3(0, -Screen.height, 0);
+        panelRectTransform.anchoredPosition = offScreenPosition;
     }
 
 	public void AddInformation(string dictionaryItemName, string textItemName, string itemDescription, Sprite itemSprite)
@@ -178,32 +192,71 @@ public class NotepadManager : MonoBehaviour
 
 	private void ToggleNotepad()
     {
-		if(SceneManager.GetActiveScene().name != "CrimeScene"){
-			return;
-		}
-        bool isActive = panelObject.activeSelf; // Store current state
-		ShowPages(currentPage);
+        if (SceneManager.GetActiveScene().name != "CrimeScene")
+            return;
 
-        if (isActive)
+        isNotepadOpen = !isNotepadOpen;
+
+        // Stop any existing coroutine to prevent conflicts
+        if (slideCoroutine != null)
         {
-            // Notepad closed
-            panelObject.SetActive(false);
-            Time.timeScale = 1f;
-            closingSound.Play();
+            StopCoroutine(slideCoroutine);
+        }
+
+        if (!panelObject.activeSelf)
+        {
+            panelObject.SetActive(true);
+            panelObject.transform.localPosition = new Vector3(0, -Screen.height, 0); // Start offscreen
+            StartCoroutine(SlideNotepad(isNotepadOpen));
         }
         else
         {
-            // Notepad opened
-            panelObject.SetActive(true);
-            Time.timeScale = 0.25f;
-            openingSound.Play();
-            if (fadeCoroutine != null)
-            {
-                StopCoroutine(fadeCoroutine);  // Stop any existing fade coroutine
-            }
+            StartCoroutine(SlideNotepad(isNotepadOpen));
+        }
+    }
 
-            timeSlowedObject.alpha = 1.0f;  // Ensure the text is fully visible
-            fadeCoroutine = StartCoroutine(FadeSlowedText());
+    public IEnumerator SlideNotepad(bool open)
+    {
+        if (open && SceneManager.GetActiveScene().name == "CrimeScene")
+        {
+            // Ensure the text is visible before sliding up
+            timeSlowedObject.alpha = 1.0f;
+            StartCoroutine(FadeSlowedText());
+        }
+
+        float distance = Vector3.Distance(panelRectTransform.anchoredPosition, open ? onScreenPosition : offScreenPosition);
+        float openSpeed = 3000f;
+        float closeSpeed = 1000f;
+
+        float duration = distance / (open ? openSpeed : closeSpeed);
+
+        Vector3 targetPosition = open ? onScreenPosition : offScreenPosition;
+        Vector3 startPosition = panelRectTransform.anchoredPosition;
+        float elapsed = 0f;
+
+        if (open) openingSound.Play();
+        else closingSound.Play();
+
+        Time.timeScale = open ? 0.25f : 1f;
+
+        // Smooth slide with easing
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float t = Mathf.SmoothStep(0, 1, elapsed / duration);
+            panelRectTransform.anchoredPosition = Vector3.Lerp(startPosition, targetPosition, t);
+            yield return null;
+        }
+
+        panelRectTransform.anchoredPosition = targetPosition;
+
+        if (open)
+        {
+            ShowPages(currentPage);
+        }
+        else
+        {
+            panelObject.SetActive(false);  // Deactivate the panel when closed
         }
     }
 
@@ -218,10 +271,8 @@ public class NotepadManager : MonoBehaviour
 
     private IEnumerator FadeSlowedText()
     {
-        // Show the text for 2 seconds
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.3f);
 
-        // Gradually fade out the text over 2 seconds
         float fadeDuration = 0.1f;
         float elapsedTime = 0.0f;
 
@@ -233,11 +284,25 @@ public class NotepadManager : MonoBehaviour
         }
     }
 
-    private void OnDisable()
+    void OnEnable()
     {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
         if (playerControls != null)
         {
             playerControls.UI.Notepad.performed -= ctx => ToggleNotepad();
+        }
+    }
+
+    private void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "NotepadScene")
+        {
+		    panelObject.SetActive(true);
         }
     }
 }
