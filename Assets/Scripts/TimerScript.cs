@@ -7,6 +7,7 @@ public class TimerScript : MonoBehaviour
     public float TimeLeft;
     public bool TimerOn = false;
     public AudioSource sirenSound;
+    public AudioSource clockSound;
     public AudioSource introVoiceLine;
     public AudioSource sirenVoiceLine;
     private bool sirenPlaying = false;
@@ -37,6 +38,11 @@ public class TimerScript : MonoBehaviour
                     sirenPlaying = true;
                 } else if (sirenPlaying) {
                     sirenSound.volume = (30 - TimeLeft) / 30;
+                }
+
+                if(TimeLeft <= 10f && !clockSound.isPlaying)
+                {
+                    clockSound.Play();
                 }
             }
             else

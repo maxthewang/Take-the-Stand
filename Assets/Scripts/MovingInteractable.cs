@@ -1,0 +1,51 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.InputSystem;
+
+public class MovingInteractable : InteractableObject
+{
+	Vector3 originalPosition;
+	public Vector3 moveToDestination;
+	bool movingToDestination = false;
+    private AudioSource movementSound;
+    
+    // Start is called before the first frame update
+    void Start()
+    {
+        originalPosition = transform.localPosition;
+        movementSound = GetComponent<AudioSource>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (movingToDestination)
+        {
+            if (movementSound != null && !movementSound.isPlaying)
+            {
+                movementSound.Play();  // Start playing when movement begins
+            }
+
+            // Smoothly move the object toward the destination
+            transform.localPosition = Vector3.MoveTowards(transform.localPosition, moveToDestination, 2f * Time.deltaTime);
+
+            // Stop movement when close enough to the destination
+            if ((transform.localPosition - moveToDestination).magnitude < 0.01f)
+            {
+                movingToDestination = false;
+            }
+        }
+    }
+
+	protected override void OnInteract(InputAction.CallbackContext context)
+	{
+		
+	}
+
+	public override void Interact()
+	{
+		movingToDestination = true;
+		Debug.Log((moveToDestination - originalPosition).normalized);
+	}
+}

@@ -43,7 +43,7 @@ public class InteractableObject : MonoBehaviour
         }
     }
 
-    private void OnInteract(InputAction.CallbackContext context)
+    protected virtual void OnInteract(InputAction.CallbackContext context)
     {
         // Adjust the screen center based on pixelation scale
         float adjustedScreenWidth = 640;
@@ -64,7 +64,7 @@ public class InteractableObject : MonoBehaviour
         }
     }
 
-    private void Interact()
+    public virtual void Interact()
     {   
         if (!isDiscovered)  // Ensure discovery logic only happens once per item
         {
