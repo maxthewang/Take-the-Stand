@@ -64,6 +64,7 @@ public class InteractableObject : MonoBehaviour
                 Interact();
             }
         }
+        animator.SetTrigger("Grab");
     }
 
     public virtual void Interact()
@@ -73,7 +74,6 @@ public class InteractableObject : MonoBehaviour
             discoverySound.pitch = Random.Range(0.8f, 1.0f);
 
             discoverySound.Play();
-            animator.SetTrigger("Grab");
 
             // Use the centralized text manager to show the interaction message
             InteractionTextManager.instance.ShowInteractionText($"{gameObject.name} discovered!\nCheck the notepad to see the clue you revealed.");
