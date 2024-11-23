@@ -66,7 +66,6 @@ public class PlayerController : MonoBehaviour
         if (controllerFlag == 1) {
             controller = GetComponent<CharacterController>();
         }
-        Debug.Log("controllerFlag: " + controllerFlag);
 
         walkingSound.volume = 0f;
         turnSensitivity = baseSensitivity;

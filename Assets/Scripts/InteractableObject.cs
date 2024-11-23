@@ -54,7 +54,6 @@ public class InteractableObject : MonoBehaviour
 
         // Create a ray from the camera using the adjusted center point
         Ray ray = Camera.main.ScreenPointToRay(new Vector3(adjustedScreenWidth / 2, adjustedScreenHeight / 2, 0));
-        Debug.DrawRay(ray.origin, ray.direction * 100, Color.red, 5.0f);
 
         // Perform the raycast
         if (Physics.Raycast(ray, out RaycastHit hit, 10f))
