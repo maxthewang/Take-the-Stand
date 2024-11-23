@@ -38,7 +38,7 @@ public class InteractableObject : MonoBehaviour
 
     void Start()
     {
-        animator = GameObject.Find("Player").GetComponent<Animator>();
+        animator = GameObject.FindWithTag("Player").GetComponent<Animator>();
         // Hide interaction text initially
         notepadManager = FindObjectOfType<NotepadManager>();
         if(notepadManager != null){
@@ -64,7 +64,12 @@ public class InteractableObject : MonoBehaviour
                 Interact();
             }
         }
-        animator.SetTrigger("Grab");
+        if(animator == null){
+            Debug.Log("animator was null");
+        }
+        else{
+            animator.SetTrigger("Grab");
+        }
     }
 
     public virtual void Interact()
