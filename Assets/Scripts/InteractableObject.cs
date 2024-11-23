@@ -8,6 +8,7 @@ public class InteractableObject : MonoBehaviour
     public string clueMessage = "This object doesn't give you any information.";
 	public string unfoundClueMessage = "This ______ doesn't give you any ___________.";
     public static AudioSource discoverySound;
+    public AudioSource grabSound;
     public AudioSource voiceLine;
     [SerializeField]
     private PlayerInputActions playerControls;
@@ -72,8 +73,8 @@ public class InteractableObject : MonoBehaviour
         if (!isDiscovered)  // Ensure discovery logic only happens once per item
         {
             discoverySound.pitch = Random.Range(0.8f, 1.0f);
-
             discoverySound.Play();
+            grabSound.Play();
 
             // Use the centralized text manager to show the interaction message
             InteractionTextManager.instance.ShowInteractionText($"{gameObject.name} discovered!\nCheck the notepad to see the clue you revealed.");
