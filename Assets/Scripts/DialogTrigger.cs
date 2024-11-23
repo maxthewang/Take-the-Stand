@@ -13,7 +13,6 @@ public class DialogTrigger : MonoBehaviour
     public void StartDialogue()
     {
         string currScene = SceneManager.GetActiveScene().name;
-        Debug.Log(currScene);
         
         if (currScene == "Intro")
         {
