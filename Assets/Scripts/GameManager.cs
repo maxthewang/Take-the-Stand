@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
 
     public bool touchedObjects { get; set; }
     public AudioSource sharedDiscoverySound;
+    public AudioSource grabSound;
 
 	private int interactionCount = 0;
     private bool win = false;
