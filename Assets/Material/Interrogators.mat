@@ -190,7 +190,7 @@ Material:
     - _EmissColor: {r: 1, g: 1, b: 1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _FresnelColor: {r: 1, g: 1, b: 1, a: 1}
-    - _HighColor: {r: 0.09019607, g: 1, b: 0.43527332, a: 1}
+    - _HighColor: {r: 1, g: 0.5671386, b: 0.28301883, a: 1}
     - _LowColor: {r: 0.34716982, g: 0.25797614, b: 0.16768958, a: 1}
     - _OutlineColor: {r: 0.17849767, g: 0.32561728, b: 0.4113207, a: 1}
     - _RimColor: {r: 0.37765276, g: 0.5735849, b: 0.33116412, a: 1}

@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -33,6 +32,7 @@ public class NotepadManager : MonoBehaviour
 
 	private List<string> orderOfObjects = new List<string>();
 	private int currentPage = 0;
+    private float offScreenOffset = Screen.height * 0.4f;
     private Canvas canvas;
 
 	[SerializeField]
@@ -92,8 +92,7 @@ public class NotepadManager : MonoBehaviour
 
         // Set off-screen and on-screen positions based on the height of the notepad panel
         onScreenPosition = panelRectTransform.anchoredPosition;
-        float offScreenOffset = Screen.height * 0.75f;
-        offScreenPosition = onScreenPosition + new Vector3(0, -Screen.height, 0);
+        offScreenPosition = onScreenPosition + new Vector3(0, -offScreenOffset, 0);
         panelRectTransform.anchoredPosition = offScreenPosition;
     }
 
@@ -213,7 +212,7 @@ public class NotepadManager : MonoBehaviour
         {
 			GameManager.instance.openedNotepadOnce = true;
             panelObject.SetActive(true);
-            panelObject.transform.localPosition = new Vector3(0, -Screen.height, 0); // Start offscreen
+            panelObject.transform.localPosition = new Vector3(0, -offScreenOffset, 0); // Start offscreen
             StartCoroutine(SlideNotepad(isNotepadOpen));
         }
         else if(GameManager.instance.doneTutorial)
@@ -313,7 +312,17 @@ public class NotepadManager : MonoBehaviour
 
 
 
-    private void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene, LoadSceneMode mode)
+	public void RestartGame(){
+ 		notedObjects = new HashSet<string>();
+		cluePairs = new Dictionary<string, string[]>();
+		clueImages = new Dictionary<string, Sprite>();
+		orderOfObjects = new List<string>();
+		currentPage = 0;
+	}
+
+
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         if (scene.name == "NotepadScene")
         {

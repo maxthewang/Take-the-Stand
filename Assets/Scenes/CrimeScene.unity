@@ -2500,9 +2500,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 2400f6176eacf2c43885dddea4f2f5e7, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 6ada81d288ad09449913358703648730, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.58
+  m_Volume: 0.87
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2511,7 +2511,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 15
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -2546,7 +2546,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -2576,7 +2576,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1.1
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -2815,7 +2815,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &312115160
@@ -2977,7 +2977,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -226.40001, y: -126.3}
+  m_AnchoredPosition: {x: -207.9, y: -115}
   m_SizeDelta: {x: 142.8826, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &332325075
@@ -4672,7 +4672,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 31121a1d383194949889dcb38d212867, type: 2}
     - target: {fileID: 919132149155446097, guid: 213b9b1fd832e504a8735c256d19c793, type: 3}
       propertyPath: m_Name
-      value: Journal
+      value: Diary
       objectReference: {fileID: 0}
     - target: {fileID: 3826433314882992331, guid: 213b9b1fd832e504a8735c256d19c793, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -4978,8 +4978,8 @@ RectTransform:
   m_GameObject: {fileID: 595528661}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.0649384, y: 1.0649384, z: 1.0649384}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 659213367}
   - {fileID: 989481416}
@@ -5158,7 +5158,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 251, y: -100}
+  m_AnchoredPosition: {x: 220.6, y: -100}
   m_SizeDelta: {x: 177, y: 112}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &617049447
@@ -5697,7 +5697,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 207.7, y: -71.1}
+  m_AnchoredPosition: {x: 174.6, y: -65}
   m_SizeDelta: {x: 177, y: 112}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &659213368
@@ -6768,7 +6768,7 @@ MonoBehaviour:
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 640, y: 360}
-  m_ScreenMatchMode: 1
+  m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -6879,7 +6879,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -187, y: -91}
+  m_AnchoredPosition: {x: -159.26, y: -91}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &841890187
@@ -6931,8 +6931,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 14
-  m_fontSizeBase: 14
+  m_fontSize: 12
+  m_fontSizeBase: 12
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -7731,7 +7731,7 @@ MonoBehaviour:
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 640, y: 360}
-  m_ScreenMatchMode: 1
+  m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -8160,8 +8160,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
-  m_fontSizeBase: 18
+  m_fontSize: 16
+  m_fontSizeBase: 16
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -8226,8 +8226,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 4, y: 41}
-  m_SizeDelta: {x: 330.4, y: 11}
+  m_AnchoredPosition: {x: -0.7999878, y: 43}
+  m_SizeDelta: {x: 319.91, y: 11}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &960626108
 GameObject:
@@ -8360,7 +8360,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 291, y: 127.9}
+  m_AnchoredPosition: {x: 291, y: 120.5}
   m_SizeDelta: {x: 352.96, y: 15.56}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &962485628
@@ -8997,7 +8997,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 15.02849}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &989481418
@@ -9233,7 +9233,7 @@ RectTransform:
   m_GameObject: {fileID: 1025888084}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.55995, y: 0.579, z: 1}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1188834730}
@@ -9359,12 +9359,12 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 3
   m_Height: 2
-  m_Radius: 0.5
+  m_Radius: 0.7
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Center: {x: 0, y: 1, z: 0.1}
 --- !u!95 &1056281334
 Animator:
   serializedVersion: 5
@@ -11862,8 +11862,8 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: e9c62a0b6b86803488b8ca210354c706, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.444
-  m_Pitch: 1.08
+  m_Volume: 0.61
+  m_Pitch: 1
   Loop: 1
   Mute: 0
   Spatialize: 0
@@ -11871,7 +11871,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 200
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -11906,7 +11906,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.7
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -11936,7 +11936,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1.1
+      value: 1.07
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -15388,7 +15388,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0c968847044ac9341a24c2c29f9c3b46, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0c968847044ac9341a24c2c29f9c3b46, type: 3}
       propertyPath: m_LocalRotation.x
@@ -15465,8 +15465,8 @@ RectTransform:
   m_GameObject: {fileID: 1682805502}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4.33, y: 4.33, z: 4.33}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 3.5, y: 3.5, z: 3.5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 198932869}
   - {fileID: 170233504}
@@ -17190,8 +17190,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 398, y: 43}
-  m_SizeDelta: {x: 334.9, y: 11}
+  m_AnchoredPosition: {x: 389.8, y: 43}
+  m_SizeDelta: {x: 316, y: 11}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1829991697
 MonoBehaviour:
@@ -17240,8 +17240,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
-  m_fontSizeBase: 18
+  m_fontSize: 16
+  m_fontSizeBase: 16
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -19171,7 +19171,7 @@ RectTransform:
   m_GameObject: {fileID: 2093760281}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.55995, y: 0.579, z: 1}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1188834730}
