@@ -8,6 +8,7 @@ public class MovingInteractable : InteractableObject
 	Vector3 originalPosition;
 	public Vector3 moveToDestination;
 	bool movingToDestination = false;
+    public AudioSource humSound;
     private AudioSource movementSound;
 		public Vector3 scaleToReach;
     
@@ -36,6 +37,12 @@ public class MovingInteractable : InteractableObject
             if ((transform.localPosition - moveToDestination).magnitude < 0.01f)
             {
                 movingToDestination = false;
+                movementSound.Stop();
+
+                if (humSound != null && !humSound.isPlaying)
+                {
+                    humSound.Play();  // Start playing when movement begins
+                }
             }
         }
     }
