@@ -38,6 +38,11 @@ public class DiscoverableManager : MonoBehaviour
         UpdateUI();
     }
 
+	public void RestartGame(){
+		discoveredCount = 0;
+		UpdateUI();
+	}
+
     private void UpdateUI()
     {
         discoverableCountText.text = $"Discovered:\n{discoveredCount}/{totalDiscoverables}";

@@ -49,6 +49,10 @@ public class NotepadManager : MonoBehaviour
 	Image rightImage;
     [SerializeField]
     Sprite defaultIcon;
+	[SerializeField]
+	TextMeshProUGUI notepadLeftPageNumber;
+	[SerializeField]
+	TextMeshProUGUI notepadRightPageNumber;
 
     private RectTransform panelRectTransform;
     private Vector3 offScreenPosition;
@@ -142,6 +146,8 @@ public class NotepadManager : MonoBehaviour
 	}
 
 	private void ShowPages(int firstPageNum){
+		notepadLeftPageNumber.text = (firstPageNum + 1).ToString();
+		notepadRightPageNumber.text = (firstPageNum + 2).ToString();
 		string firstPageName = cluePairs[orderOfObjects[firstPageNum]][0];
 		string firstPageInfo = cluePairs[orderOfObjects[firstPageNum]][1];
 		notepadNameLeft.text = firstPageName;
@@ -183,15 +189,6 @@ public class NotepadManager : MonoBehaviour
 		}
 	}
 
-	private void CompileNotepadInformation(){
-		string newNotepadInfo = "";
-		foreach(var notepadInfo in cluePairs){
-			newNotepadInfo += notepadInfo.Value;
-		}
-		notepadInformation.text = newNotepadInfo;
-	}
-
-
 	private void ToggleNotepad()
     {
         if (SceneManager.GetActiveScene().name != "CrimeScene")
@@ -216,6 +213,14 @@ public class NotepadManager : MonoBehaviour
             StartCoroutine(SlideNotepad(isNotepadOpen));
         }
     }
+
+	public void RestartGame(){
+ 		notedObjects = new HashSet<string>();
+		cluePairs = new Dictionary<string, string[]>();
+		clueImages = new Dictionary<string, Sprite>();
+		orderOfObjects = new List<string>();
+		currentPage = 0;
+	}
 
     public IEnumerator SlideNotepad(bool open)
     {
