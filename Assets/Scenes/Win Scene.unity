@@ -1239,6 +1239,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   settingsPanel: {fileID: 0}
   pauseMenuUI: {fileID: 670523379}
+  resumeButton: {fileID: 0}
+  OtherThingsToCheck: []
 --- !u!114 &670523382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2233,7 +2235,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 358422321}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &1615042822

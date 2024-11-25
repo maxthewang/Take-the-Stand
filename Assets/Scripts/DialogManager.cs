@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 using System.Linq;
 using Unity.VisualScripting;
+using UnityEngine.EventSystems;
 
 public class DialogManager : MonoBehaviour
 {
@@ -30,6 +31,9 @@ public class DialogManager : MonoBehaviour
     private AudioSource interrogatorResponseVoice;
     private AudioSource mainCharacterVoice;
     private bool isPlayingLine = false;
+
+	[SerializeField]
+	private GameObject leftButton;
 
     Message[] currentMessages;
     Actor[] currentActors;
@@ -133,6 +137,7 @@ public class DialogManager : MonoBehaviour
     // Method to disable buttons
     private void DisableButtons()
     {
+		EventSystem.current.SetSelectedGameObject(null);
         foreach (var buttonText in buttonTexts)
         {
             buttonText.transform.parent.GetComponent<Button>().interactable = false;
@@ -163,9 +168,15 @@ public class DialogManager : MonoBehaviour
 		choiceBox.SetActive(false);
 	}
 
-	private void ShowChoiceBox(){
+	private async void ShowChoiceBox(){
 		// Show the choice box
 		choiceBox.SetActive(true);
+		StartCoroutine(SetButton());
+	}
+
+	IEnumerator SetButton(){
+		yield return new WaitForSeconds(0.1f);
+		EventSystem.current.SetSelectedGameObject(leftButton);
 	}
 
 	private void DisplayOptions()

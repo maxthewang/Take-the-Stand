@@ -2947,6 +2947,7 @@ MonoBehaviour:
   buttonTexts:
   - {fileID: 2088811442}
   - {fileID: 1523009239}
+  leftButton: {fileID: 1489341845}
   activeMessage: 0
 --- !u!114 &511636239
 MonoBehaviour:
@@ -2978,6 +2979,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   settingsPanel: {fileID: 1210508168}
   pauseMenuUI: {fileID: 1282501494}
+  resumeButton: {fileID: 2035026514}
+  OtherThingsToCheck:
+  - {fileID: 1489341845}
 --- !u!1 &520924600
 GameObject:
   m_ObjectHideFlags: 0

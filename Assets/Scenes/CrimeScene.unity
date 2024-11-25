@@ -6729,6 +6729,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   settingsPanel: {fileID: 595528661}
   pauseMenuUI: {fileID: 1289529672}
+  resumeButton: {fileID: 1867142731}
+  OtherThingsToCheck: []
 --- !u!114 &924988079
 MonoBehaviour:
   m_ObjectHideFlags: 0
