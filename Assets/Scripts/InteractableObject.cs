@@ -8,6 +8,7 @@ public class InteractableObject : MonoBehaviour
     public string clueMessage = "This object doesn't give you any information.";
 	public string unfoundClueMessage = "This ______ doesn't give you any ___________.";
     public static AudioSource discoverySound;
+    public AudioSource grabSound;
     public AudioSource voiceLine;
     [SerializeField]
     private PlayerInputActions playerControls;
@@ -15,6 +16,7 @@ public class InteractableObject : MonoBehaviour
     private InputAction interactAction;
     private bool isDiscovered = false;
 	public Sprite itemSprite;
+    private Animator animator;
 
     void Awake()
     {
@@ -36,6 +38,7 @@ public class InteractableObject : MonoBehaviour
 
     void Start()
     {
+        animator = GameObject.FindWithTag("Player").GetComponent<Animator>();
         // Hide interaction text initially
         notepadManager = FindObjectOfType<NotepadManager>();
         if(notepadManager != null){
@@ -51,7 +54,6 @@ public class InteractableObject : MonoBehaviour
 
         // Create a ray from the camera using the adjusted center point
         Ray ray = Camera.main.ScreenPointToRay(new Vector3(adjustedScreenWidth / 2, adjustedScreenHeight / 2, 0));
-        Debug.DrawRay(ray.origin, ray.direction * 100, Color.red, 5.0f);
 
         // Perform the raycast
         if (Physics.Raycast(ray, out RaycastHit hit, 10f))
@@ -62,6 +64,12 @@ public class InteractableObject : MonoBehaviour
                 Interact();
             }
         }
+        if(animator == null){
+            Debug.Log("animator was null");
+        }
+        else{
+            animator.SetTrigger("Grab");
+        }
     }
 
     public virtual void Interact()
@@ -70,6 +78,7 @@ public class InteractableObject : MonoBehaviour
         {
             discoverySound.pitch = Random.Range(0.8f, 1.0f);
             discoverySound.Play();
+            grabSound.Play();
 
             // Use the centralized text manager to show the interaction message
             InteractionTextManager.instance.ShowInteractionText($"{gameObject.name} discovered!\nCheck the notepad to see the clue you revealed.");

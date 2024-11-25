@@ -55,7 +55,6 @@ public class DialogManager : MonoBehaviour
         activeMessage = 0;
         isActive = true;
 
-        Debug.Log("Started Conversation! num messages = " + messages.Length);
         DisplayMessage();
     }
 
@@ -169,7 +168,6 @@ public class DialogManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("Conversation Ended");
             isActive = false;
 
             if (SceneManager.GetActiveScene().name == "Intro")
