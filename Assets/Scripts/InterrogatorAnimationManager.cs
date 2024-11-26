@@ -25,7 +25,7 @@ public class InterrogatorAnimationManager : MonoBehaviour
 
     public void PlayGrabHandcuff()
     {
-        anim.SetBool("GrabHandcuff", true);
+        anim.SetTrigger("GrabHandcuff");
     }
 
     public void PlayLeanForward()
@@ -35,16 +35,16 @@ public class InterrogatorAnimationManager : MonoBehaviour
     
     public void PlayIntimidate()
     {
-        anim.SetBool("Intimidate", true);
+        anim.SetTrigger("Intimidate");
     }
 
     public void PlayCalmDown()
     {
-        List<string> bools = new List<string> { "GrabHandcuff", "LeanForward", "Intimidate" };
+        List<string> bools = new List<string> {"LeanForward"};
         foreach (string b in bools)
         {
             anim.SetBool(b, false);
         }
-        anim.SetTrigger("Intimidate");
+        anim.SetTrigger("CalmDown");
     }
 }
