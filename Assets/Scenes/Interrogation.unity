@@ -2346,6 +2346,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UnderCoverP_GrabHandcuff_v2
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8890a582aa36e470bb225c6d02bfa1ea, type: 3}
+      propertyPath: m_TagString
+      value: Interrogator
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3863,7 +3867,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &944258757
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6125,6 +6129,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1431073522}
   m_CullTransparentMesh: 1
+--- !u!1 &1471244333 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: bdc80c3208ec249eb825c87a45be633e, type: 3}
+  m_PrefabInstance: {fileID: 1685390849}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1489341845
 GameObject:
   m_ObjectHideFlags: 0
@@ -6778,13 +6787,37 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: bdc80c3208ec249eb825c87a45be633e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1685390851}
   m_SourcePrefab: {fileID: 100100000, guid: bdc80c3208ec249eb825c87a45be633e, type: 3}
 --- !u!4 &1685390850 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: bdc80c3208ec249eb825c87a45be633e, type: 3}
   m_PrefabInstance: {fileID: 1685390849}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1685390851
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1471244333}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 90be034a72bf14b7eac29d4d67e854dd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1692552694
 GameObject:
   m_ObjectHideFlags: 0
@@ -7538,7 +7571,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a71a4371d312d4e4e99cb68b23b0a6be, type: 3}
       propertyPath: m_Name
-      value: MC_Handcuff_v05 (1)
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a71a4371d312d4e4e99cb68b23b0a6be, type: 3}
       propertyPath: m_TagString
