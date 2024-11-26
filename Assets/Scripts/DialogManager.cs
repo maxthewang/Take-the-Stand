@@ -26,6 +26,7 @@ public class DialogManager : MonoBehaviour
     [SerializeField]
     private PlayerInputActions playerControls;
     private InputAction nextMessageAction;
+    private InterrogatorAnimationManager interrogatorAnimationManager;
 
 	[SerializeField]
 	private GameObject leftButton;
@@ -33,6 +34,11 @@ public class DialogManager : MonoBehaviour
     Message[] currentMessages;
     Actor[] currentActors;
     public int activeMessage = 0;
+
+    private void Start()
+    {
+        interrogatorAnimationManager = GameObject.FindWithTag("Interrogator").GetComponent<InterrogatorAnimationManager>();
+    }
 
     void Awake()
     {
@@ -58,7 +64,6 @@ public class DialogManager : MonoBehaviour
         currentActors = actors;
         activeMessage = 0;
         isActive = true;
-
         DisplayMessage();
     }
 
