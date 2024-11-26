@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a0dd4ef5d713c49b684147a42c947185
+guid: 3e01e19b3c08d464bab2fa8216d72c9c
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,7 +7,12 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: standardSurface1
+      name: M_glove
+    second: {fileID: 2100000, guid: b4303de3f75154d0785ec19c9ef8ad90, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_jacket
     second: {fileID: 2100000, guid: 1b582723e95d44c2a8a22475e5d673f9, type: 2}
   materials:
     materialImportMode: 2
@@ -38,11 +43,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: MC_Walk
-      takeName: MC_Walk
-      internalID: 4131936186744471054
+      name: Take 001
+      takeName: Take 001
+      internalID: 1827226128182048838
       firstFrame: 0
-      lastFrame: 29
+      lastFrame: 30
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
