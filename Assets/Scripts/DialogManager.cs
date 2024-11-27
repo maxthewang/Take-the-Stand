@@ -160,6 +160,7 @@ public class DialogManager : MonoBehaviour
             Actor actorToDisplay = currentActors[messageToDisplay.actorid];
             actorName.text = actorToDisplay.name;
             actorImage.sprite = actorToDisplay.sprite;
+            StopPlayingVoicelines();
             if (messageToDisplay.actorid.Equals(0))
             {
                 interrogatorVoice.clip = messageToDisplay.voiceline;
@@ -235,4 +236,10 @@ public class DialogManager : MonoBehaviour
             boxSound.Stop();
         }
 	}
+
+    public void StopPlayingVoicelines()
+    {
+        interrogatorVoice.Stop();
+        mainCharacterVoice.Stop();
+    }
 }
