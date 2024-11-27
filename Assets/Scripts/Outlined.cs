@@ -20,6 +20,7 @@ public class Outlined : MonoBehaviour
     }
 
 	public void TurnOnShader(){
+		GameManager.instance.outlinedObject = true;
 		MeshRenderer[] meshRenderers = GetComponents<MeshRenderer>();
 		for(int i = 0; i < meshRenderers.Length; i++){
 			List<Material> tempList = meshRenderers[i].materials.ToList();

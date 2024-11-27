@@ -169,6 +169,7 @@ public class NotepadManager : MonoBehaviour
 	}
 
 	public void flipPage(bool flipLeft){
+		GameManager.instance.flippedPagesOnce = true;
 		if(!flipLeft){
 			if(currentPage + 2 >= orderOfObjects.Count)
 				return;
@@ -194,6 +195,9 @@ public class NotepadManager : MonoBehaviour
 
 	private void ToggleNotepad()
     {
+		if(GameManager.instance.GetInteractionCount() <= 0 || (panelObject.activeSelf && !GameManager.instance.flippedPagesOnce)){
+			return;
+		}
         if (SceneManager.GetActiveScene().name != "CrimeScene")
             return;
 
@@ -205,14 +209,16 @@ public class NotepadManager : MonoBehaviour
             StopCoroutine(slideCoroutine);
         }
 
-        if (!panelObject.activeSelf)
+        if (!panelObject.activeSelf && GameManager.instance.GetInteractionCount() > 0)
         {
+			GameManager.instance.openedNotepadOnce = true;
             panelObject.SetActive(true);
             panelObject.transform.localPosition = new Vector3(0, -Screen.height, 0); // Start offscreen
             StartCoroutine(SlideNotepad(isNotepadOpen));
         }
-        else
+        else if(GameManager.instance.doneTutorial)
         {
+			GameManager.instance.closedNotepadOnce = true;
             StartCoroutine(SlideNotepad(isNotepadOpen));
         }
     }
