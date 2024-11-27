@@ -209,11 +209,11 @@ public class DialogManager : MonoBehaviour
             StopPlayingVoicelines();
             if (messageToDisplay.actorid.Equals(0))
             {
-                interrogatorVoice.clip = messageToDisplay.voiceline;
-                isPlayingLine = true;
-                interrogatorVoice.Play();
                 if (SceneManager.GetActiveScene().name == "Intro")
                 {
+                	interrogatorVoice.clip = messageToDisplay.voiceline;
+                	isPlayingLine = true;
+                	interrogatorVoice.Play();
                     interrogatorAnimationManager.PlayRandomNegativeAnimation();
                 }
                 else
