@@ -37,7 +37,7 @@ public class DialogManager : MonoBehaviour
     {
         mainCharacterVoice = GameObject.FindWithTag("Player").GetComponentInChildren<AudioSource>();
         interrogatorAnimationManager = GameObject.FindWithTag("Interrogator").GetComponent<InterrogatorAnimationManager>();
-        interrogatorVoice = GameObject.Find("InterrogatorVoicelines").GetComponent<AudioSource>();
+        interrogatorVoice = GameObject.FindWithTag("Interrogator").GetComponentInChildren<AudioSource>();
     }
 
     void Awake()

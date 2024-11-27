@@ -10,6 +10,21 @@ public class DialogTrigger : MonoBehaviour
     private Message[] messages;
     public Actor[] actors;
     private int i = 0;
+    private string introSoundsPath = "Audio/NewVoicelines/Edited_files/IntroVoiceLines/";
+    private string interrogator = "Interrogator/";
+    private string positiveResponseSoundsPath = "Audio/NewVoicelines/Edited_files/InterrogationVoiceLines/PositiveResponse";
+    private string negativeResponseSoundsPath = "Audio/NewVoicelines/Edited_files/InterrogationVoiceLines/NegativeResponse";
+    private AudioClip LoadRandomAudioClip(string path)
+    {
+        AudioClip[] clips = Resources.LoadAll<AudioClip>(path);
+        if (clips.Length == 0)
+        {
+            Debug.LogError("No audio clips found at path: " + path);
+            return null;
+        }
+        int randomIndex = UnityEngine.Random.Range(0, clips.Length);
+        return clips[randomIndex];
+    }
 
     public void StartDialogue()
     {
@@ -19,11 +34,11 @@ public class DialogTrigger : MonoBehaviour
         {
             messages = new Message[]
             {
-                new Message(0, "As you know, you're the main suspect in the arson attack that took place last night.", "Audio/NewVoicelines/Edited_files/IntroVoiceLines/Interrogator/As_you_know"),
-                new Message(0, "And you understand that we can use anything you say against you, right?", "Audio/NewVoicelines/Edited_files/IntroVoiceLines/Interrogator/And_you_understand"),
-                new Message(1, "Does it matter if I didn't do it?", "Audio/NewVoicelines/Edited_files/IntroVoiceLines/Does_it_matter"),
-                new Message(0, "Well then these questions should be easy for you.", "Audio/NewVoicelines/Edited_files/IntroVoiceLines/Interrogator/Well_then"),
-                new Message(0, "And we only want the truth, got it?", "Audio/NewVoicelines/Edited_files/IntroVoiceLines/Interrogator/And_we_only")
+                new Message(0, "As you know, you're the main suspect in the arson attack that took place last night.", introSoundsPath + interrogator + "As_you_know"),
+                new Message(0, "And you understand that we can use anything you say against you, right?", introSoundsPath + interrogator + "And_you_understand"),
+                new Message(1, "Does it matter if I didn't do it?", introSoundsPath + "Does_it_matter"),
+                new Message(0, "Well then these questions should be easy for you.", introSoundsPath + interrogator + "Well_then"),
+                new Message(0, "And we only want the truth, got it?", introSoundsPath + interrogator + "And_we_only")
             };
         }
         else
