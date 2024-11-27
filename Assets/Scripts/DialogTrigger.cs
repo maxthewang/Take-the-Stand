@@ -11,8 +11,10 @@ public class DialogTrigger : MonoBehaviour
     public Actor[] actors;
     private int i = 0;
     public static string rootDirectory = "Audio/NewVoicelines/Edited_files/";
+    private string interrogationVoiceLines = "InterrogationVoiceLines/";
+    private string mainCharResponseSoundsPath = "MainCharResponseSFX/";
     private string introSoundsPath = "IntroVoiceLines/";
-    private string interrogator = "Interrogator/";
+    private string interrogatorPath = "Interrogator/";
 
     static public string FormDirectoryPath(string[] path)
     {
@@ -27,7 +29,7 @@ public class DialogTrigger : MonoBehaviour
         if (currScene == "Intro")
         {
             string soundPath = FormDirectoryPath(new string[] {introSoundsPath});
-            string interrogatorSoundPath = soundPath + interrogator;
+            string interrogatorSoundPath = soundPath + interrogatorPath;
             messages = new Message[]
             {
                 new Message(0, "As you know, you're the main suspect in the arson attack that took place last night.", interrogatorSoundPath + "As_you_know"),
@@ -40,15 +42,18 @@ public class DialogTrigger : MonoBehaviour
         else
         {
             int interactionCount = GameManager.instance.GetInteractionCount();
-            
+            string soundPath = FormDirectoryPath(new string[] {interrogationVoiceLines});
+            string interrogatorSoundPath = soundPath + interrogatorPath;
+            Debug.Log("Interrogator sound path: " + interrogatorSoundPath);
             if (interactionCount == 0)
             {
+
                 messages = new Message[]
                 {
-                    new Message(0, "Is it all coming back to you now?"),
-                    new Message(1, "I... don't remember doing anything."),
-                    new Message(0, "We're looking for the truth."),
-                    new Message(0, "Either you're lying to us or you're not thinking hard enough.")
+                    new Message(0, "Is it all coming back to you now?", interrogatorSoundPath + "Is_it_all"),
+                    new Message(1, "I... don't remember doing anything.", soundPath + "I_dont_remember"),
+                    new Message(0, "We're looking for the truth.", interrogatorSoundPath + "Were_looking_for"),
+                    new Message(0, "Either you're lying to us or you're not thinking hard enough.", interrogatorSoundPath + "Either_youre"),
                 };
             }
             else
@@ -116,8 +121,8 @@ public class DialogTrigger : MonoBehaviour
 
             // Create a final messages array combining fixed messages with the randomized questions
                 List<Message> finalMessages = new List<Message>();
-                finalMessages.Add(new Message(0, "Is it all coming back to you now?")); // Optional fixed message before questions
-                finalMessages.Add(new Message(1, "Yeah, I remember what I did."));
+                finalMessages.Add(new Message(0, "Is it all coming back to you now?", interrogatorSoundPath + "Is_it_all")); // Optional fixed message before questions
+                finalMessages.Add(new Message(1, "Yeah, I remember what I did.", soundPath + mainCharResponseSoundsPath + "sfx_yeah"));
                 finalMessages.Add(new Message(0, "Our investigators have evidence of " + interactionCount + " suspicious things you did on the scene."));
 
                 // Add shuffled questions to final messages
