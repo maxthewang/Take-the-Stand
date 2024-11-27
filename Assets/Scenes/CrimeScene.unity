@@ -164,7 +164,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 11e3c418ef583cc45bd1e588db90575e, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 2a44fbfa0552971438e180a33c811034, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -294,8 +294,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionText: Click to interact.
-  clueMessage: It looks fancy, and was incidentally dropped near a bottle.
-  unfoundClueMessage: It looks ______, and was incidentally ______________________.
+  clueMessage: Almost all the fluid is gone, but it doesn't seem that old the engraving
+    of W.K is untarnished, it's like someone was burning it for fun.
+  unfoundClueMessage: 
   voiceLine: {fileID: 929486332}
   itemSprite: {fileID: 21300000, guid: 7b857a288d2a58e499e5a3902278b2d5, type: 3}
 --- !u!23 &3173204
@@ -1807,8 +1808,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionText: Click to interact.
-  clueMessage: The family used this to dispose of... trash.
-  unfoundClueMessage: The ______ used this to ___________... _____.
+  clueMessage: I didn't find anything.
+  unfoundClueMessage: 
   voiceLine: {fileID: 1302613668}
   itemSprite: {fileID: 21300000, guid: d95fd978c55d0ab4c8ab48062c04aae6, type: 3}
 --- !u!65 &250546345
@@ -2136,8 +2137,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionText: Click to interact.
-  clueMessage: "He attempted to break into the house without the family\u2019s knowledge."
-  unfoundClueMessage: He attempted to _____ into __________ without the __________________.
+  clueMessage: It has initials on it, W.K., I wonder how the criminal got their hands
+    on this.
+  unfoundClueMessage: 
   voiceLine: {fileID: 1501548307}
   itemSprite: {fileID: 21300000, guid: b7ecf4564751d234db3387bc4a97340a, type: 3}
 --- !u!65 &300416665
@@ -2984,9 +2986,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionText: Click to interact.
-  clueMessage: He knew the layout of the area beforehand and targeted this house
-    specifically.
-  unfoundClueMessage: He knew the _______________ beforehand and __________________specifically.
+  clueMessage: Someone planned each step of the way, all the way down to the path
+    through the house. They knew this place inside out.
+  unfoundClueMessage: 
   voiceLine: {fileID: 1093668338}
   itemSprite: {fileID: 21300000, guid: 6addcb3f6bb52b3459dc86fa793daafc, type: 3}
 --- !u!65 &396307401
@@ -3098,7 +3100,7 @@ Transform:
   m_GameObject: {fileID: 423522042}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 9.01, y: 0.67, z: 4.36}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3251,8 +3253,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionText: Click to interact.
-  clueMessage: He used this to secretly plan his actions in the darkness.
-  unfoundClueMessage: He used this to ______________________ in the _________.
+  clueMessage: 'It was dropped by an unlocked window, what an uncoordinated, potentially
+    impaired criminal. '
+  unfoundClueMessage: 
   voiceLine: {fileID: 1457645916}
   itemSprite: {fileID: 21300000, guid: f6e62b4623a16c144909c98540e1622d, type: 3}
 --- !u!1001 &508964972
@@ -3660,7 +3663,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: ce15a79eca1d7394dade44a9ef9ca170, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 0e1f21f9ade94f446b20fb1b0de88f5d, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -3788,7 +3791,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: b277fecfe4ba9624984eb2b4c2c198b5, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 354420bca2c62a340983b3c1123ee813, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -4688,7 +4691,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: f5e72ee1c2aafca45941e20455b1901d, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 65ab2fcc4f4c3d649868ad1ced885168, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -4816,7 +4819,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: ba3f73f722c97f34f82d3ca792a6c7e5, type: 3}
+  m_audioClip: {fileID: 8300000, guid: ad4d686ada8b04a4c864200a7b201e07, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -6271,7 +6274,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: e616fd2b7115ac444a19fa244059dcda, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 534aaf782b2a42940bc3bb4647d4eaaf, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -6387,8 +6390,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionText: Click to interact.
-  clueMessage: It contains entries indicating sadness and envy.
-  unfoundClueMessage: 'It contains ___________ indicating _________________. '
+  clueMessage: William wrote about... well not a lot, he brags about his money, and
+    complains about his wife and kids. Seems like not too long ago he was in a big
+    argument with his brother.
+  unfoundClueMessage: 
   voiceLine: {fileID: 659095}
   itemSprite: {fileID: 21300000, guid: 874e14a9474160a4d93ffee2b19c4372, type: 3}
 --- !u!65 &942539903
@@ -7146,7 +7151,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: dab6dc834c0bbc943a56b9dfb56e762c, type: 3}
+  m_audioClip: {fileID: 8300000, guid: f0cdbdbad5a980744a4f7fca2fa2d788, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -7765,10 +7770,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionText: Click to interact.
-  clueMessage: He tossed this document by a tree. It has evidence of a pending business
-    offer.
-  unfoundClueMessage: He tossed this _________ by _______. It has _________ of a
-    ______________________.
+  clueMessage: A business deal proposing nearly 1M for the farm and all it's land.
+    It seems like it was rejected by William. Crazy guy.
+  unfoundClueMessage: 
   voiceLine: {fileID: 1536619902}
   itemSprite: {fileID: 21300000, guid: 2216a5ca6fe426544934528da15215a0, type: 3}
 --- !u!65 &1072349256
@@ -7881,7 +7885,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 88f7913288812304782edebd5d463ddf, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 4ac93334e4a91af4eabfa1399c714145, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -8169,8 +8173,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionText: Click to interact.
-  clueMessage: There's a sheet of paper that's too deep to reach.
-  unfoundClueMessage: There's a _________________ that's _________________.
+  clueMessage: There was an old photograph inside, it seemed like a family photo
+    with two brothers and their parents in a pumpkin patch.
+  unfoundClueMessage: 
   voiceLine: {fileID: 558471033}
   itemSprite: {fileID: 21300000, guid: d95fd978c55d0ab4c8ab48062c04aae6, type: 3}
 --- !u!4 &1111753968 stripped
@@ -8387,7 +8392,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 000af51abc2baae4e9e0319d14735e9b, type: 3}
+  m_audioClip: {fileID: 8300000, guid: a5cd14ed49d5bf14191eb541a1bd5beb, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -8619,7 +8624,7 @@ Transform:
   m_GameObject: {fileID: 1140794978}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -11.7, y: 0, z: -70.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8828,6 +8833,7 @@ Transform:
   - {fileID: 1476862671}
   - {fileID: 574596524}
   - {fileID: 1577735920}
+  - {fileID: 1439428202}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1171244951
@@ -9395,7 +9401,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 4dc27515dca55564d821b582fa7e642c, type: 3}
+  m_audioClip: {fileID: 8300000, guid: a43fba326d5a0f7429d6702b4182fed5, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -9507,7 +9513,7 @@ Transform:
   m_GameObject: {fileID: 1307446451}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -4.83, y: 0, z: 19.28}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9746,6 +9752,134 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1100949207}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1325176202
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1325176203}
+  - component: {fileID: 1325176204}
+  m_Layer: 0
+  m_Name: Crickets (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1325176203
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1325176202}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 20.71, y: 0, z: 23.68}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1766778618}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1325176204
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1325176202}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 334e238179968084ea3a3987045f9885, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.606
+  m_Pitch: 1.08
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1.1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1343245962
 GameObject:
   m_ObjectHideFlags: 0
@@ -10033,8 +10167,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionText: Click to interact.
-  clueMessage: This bottle was dropped next to a tree, fully intact.
-  unfoundClueMessage: This _______ was dropped _________________, _______________.
+  clueMessage: ' I''ve always wanted one of these, good thing it''s unused!'
+  unfoundClueMessage: 
   voiceLine: {fileID: 1476862672}
   itemSprite: {fileID: 21300000, guid: 430515fc24521f544b3d868d598679df, type: 3}
 --- !u!65 &1434731168
@@ -10117,6 +10251,134 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &1439428201
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1439428202}
+  - component: {fileID: 1439428203}
+  m_Layer: 0
+  m_Name: Car
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1439428202
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1439428201}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1150939300}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1439428203
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1439428201}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 3b491235f60b02e4d9009baf0a003237, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1457645914
 GameObject:
   m_ObjectHideFlags: 0
@@ -10159,7 +10421,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 717e55c7a8ceffc42bac609180724e72, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 2ac8e386f782d844bba96c1a8b7ee346, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -10287,7 +10549,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: c7ab66156d57bd4419d766b859a6e9d6, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 438824a5ec4976647bf569f8780aca9b, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -10395,43 +10657,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: efdd9d9ba7b6c9f4d9ef9714015bb653, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -34.826
+      value: -35.129
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: efdd9d9ba7b6c9f4d9ef9714015bb653, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 20.377
+      value: 20.118
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: efdd9d9ba7b6c9f4d9ef9714015bb653, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 7.951
+      value: 8.46
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: efdd9d9ba7b6c9f4d9ef9714015bb653, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.4615896
+      value: -0.714975
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: efdd9d9ba7b6c9f4d9ef9714015bb653, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.18119803
+      value: 0.15740818
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: efdd9d9ba7b6c9f4d9ef9714015bb653, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.20182435
+      value: 0.19710101
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: efdd9d9ba7b6c9f4d9ef9714015bb653, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.84461194
+      value: -0.6520619
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: efdd9d9ba7b6c9f4d9ef9714015bb653, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 10
+      value: 1.831
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: efdd9d9ba7b6c9f4d9ef9714015bb653, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 330
+      value: 330.832
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: efdd9d9ba7b6c9f4d9ef9714015bb653, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 120
+      value: 84.254
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: efdd9d9ba7b6c9f4d9ef9714015bb653, type: 3}
       propertyPath: m_ConstrainProportionsScale
@@ -10591,7 +10853,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 26e8160604d940d45b11470ea78925f8, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 13aa9e0acfeba1d4c843a99a65898384, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -10851,7 +11113,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 0c0c4b323c0836e41bf2233c179e5108, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 74c0e76d89fbc6441a24b670fffdc652, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -10984,7 +11246,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: f311c71ccd0da3c43a23fc2d536f43e4, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 5468d601459e7d14aa16334e8975b924, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -11461,7 +11723,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: d0cdd79347fa0704aa388ba4e2b5d37f, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 1e8f1f81820472548bdd253aef6b3acf, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -11718,9 +11980,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionText: Click to interact.
-  clueMessage: It seems completely untouched.
-  unfoundClueMessage: It seems _______________________.
-  voiceLine: {fileID: 0}
+  clueMessage: A really nice car, not something I could dream of in the next ten
+    years. It doesn't seem like it's been driven in a while either.
+  unfoundClueMessage: 
+  voiceLine: {fileID: 1439428203}
   itemSprite: {fileID: 21300000, guid: bceaed348ec5d1e459f5d00ff34e1248, type: 3}
 --- !u!65 &1619028406
 BoxCollider:
@@ -11977,6 +12240,167 @@ Terrain:
   m_EnableHeightmapRayTracing: 1
   m_EnableTreesAndDetailsRayTracing: 0
   m_TreeMotionVectorModeOverride: 3
+--- !u!1001 &1705069579
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1947871717301538, guid: a990e3ac1318b834488c784d851f42a9, type: 3}
+      propertyPath: m_Name
+      value: Flame (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4209731392266258, guid: a990e3ac1318b834488c784d851f42a9, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4209731392266258, guid: a990e3ac1318b834488c784d851f42a9, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4209731392266258, guid: a990e3ac1318b834488c784d851f42a9, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4209731392266258, guid: a990e3ac1318b834488c784d851f42a9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 27.944
+      objectReference: {fileID: 0}
+    - target: {fileID: 4209731392266258, guid: a990e3ac1318b834488c784d851f42a9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4209731392266258, guid: a990e3ac1318b834488c784d851f42a9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 8.842
+      objectReference: {fileID: 0}
+    - target: {fileID: 4209731392266258, guid: a990e3ac1318b834488c784d851f42a9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4209731392266258, guid: a990e3ac1318b834488c784d851f42a9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4209731392266258, guid: a990e3ac1318b834488c784d851f42a9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4209731392266258, guid: a990e3ac1318b834488c784d851f42a9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4209731392266258, guid: a990e3ac1318b834488c784d851f42a9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4209731392266258, guid: a990e3ac1318b834488c784d851f42a9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4209731392266258, guid: a990e3ac1318b834488c784d851f42a9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4209731392266258, guid: a990e3ac1318b834488c784d851f42a9, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198706150799401992, guid: a990e3ac1318b834488c784d851f42a9, type: 3}
+      propertyPath: UVModule.flipU
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198706150799401992, guid: a990e3ac1318b834488c784d851f42a9, type: 3}
+      propertyPath: UVModule.flipV
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198706150799401992, guid: a990e3ac1318b834488c784d851f42a9, type: 3}
+      propertyPath: ShapeModule.angle
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 198706150799401992, guid: a990e3ac1318b834488c784d851f42a9, type: 3}
+      propertyPath: SizeModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198706150799401992, guid: a990e3ac1318b834488c784d851f42a9, type: 3}
+      propertyPath: ShapeModule.arc.value
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 198706150799401992, guid: a990e3ac1318b834488c784d851f42a9, type: 3}
+      propertyPath: SizeModule.separateAxes
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198706150799401992, guid: a990e3ac1318b834488c784d851f42a9, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 198706150799401992, guid: a990e3ac1318b834488c784d851f42a9, type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 198706150799401992, guid: a990e3ac1318b834488c784d851f42a9, type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 198706150799401992, guid: a990e3ac1318b834488c784d851f42a9, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 198706150799401992, guid: a990e3ac1318b834488c784d851f42a9, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 198706150799401992, guid: a990e3ac1318b834488c784d851f42a9, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198706150799401992, guid: a990e3ac1318b834488c784d851f42a9, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198706150799401992, guid: a990e3ac1318b834488c784d851f42a9, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198706150799401992, guid: a990e3ac1318b834488c784d851f42a9, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198706150799401992, guid: a990e3ac1318b834488c784d851f42a9, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key0.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198706150799401992, guid: a990e3ac1318b834488c784d851f42a9, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key0.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198706150799401992, guid: a990e3ac1318b834488c784d851f42a9, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key0.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198706150799401992, guid: a990e3ac1318b834488c784d851f42a9, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key0.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198706150799401992, guid: a990e3ac1318b834488c784d851f42a9, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.m_ColorSpace
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 199127982807948490, guid: a990e3ac1318b834488c784d851f42a9, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 199577645087675124, guid: a990e3ac1318b834488c784d851f42a9, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a990e3ac1318b834488c784d851f42a9, type: 3}
 --- !u!1 &1738561447
 GameObject:
   m_ObjectHideFlags: 0
@@ -12091,6 +12515,7 @@ Transform:
   - {fileID: 1140794979}
   - {fileID: 423522043}
   - {fileID: 1307446452}
+  - {fileID: 1325176203}
   - {fileID: 2024364311}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -12133,8 +12558,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionText: Click to interact.
-  clueMessage: It's empty, but has the scent of alcohol.
-  unfoundClueMessage: It's ______, but has the ______________.
+  clueMessage: It's empty, but it there's a sharper smell under the alcohol, kinda
+    smells like the taste at the back of my throat.
+  unfoundClueMessage: 
   voiceLine: {fileID: 2066415357}
   itemSprite: {fileID: 21300000, guid: 01e8d44413c8a57418df707c043ba728, type: 3}
 --- !u!4 &1768918212 stripped
@@ -12254,7 +12680,7 @@ Transform:
   m_GameObject: {fileID: 1770534182}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.7925981, z: -0, w: 0.6097444}
-  m_LocalPosition: {x: 28.1, y: 0.61, z: 8.81}
+  m_LocalPosition: {x: 27.95, y: 0.61, z: 9.42}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12295,9 +12721,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionText: Click to interact.
-  clueMessage: This gun was dropped. It still contains some bullets in its chamber.
-  unfoundClueMessage: This ____ was ________. It still ______________________ in
-    ____________.
+  clueMessage: It was left by the open door. It's still loaded, and the chamber's
+    half empty. It has blood on it, there must've been some sort of altercation.
+  unfoundClueMessage: 
   voiceLine: {fileID: 734254004}
   itemSprite: {fileID: 21300000, guid: 2bce9c30bb1c3fd4780b12f56473e50a, type: 3}
 --- !u!65 &1773870148
@@ -12793,10 +13219,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionText: Click to interact.
-  clueMessage: He tossed this paper by the flame. It has records of debts incurred
-    through gambling losses.
-  unfoundClueMessage: He ________ this ______ by the _______. It has _______________________
-    through ________________.
+  clueMessage: Warren was in a lot of debt, enough for the collectors to come knocking.
+    I had no idea, or at least that's not what he told me.
+  unfoundClueMessage: 
   voiceLine: {fileID: 980952767}
   itemSprite: {fileID: 21300000, guid: 2216a5ca6fe426544934528da15215a0, type: 3}
 --- !u!65 &1814225932
@@ -13438,8 +13863,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionText: Click to interact.
-  clueMessage: The canister is empty. It has a strong scent of gasoline.
-  unfoundClueMessage: The _________ is ______. It has a ____________ of _________.
+  clueMessage: It's empty but the receipt on it is dated today, surely the car in
+    the garage wasn't driven that recently.
+  unfoundClueMessage: 
   voiceLine: {fileID: 708105004}
   itemSprite: {fileID: 21300000, guid: 789dfc9e4bb5d77469028eab60ded135, type: 3}
 --- !u!23 &1978274529
@@ -13846,7 +14272,7 @@ Transform:
   m_GameObject: {fileID: 2024364310}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 11.22, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14308,7 +14734,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: caf84eb6ec076a84fa20124b34ecb0b7, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 81afbda56e9c60440bff18e0a65d7ef1, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -14896,6 +15322,7 @@ SceneRoots:
   - {fileID: 1100949207}
   - {fileID: 1140753822}
   - {fileID: 2055805140}
+  - {fileID: 1705069579}
   - {fileID: 924988074}
   - {fileID: 391654233}
   - {fileID: 1273683472}
