@@ -101,7 +101,7 @@ public class DialogTrigger : MonoBehaviour
                     }),
                 };
 
-                questions = questions.OrderBy(x => Random.Range(0, 100)).ToList();
+                questions = questions.ToList();
 
             // Create a final messages array combining fixed messages with the randomized questions
                 List<Message> finalMessages = new List<Message>();
