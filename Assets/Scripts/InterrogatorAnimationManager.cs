@@ -15,7 +15,6 @@ public class InterrogatorAnimationManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     public void PlaySmackTableAngrily()
@@ -46,5 +45,21 @@ public class InterrogatorAnimationManager : MonoBehaviour
             anim.SetBool(b, false);
         }
         anim.SetTrigger("CalmDown");
+    }
+    public void PlayRandomNegativeAnimation()
+    {
+        int random = Random.Range(0, 3);
+        if (random == 0)
+        {
+            PlayGrabHandcuff();
+        }
+        else if (random == 1)
+        {
+            PlaySmackTableAngrily();
+        }
+        else
+        {
+            PlayIntimidate();
+        }
     }
 }

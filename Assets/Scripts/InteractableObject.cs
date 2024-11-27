@@ -17,6 +17,8 @@ public class InteractableObject : MonoBehaviour
     private bool isDiscovered = false;
 	public Sprite itemSprite;
     private Animator animator;
+    private AudioClip grabSoundClip;
+    private AudioSource playerAudioSource;
 
     void Awake()
     {
@@ -44,6 +46,17 @@ public class InteractableObject : MonoBehaviour
         if(notepadManager != null){
             notepadManager.AddInformation(name, new string('_', name.Length), unfoundClueMessage, null);
         }
+        grabSoundClip = Resources.Load<AudioClip>("Audio/SFX/sfx_grab_nl01");
+        playerAudioSource = GameObject.FindWithTag("Player").GetComponent<AudioSource>();
+        if (playerAudioSource == null)
+        {
+            playerAudioSource = GameObject.Find("Player").GetComponent<AudioSource>();
+            if (playerAudioSource == null)
+            {
+                Debug.LogError("Player audio source not found");
+            }
+        }
+        playerAudioSource.clip = grabSoundClip;
     }
 
     protected virtual void OnInteract(InputAction.CallbackContext context)
@@ -68,6 +81,9 @@ public class InteractableObject : MonoBehaviour
             Debug.Log("animator was null");
         }
         else{
+            if(!playerAudioSource.isPlaying) {
+                playerAudioSource.Play();
+            }
             animator.SetTrigger("Grab");
         }
     }
