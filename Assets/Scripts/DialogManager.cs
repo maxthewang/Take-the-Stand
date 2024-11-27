@@ -26,6 +26,8 @@ public class DialogManager : MonoBehaviour
     private PlayerInputActions playerControls;
     private InputAction nextMessageAction;
     private InterrogatorAnimationManager interrogatorAnimationManager;
+    private AudioSource interrogatorVoice;
+    private AudioSource mainCharacterVoice;
 
     Message[] currentMessages;
     Actor[] currentActors;
@@ -33,7 +35,9 @@ public class DialogManager : MonoBehaviour
 
     private void Start()
     {
+        mainCharacterVoice = GameObject.FindWithTag("Player").GetComponentInChildren<AudioSource>();
         interrogatorAnimationManager = GameObject.FindWithTag("Interrogator").GetComponent<InterrogatorAnimationManager>();
+        interrogatorVoice = GameObject.Find("InterrogatorVoicelines").GetComponent<AudioSource>();
     }
 
     void Awake()
@@ -156,7 +160,18 @@ public class DialogManager : MonoBehaviour
             Actor actorToDisplay = currentActors[messageToDisplay.actorid];
             actorName.text = actorToDisplay.name;
             actorImage.sprite = actorToDisplay.sprite;
-
+            StopPlayingVoicelines();
+            if (messageToDisplay.actorid.Equals(0))
+            {
+                interrogatorVoice.clip = messageToDisplay.voiceline;
+                interrogatorVoice.Play();
+                interrogatorAnimationManager.PlayIntimidate();
+            }
+            else
+            {
+                mainCharacterVoice.clip = messageToDisplay.voiceline;
+                mainCharacterVoice.Play();
+            }
             StopAllCoroutines();
             StartCoroutine(TypeMessage(messageText, messageToDisplay.message));
         }
@@ -221,4 +236,10 @@ public class DialogManager : MonoBehaviour
             boxSound.Stop();
         }
 	}
+
+    public void StopPlayingVoicelines()
+    {
+        interrogatorVoice.Stop();
+        mainCharacterVoice.Stop();
+    }
 }
