@@ -24,4 +24,9 @@ public class AnimatorController : MonoBehaviour
             animator.SetBool("Walking", false);
         
     }
+
+    public void OnTimerEnd()
+    {
+        animator.SetTrigger("Turn Around");
+    }
 }
