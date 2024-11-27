@@ -21,6 +21,12 @@ public class GameManager : MonoBehaviour
     //Police trust player amount
     private int trust = 5;
 
+	public bool doneTutorial = false;
+	public bool outlinedObject = false;
+	public bool openedNotepadOnce = false;
+	public bool flippedPagesOnce = false;
+	public bool closedNotepadOnce = false;
+
     private enum Scenes{
         CrimeScene,
         InterrogationScene,
