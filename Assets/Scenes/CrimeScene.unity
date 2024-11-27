@@ -8193,9 +8193,11 @@ MonoBehaviour:
   walkingSound: {fileID: 20253882}
   playerCamera: {fileID: 963194227}
   gravity: -200
-  notepadGameObject: {fileID: 1188834729}
-  settingsGameObject: {fileID: 595528661}
-  pauseGameObject: {fileID: 1289529672}
+  notepadObject: {fileID: 1188834729}
+  settingsObject: {fileID: 595528661}
+  pauseObject: {fileID: 1289529672}
+  controlsObject: {fileID: 29932728}
+  timerScript: {fileID: 924988075}
   fallMultiplier: 2
 --- !u!114 &1056281332
 MonoBehaviour:
