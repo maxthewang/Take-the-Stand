@@ -194,7 +194,7 @@ public class PlayerController : MonoBehaviour
         || settingsObject.activeSelf 
         || pauseObject.activeSelf
         || controlsObject.activeSelf
-        || !timerScript.TimerOn;
+        || timerScript.TimeLeft <= 0;
     }
 
     private IEnumerator Jump()
