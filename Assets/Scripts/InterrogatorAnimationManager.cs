@@ -15,7 +15,8 @@ public class InterrogatorAnimationManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Debug.Log("InterrogatorAnimationManager is running");
+        Debug.Log("InterrogatorAnimationManager.anim: " + anim);
     }
 
     public void PlaySmackTableAngrily()
