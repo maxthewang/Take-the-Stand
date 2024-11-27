@@ -218,8 +218,7 @@ public class DialogManager : MonoBehaviour
             StopPlayingVoicelines();
             if (messageToDisplay.actorid.Equals(0))
             {
-                interrogatorVoice.clip = messageToDisplay.voiceline;
-                Debug.Log("Playing voiceline: " + messageToDisplay.voiceline.name, interrogatorVoice.clip);
+                interrogatorVoice.clip = messageToDisplay.voiceline;                
                 isPlayingLine = true;
                 interrogatorVoice.Play();
                 if (SceneManager.GetActiveScene().name == "Intro")
