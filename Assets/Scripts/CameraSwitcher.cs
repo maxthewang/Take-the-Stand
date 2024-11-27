@@ -6,18 +6,12 @@ using UnityEngine.SceneManagement;
 public class CameraSwitcher : MonoBehaviour
 {
     public DialogManager dialogManager;  // Reference to the DialogManager
-    public Camera mainCamera;  // Reference to the main camera
-    public Camera altCamera;   // Reference to the alternate camera
+    public Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
-        // Ensure the cameras are set correctly at the start
-        if (mainCamera != null && altCamera != null)
-        {
-            mainCamera.enabled = true;
-            altCamera.enabled = false;
-        }
+        
     }
 
     // Update is called once per frame
@@ -27,7 +21,7 @@ public class CameraSwitcher : MonoBehaviour
         if (dialogManager != null && dialogManager.activeMessage == 2)
         {
             // Switch to the alternate camera
-            SwitchToAltCamera();
+            animator.SetTrigger("Zoom Out");
         }
         if (dialogManager != null && DialogManager.isActive == false)
         {
@@ -35,14 +29,5 @@ public class CameraSwitcher : MonoBehaviour
 			FadeTransition.instance.FadeToBlack("CrimeScene");
         }
         
-    }
-
-    void SwitchToAltCamera()
-    {
-        if (mainCamera != null && altCamera != null)
-        {
-            mainCamera.enabled = false;  // Disable the main camera
-            altCamera.enabled = true;    // Enable the alternate camera
-        }
     }
 }
