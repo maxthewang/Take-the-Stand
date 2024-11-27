@@ -4,6 +4,7 @@ using UnityEngine.UI; // Required for UI elements
 public class HoldableObject : MonoBehaviour
 {
     public string interactionText = "Press E to interact"; // Text displayed for interaction
+    public string interactedText = "Already Interacted";
     private bool isPlayerInRange = false;
 
     // Reference to the UI Text element
@@ -57,6 +58,6 @@ public class HoldableObject : MonoBehaviour
 
     private void HideInteractionText()
     {
-        interactionMessageText.text = ""; // Clear the interaction text
+        interactionMessageText.text = interactedText; // Clear the interaction text
     }
 }
