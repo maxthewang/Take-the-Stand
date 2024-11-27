@@ -6,8 +6,8 @@ public class DiscoverableManager : MonoBehaviour
 {
     public static DiscoverableManager instance;
     
-    [SerializeField] private TextMeshProUGUI discoverableCountText;
-    [SerializeField] private Transform discoverablesParent; // Reference to parent object containing all discoverables
+    [SerializeField] public TextMeshProUGUI discoverableCountText;
+    [SerializeField] public Transform discoverablesParent; // Reference to parent object containing all discoverables
 
     private int totalDiscoverables;
     private int discoveredCount;
@@ -20,6 +20,8 @@ public class DiscoverableManager : MonoBehaviour
         }
         else
         {
+			DiscoverableManager.instance.discoverableCountText = discoverableCountText;
+			DiscoverableManager.instance.discoverablesParent = discoverablesParent;
             Destroy(gameObject); // Ensure only one instance exists
         }
     }
@@ -34,12 +36,18 @@ public class DiscoverableManager : MonoBehaviour
     // This method will be called when a discoverable is interacted with
     public void DiscoverObject()
     {
+		Debug.Log("Discovered");
         discoveredCount++;
         UpdateUI();
     }
 
     private void UpdateUI()
     {
-        discoverableCountText.text = $"Discovered:\n{discoveredCount}/{totalDiscoverables}";
+        NotepadManager.instance.discoverableText.text = $"Discovered:\n{discoveredCount}/{totalDiscoverables}";
     }
+
+	public void RestartGame(){
+		discoveredCount = 0;
+		UpdateUI();
+	}
 }

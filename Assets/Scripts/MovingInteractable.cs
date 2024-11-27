@@ -9,6 +9,7 @@ public class MovingInteractable : InteractableObject
 	public Vector3 moveToDestination;
 	bool movingToDestination = false;
     private AudioSource movementSound;
+		public Vector3 scaleToReach;
     
     // Start is called before the first frame update
     void Start()
@@ -29,6 +30,7 @@ public class MovingInteractable : InteractableObject
 
             // Smoothly move the object toward the destination
             transform.localPosition = Vector3.MoveTowards(transform.localPosition, moveToDestination, 2f * Time.deltaTime);
+			transform.localScale = Vector3.MoveTowards(transform.localScale, scaleToReach, 0.20f * Time.deltaTime);
 
             // Stop movement when close enough to the destination
             if ((transform.localPosition - moveToDestination).magnitude < 0.01f)

@@ -49,6 +49,11 @@ public class NotepadManager : MonoBehaviour
 	Image rightImage;
     [SerializeField]
     Sprite defaultIcon;
+	[SerializeField]
+	TextMeshProUGUI notepadLeftPageNumber;
+	[SerializeField]
+	TextMeshProUGUI notepadRightPageNumber;
+	public TextMeshProUGUI discoverableText;
 
     private RectTransform panelRectTransform;
     private Vector3 offScreenPosition;
@@ -142,6 +147,8 @@ public class NotepadManager : MonoBehaviour
 	}
 
 	private void ShowPages(int firstPageNum){
+		notepadLeftPageNumber.text = (firstPageNum + 1).ToString();
+		notepadRightPageNumber.text = (firstPageNum + 2).ToString();
 		string firstPageName = cluePairs[orderOfObjects[firstPageNum]][0];
 		string firstPageInfo = cluePairs[orderOfObjects[firstPageNum]][1];
 		notepadNameLeft.text = firstPageName;
@@ -184,18 +191,11 @@ public class NotepadManager : MonoBehaviour
 		}
 	}
 
-	private void CompileNotepadInformation(){
-		string newNotepadInfo = "";
-		foreach(var notepadInfo in cluePairs){
-			newNotepadInfo += notepadInfo.Value;
-		}
-		notepadInformation.text = newNotepadInfo;
-	}
 
 
 	private void ToggleNotepad()
     {
-		if(GameManager.instance.GetInteractionCount() <= 0 || (panelObject.activeSelf && !GameManager.instance.flippedPagesOnce)){
+		if((GameManager.instance.GetInteractionCount() <= 0 || (panelObject.activeSelf && !GameManager.instance.flippedPagesOnce)) && !GameManager.instance.doneTutorial){
 			return;
 		}
         if (SceneManager.GetActiveScene().name != "CrimeScene")
@@ -209,7 +209,7 @@ public class NotepadManager : MonoBehaviour
             StopCoroutine(slideCoroutine);
         }
 
-        if (!panelObject.activeSelf && GameManager.instance.GetInteractionCount() > 0)
+        if (!panelObject.activeSelf && (GameManager.instance.GetInteractionCount() > 0 || GameManager.instance.doneTutorial))
         {
 			GameManager.instance.openedNotepadOnce = true;
             panelObject.SetActive(true);
@@ -231,6 +231,7 @@ public class NotepadManager : MonoBehaviour
             timeSlowedObject.alpha = 1.0f;
             StartCoroutine(FadeSlowedText());
         }
+		ShowPages(currentPage);
 
         float distance = Vector3.Distance(panelRectTransform.anchoredPosition, open ? onScreenPosition : offScreenPosition);
         float openSpeed = 3000f;
@@ -258,11 +259,7 @@ public class NotepadManager : MonoBehaviour
 
         panelRectTransform.anchoredPosition = targetPosition;
 
-        if (open)
-        {
-            ShowPages(currentPage);
-        }
-        else
+        if (!open)
         {
             panelObject.SetActive(false);  // Deactivate the panel when closed
         }
@@ -305,6 +302,16 @@ public class NotepadManager : MonoBehaviour
             playerControls.UI.Notepad.performed -= ctx => ToggleNotepad();
         }
     }
+
+	public void RestartGame(){
+ 		notedObjects = new HashSet<string>();
+		cluePairs = new Dictionary<string, string[]>();
+		clueImages = new Dictionary<string, Sprite>();
+		orderOfObjects = new List<string>();
+		currentPage = 0;
+	}
+
+
 
     private void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene, LoadSceneMode mode)
     {

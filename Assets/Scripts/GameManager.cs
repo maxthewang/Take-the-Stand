@@ -73,6 +73,9 @@ public class GameManager : MonoBehaviour
 
 	public void RestartGame(){
 		interactionCount = 0;
+		trust = 5;
+		DiscoverableManager.instance.RestartGame();
+		NotepadManager.instance.RestartGame();
 	}
 
     // Method to get the interaction count
