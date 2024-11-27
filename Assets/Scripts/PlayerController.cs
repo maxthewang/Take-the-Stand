@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded; 
     public float gravity = -9.8f;
     private float rotationX = 0.0f; // X rotation for looking up/down
+    private bool shouldMoveAnimation = false;
 
 	public GameObject notepadGameObject;
     public GameObject settingsGameObject;
@@ -65,7 +66,6 @@ public class PlayerController : MonoBehaviour
         if (controllerFlag == 1) {
             controller = GetComponent<CharacterController>();
         }
-        Debug.Log("controllerFlag: " + controllerFlag);
 
         walkingSound.volume = 0f;
         turnSensitivity = baseSensitivity;
@@ -94,6 +94,7 @@ public class PlayerController : MonoBehaviour
         if (controller.velocity.magnitude != 0)
         {
             targetVolume = 1f;
+            shouldMoveAnimation = true;
 
             if (!walkingSound.isPlaying)
             {
@@ -103,6 +104,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             targetVolume = 0f;
+            shouldMoveAnimation = false;
         }
 
         walkingSound.volume = Mathf.Lerp(walkingSound.volume, targetVolume, Time.deltaTime * 5f);
@@ -203,5 +205,9 @@ public class PlayerController : MonoBehaviour
 
         // Ensure the player falls after the jump
         moveSpeed.y = 0; // Reset vertical speed
+    }
+    public bool shouldAnimateMovement()
+    {
+        return shouldMoveAnimation;
     }
 }
