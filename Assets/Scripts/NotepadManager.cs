@@ -312,7 +312,7 @@ public class NotepadManager : MonoBehaviour
 
 
 
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    private void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene, LoadSceneMode mode)
     {
         if (scene.name == "NotepadScene")
         {
