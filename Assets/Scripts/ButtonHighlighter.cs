@@ -7,6 +7,9 @@ public class ButtonHighlighter : MonoBehaviour, ISelectHandler, IDeselectHandler
 {
     public GameObject pumpkinHighlight;
 	void OnDisable(){
+		if(pumpkinHighlight == null){
+			return;
+		}
         pumpkinHighlight.SetActive(false);
 	}
     // Start is called before the first frame update
@@ -22,10 +25,16 @@ public class ButtonHighlighter : MonoBehaviour, ISelectHandler, IDeselectHandler
     }
 
     public void OnSelect(BaseEventData eventData){
+		if(pumpkinHighlight == null){
+			return;
+		}
         pumpkinHighlight.SetActive(true);
     }
 
     public void OnDeselect(BaseEventData eventData){
+		if(pumpkinHighlight == null){
+			return;
+		}
         pumpkinHighlight.SetActive(false);
     }
 

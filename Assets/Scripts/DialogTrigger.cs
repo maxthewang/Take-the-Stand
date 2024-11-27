@@ -4,11 +4,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Linq;
 using System;
-using System;
 
 public class DialogTrigger : MonoBehaviour
 {
-    private Message[] messages;
+     private Message[] messages;
     public Actor[] actors;
     private int i = 0;
     public static string rootDirectory = "Audio/NewVoicelines/Edited_files/";
@@ -38,27 +37,11 @@ public class DialogTrigger : MonoBehaviour
                 new Message(1, "Does it matter if I didn't do it?", soundPath + "Does_it_matter"),
                 new Message(0, "Well then these questions should be easy for you.", interrogatorSoundPath + "Well_then"),
                 new Message(0, "And we only want the truth, got it?", interrogatorSoundPath + "And_we_only")
-            };
-        }
-        else
-        {
-            int interactionCount = GameManager.instance.GetInteractionCount();
-            string soundPath = FormDirectoryPath(new string[] {interrogationVoiceLines});
-            string interrogatorSoundPath = soundPath + interrogatorPath;
-            Debug.Log("Interrogator sound path: " + interrogatorSoundPath);
-            if (interactionCount == 0)
-            {
-
-                messages = new Message[]
-                {
-                    new Message(0, "Is it all coming back to you now?", interrogatorSoundPath + "Is_it_all"),
-                    new Message(1, "I... don't remember doing anything.", soundPath + "I_dont_remember"),
-                    new Message(0, "We're looking for the truth.", interrogatorSoundPath + "Were_looking_for"),
-                    new Message(0, "Either you're lying to us or you're not thinking hard enough.", interrogatorSoundPath + "Either_youre"),
-                };
-            }
+        	    };
+        	} 
             else
             {
+				int interactionCount = GameManager.instance.GetInteractionCount();
                 List<MultipleChoice> questions = new List<MultipleChoice>
                 {
                     new MultipleChoice(0, "Aside from the victims, how many witnesses were there?", 2, new Dictionary<string, Message[]>
@@ -131,9 +114,6 @@ public class DialogTrigger : MonoBehaviour
                         {"The flames would've disintegrated it all.", new Message[] {new Message(0, "Fine. That's reasonable.")}},
                         {"I didn't mean to.", new Message[] {new Message(0, "You didn't mean to tamper with an active crime scene?"), new Message(0, "It should be common sense not to mess with stuff before the police gets there.")}}
                     }),
-                };
-
-                questions = questions.OrderBy(x => UnityEngine.Random.Range(0, 100)).ToList();
                     new MultipleChoice(0, "Be real with us. What were you up to before the attack?", 2, new Dictionary<string, Message[]>
                     {
                         {"We stopped at a gas station.", new Message[] {new Message(0, "... We?")}},
@@ -145,8 +125,8 @@ public class DialogTrigger : MonoBehaviour
 
             // Create a final messages array combining fixed messages with the randomized questions
                 List<Message> finalMessages = new List<Message>();
-                finalMessages.Add(new Message(0, "Is it all coming back to you now?", interrogatorSoundPath + "Is_it_all")); // Optional fixed message before questions
-                finalMessages.Add(new Message(1, "Yeah, I remember what I did.", soundPath + mainCharResponseSoundsPath + "sfx_yeah"));
+                finalMessages.Add(new Message(0, "Is it all coming back to you now?")); // Optional fixed message before questions
+                finalMessages.Add(new Message(1, "Yeah, I remember what I did."));
                 finalMessages.Add(new Message(0, "Our investigators have evidence of " + interactionCount + " suspicious things you did on the scene."));
                 finalMessages.Add(new Message(0, "Let's start with the easy questions shall we?"));
 
@@ -163,12 +143,12 @@ public class DialogTrigger : MonoBehaviour
 
                 messages = finalMessages.ToArray();
             }
-        }
+        
 
         FindObjectOfType<DialogManager>().OpenDialog(messages, actors);
     }
 
-    private void Update()
+     private void Update()
     {
         if (i == 0)
         {
