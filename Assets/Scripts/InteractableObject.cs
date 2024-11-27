@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class InteractableObject : MonoBehaviour
 {
     public string interactionText = "Click to interact.";
+    public string interactedText = "This clue has already been discovered";
     public string clueMessage = "This object doesn't give you any information.";
 	public string unfoundClueMessage = "This ______ doesn't give you any ___________.";
     public static AudioSource discoverySound;
