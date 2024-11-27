@@ -311,17 +311,6 @@ public class NotepadManager : MonoBehaviour
 	}
 
 
-
-	public void RestartGame(){
- 		notedObjects = new HashSet<string>();
-		cluePairs = new Dictionary<string, string[]>();
-		clueImages = new Dictionary<string, Sprite>();
-		orderOfObjects = new List<string>();
-		currentPage = 0;
-	}
-
-
-
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         if (scene.name == "NotepadScene")
