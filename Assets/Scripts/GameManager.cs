@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     private bool win = false;
     
     //Police trust player amount
-    private int trust = 5;
+    private int trust = 0;
 
     private enum Scenes{
         CrimeScene,
