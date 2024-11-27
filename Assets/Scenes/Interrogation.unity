@@ -2344,7 +2344,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 8890a582aa36e470bb225c6d02bfa1ea, type: 3}
       propertyPath: m_Name
-      value: UnderCoverP_GrabHandcuff_v2
+      value: Interrogator
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 8890a582aa36e470bb225c6d02bfa1ea, type: 3}
       propertyPath: m_TagString

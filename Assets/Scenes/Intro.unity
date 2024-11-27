@@ -5931,7 +5931,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: ca53cd51298204062a4313c213eaf2a7, type: 3}
       propertyPath: m_Name
-      value: UnderCoverP_Idle_v2
+      value: Interrogator
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: ca53cd51298204062a4313c213eaf2a7, type: 3}
       propertyPath: m_TagString
