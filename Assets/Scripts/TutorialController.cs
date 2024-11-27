@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TutorialController : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class TutorialController : MonoBehaviour
 	public TMP_Text tutorialText;
 	private bool interacted = false;
 	public TimerScript timerScript;
+    public Image controlsImage;
+
     void Start()
     {
 		if(GameManager.instance.doneTutorial){
@@ -25,8 +28,8 @@ public class TutorialController : MonoBehaviour
     void Update()
     {
 		if(GameManager.instance.closedNotepadOnce){
-			timerScript.TimerOn = true;
 			Destroy(gameObject);
+            activateControls();
 		}
 		if(!interacted && GameManager.instance.outlinedObject){
 			tutorialText.text = "Press the Right Trigger To Interact With the trash can";
@@ -44,6 +47,19 @@ public class TutorialController : MonoBehaviour
 				GameManager.instance.doneTutorial = true;
 			}
 		}
+    }
+
+    private void activateControls()
+    {
+        if (controlsImage != null)
+        {
+            controlsImage.gameObject.SetActive(true);
+            Debug.Log("Controls Image Activated");
+        }
+        else
+        {
+            Debug.LogError("Controls Image is not assigned in the inspector!");
+        }
     }
 
 	private void OnTriggerEnter(Collider other){

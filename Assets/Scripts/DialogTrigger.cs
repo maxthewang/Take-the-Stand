@@ -37,91 +37,91 @@ public class DialogTrigger : MonoBehaviour
                 new Message(1, "Does it matter if I didn't do it?", soundPath + "Does_it_matter"),
                 new Message(0, "Well then these questions should be easy for you.", interrogatorSoundPath + "Well_then"),
                 new Message(0, "And we only want the truth, got it?", interrogatorSoundPath + "And_we_only")
-        	    };
-        	} 
-            else
+            };
+        } 
+        else
+        {
+            int interactionCount = GameManager.instance.GetInteractionCount();
+            List<MultipleChoice> questions = new List<MultipleChoice>
             {
-				int interactionCount = GameManager.instance.GetInteractionCount();
-                List<MultipleChoice> questions = new List<MultipleChoice>
+                new MultipleChoice(0, "Aside from the victims, how many witnesses were there?", 2, new Dictionary<string, Message[]>
                 {
-                    new MultipleChoice(0, "Aside from the victims, how many witnesses were there?", 2, new Dictionary<string, Message[]>
-                    {
-                        {"I was the only one.", new Message[] {new Message(0, "Correct, you were the only witness."), new Message(0, "A good reason why you're a prime suspect at the moment.")}},
-                        {"I saw someone else.", new Message[] {new Message(0, "Come on. The house is completely isolated."), new Message(0, "There's not a single soul within a mile of the area."), new Message(0, "You must've hurt your head.")}}
-                    }),
-                    new MultipleChoice(0, "What sort of building were the victims in?", 2, new Dictionary<string, Message[]>
-                    {
-                        {"A cabin in the woods.", new Message[] {new Message(0, "Get your eyes checked."), new Message(0, "Or your head.")}},
-                        {"An old farmhouse.", new Message[] {new Message(0, "Good."), new Message(0, "You can remember where you were, at least.")}}
-                    }),
-                    new MultipleChoice(0, "Have you ever been to that house before that day?", 2, new Dictionary<string, Message[]>
-                    {
-                        {"No, I don't believe so.", new Message[] {new Message(0, "This is not going well for you."), new Message(0, "We've discovered old polaroids of you soliciting the premises.")}},
-                        {"Yes, I believe so.", new Message[] {new Message(0, "Indeed, we're aware you paid some visits to them in the past.")}}
-                    }),
-                    new MultipleChoice(0, "How well did you know the victims?", 2, new Dictionary<string, Message[]>
-                    {
-                        {"Quite well actually.", new Message[] {new Message(0, "Sounds about right. Although I'm sure that family knew just about everyone in this town.")}},
-                        {"Only in passing.", new Message[] {new Message(0, "Yeah right. We have evidence you were a close friend of the family."), new Message(0, "I mean how could you even get that one wrong?")}}
-                    }),
-                    new MultipleChoice(0, "Alright, I'm asking you to think back to the crime itself, how many things did you notice on the scene?", 2, new Dictionary<string, Message[]>
-                    {
-                        {$"{interactionCount}", new Message[] {new Message(0, "Correct.")}},
-                        {$"{interactionCount + 2}", new Message[] {new Message(0, "Not quite.")}}
-                    }),
-                    new MultipleChoice(0, "When did the crime happen?", 2, new Dictionary<string, Message[]>
-                    {
-                        {"In the afternoon.", new Message[] {new Message(0, "Then how come the house wasn't dust at your feet when we got there?"), new Message(0, "OoooOOOooo an unburnable house, haha.")}},
-                        {"In the nighttime.", new Message[] {new Message(0, "It sure did."), new Message(0, "Any earlier and you wouldn't have had time for your one-man investigation.")}}
-                    }),
-                    new MultipleChoice(0, "In which direction do you believe the perpetrator fled the scene?", 2, new Dictionary<string, Message[]>
-                    {
-                        {"Out the front door.", new Message[] {new Message(0, "Is that right?"), new Message(0, "Doesn't quite explain all the blood by the side door.")}},
-                        {"Out the side door.", new Message[] {new Message(0, "That checks out with what our guy says."), new Message(0, "The side door was indeed ajar and bloodied when we examined the scene.")}}
-                    }),
-                    new MultipleChoice(0, "And how do you think they made it into the building in the first place?", 2, new Dictionary<string, Message[]>
-                    {
-                        {"In through the garage.", new Message[] {new Message(0, "That's silly. The garage only has one entrance and exit.")}},
-                        {"In through the window.", new Message[] {new Message(0, "You must be right."), new Message(0, "It seems they made it halfway through the house before they woke someone up.")}}
-                    }),
-                    new MultipleChoice(0, "Any guesses on how they set the fire?", 2, new Dictionary<string, Message[]>
-                    {
-                        {"Gasoline and a molotov.", new Message[] {new Message(0, "Wow, a dramatic flair, eh?"), new Message(0, "I'll believe it when I see it.")}},
-                        {"Gasoline and a lighter.", new Message[] {new Message(0, "Indeed."), new Message(0, "That molotov cocktail looked pretty... unused.")}}
-                    }),
-                    new MultipleChoice(0, "How about the blood?", 2, new Dictionary<string, Message[]>
-                    {
-                        {"It must've been the knife.", new Message[] {new Message(0, "What knife?"), new Message(0, "You're one hell of a nut case.")}},
-                        {"It must've been the gun.", new Message[] {new Message(0, "Our forensics team found the same."), new Message(0, "It must've been quite the struggle, the way we found the Father.")}}
-                    }),
-                    new MultipleChoice(0, "Anything else you think might help us?", 2, new Dictionary<string, Message[]>
-                    {
-                        {"William was a jerk.", new Message[] {new Message(0, "With that much money? It's no surprise."), new Message(0, "I'd hate to have known him too.")}},
-                        {"Warren was a liar.", new Message[] {new Message(0, "What do you mean?"), new Message(1, "He's in a lot more debt than he told me."), new Message(0, "That is... interesting.")}}
-                    }),
-                    new MultipleChoice(0, "What about something more tangible?", 2, new Dictionary<string, Message[]>
-                    {
-                        {"There was a photo.", new Message[] {new Message(0, "We're already aware of the photos."), new Message(0, "Family portraits aren't exactly what we're looking for from a dead family.")}},
-                        {"There was a document.", new Message[] {new Message(0, "Go on."), new Message(1, "It seems William declined a big offer for the farm recently."), new Message(0, "I wonder what that would mean for our criminal...")}}
-                    }),
-                    new MultipleChoice(0, "Ok, let's talk motives, did the victims have any rivals?", 2, new Dictionary<string, Message[]>
-                    {
-                        {"I don't think so.", new Message[] {new Message(0, "Really? You had no idea, huh.")}},
-                        {"I think so.", new Message[] {new Message(0, "Hmph, that must explain the brotherly tiffs witnesses reported on.")}}
-                    }),
-                    new MultipleChoice(0, "And how about you? Why were you so intent on inspecting the evidence?", 2, new Dictionary<string, Message[]>
-                    {
-                        {"The flames would've disintegrated it all.", new Message[] {new Message(0, "Fine. That's reasonable.")}},
-                        {"I didn't mean to.", new Message[] {new Message(0, "You didn't mean to tamper with an active crime scene?"), new Message(0, "It should be common sense not to mess with stuff before the police gets there.")}}
-                    }),
-                    new MultipleChoice(0, "Be real with us. What were you up to before the attack?", 2, new Dictionary<string, Message[]>
-                    {
-                        {"We stopped at a gas station.", new Message[] {new Message(0, "... We?")}},
-                        {"We were sharing drinks at a bar.", new Message[] {new Message(0, "Just drinking?? You're leaving out something crucial."), new Message(0, "We know about the gas station trip you made.")}}
-                    })
-                };
+                    {"I was the only one.", new Message[] {new Message(0, "Correct, you were the only witness."), new Message(0, "A good reason why you're a prime suspect at the moment.")}},
+                    {"I saw someone else.", new Message[] {new Message(0, "Come on. The house is completely isolated."), new Message(0, "There's not a single soul within a mile of the area."), new Message(0, "You must've hurt your head.")}}
+                }),
+                new MultipleChoice(0, "What sort of building were the victims in?", 2, new Dictionary<string, Message[]>
+                {
+                    {"A cabin in the woods.", new Message[] {new Message(0, "Get your eyes checked."), new Message(0, "Or your head.")}},
+                    {"An old farmhouse.", new Message[] {new Message(0, "Good."), new Message(0, "You can remember where you were, at least.")}}
+                }),
+                new MultipleChoice(0, "Have you ever been to that house before that day?", 2, new Dictionary<string, Message[]>
+                {
+                    {"No, I don't believe so.", new Message[] {new Message(0, "This is not going well for you."), new Message(0, "We've discovered old polaroids of you soliciting the premises.")}},
+                    {"Yes, I believe so.", new Message[] {new Message(0, "Indeed, we're aware you paid some visits to them in the past.")}}
+                }),
+                new MultipleChoice(0, "How well did you know the victims?", 2, new Dictionary<string, Message[]>
+                {
+                    {"Quite well actually.", new Message[] {new Message(0, "Sounds about right. Although I'm sure that family knew just about everyone in this town.")}},
+                    {"Only in passing.", new Message[] {new Message(0, "Yeah right. We have evidence you were a close friend of the family."), new Message(0, "I mean how could you even get that one wrong?")}}
+                }),
+                new MultipleChoice(0, "Alright, I'm asking you to think back to the crime itself, how many things did you notice on the scene?", 2, new Dictionary<string, Message[]>
+                {
+                    {$"{interactionCount}", new Message[] {new Message(0, "Correct.")}},
+                    {$"{interactionCount + 2}", new Message[] {new Message(0, "Not quite.")}}
+                }),
+                new MultipleChoice(0, "When did the crime happen?", 2, new Dictionary<string, Message[]>
+                {
+                    {"In the afternoon.", new Message[] {new Message(0, "Then how come the house wasn't dust at your feet when we got there?"), new Message(0, "OoooOOOooo an unburnable house, haha.")}},
+                    {"In the nighttime.", new Message[] {new Message(0, "It sure did."), new Message(0, "Any earlier and you wouldn't have had time for your one-man investigation.")}}
+                }),
+                new MultipleChoice(0, "In which direction do you believe the perpetrator fled the scene?", 2, new Dictionary<string, Message[]>
+                {
+                    {"Out the front door.", new Message[] {new Message(0, "Is that right?"), new Message(0, "Doesn't quite explain all the blood by the side door.")}},
+                    {"Out the side door.", new Message[] {new Message(0, "That checks out with what our guy says."), new Message(0, "The side door was indeed ajar and bloodied when we examined the scene.")}}
+                }),
+                new MultipleChoice(0, "And how do you think they made it into the building in the first place?", 2, new Dictionary<string, Message[]>
+                {
+                    {"In through the garage.", new Message[] {new Message(0, "That's silly. The garage only has one entrance and exit.")}},
+                    {"In through the window.", new Message[] {new Message(0, "You must be right."), new Message(0, "It seems they made it halfway through the house before they woke someone up.")}}
+                }),
+                new MultipleChoice(0, "Any guesses on how they set the fire?", 2, new Dictionary<string, Message[]>
+                {
+                    {"Gasoline and a molotov.", new Message[] {new Message(0, "Wow, a dramatic flair, eh?"), new Message(0, "I'll believe it when I see it.")}},
+                    {"Gasoline and a lighter.", new Message[] {new Message(0, "Indeed."), new Message(0, "That molotov cocktail looked pretty... unused.")}}
+                }),
+                new MultipleChoice(0, "How about the blood?", 2, new Dictionary<string, Message[]>
+                {
+                    {"It must've been the knife.", new Message[] {new Message(0, "What knife?"), new Message(0, "You're one hell of a nut case.")}},
+                    {"It must've been the gun.", new Message[] {new Message(0, "Our forensics team found the same."), new Message(0, "It must've been quite the struggle, the way we found the Father.")}}
+                }),
+                new MultipleChoice(0, "Anything else you think might help us?", 2, new Dictionary<string, Message[]>
+                {
+                    {"William was a jerk.", new Message[] {new Message(0, "With that much money? It's no surprise."), new Message(0, "I'd hate to have known him too.")}},
+                    {"Warren was a liar.", new Message[] {new Message(0, "What do you mean?"), new Message(1, "He's in a lot more debt than he told me."), new Message(0, "That is... interesting.")}}
+                }),
+                new MultipleChoice(0, "What about something more tangible?", 2, new Dictionary<string, Message[]>
+                {
+                    {"There was a photo.", new Message[] {new Message(0, "We're already aware of the photos."), new Message(0, "Family portraits aren't exactly what we're looking for from a dead family.")}},
+                    {"There was a document.", new Message[] {new Message(0, "Go on."), new Message(1, "It seems William declined a big offer for the farm recently."), new Message(0, "I wonder what that would mean for our criminal...")}}
+                }),
+                new MultipleChoice(0, "Ok, let's talk motives, did the victims have any rivals?", 2, new Dictionary<string, Message[]>
+                {
+                    {"I don't think so.", new Message[] {new Message(0, "Really? You had no idea, huh.")}},
+                    {"I think so.", new Message[] {new Message(0, "Hmph, that must explain the brotherly tiffs witnesses reported on.")}}
+                }),
+                new MultipleChoice(0, "And how about you? Why were you so intent on inspecting the evidence?", 2, new Dictionary<string, Message[]>
+                {
+                    {"The flames would've disintegrated it all.", new Message[] {new Message(0, "Fine. That's reasonable.")}},
+                    {"I didn't mean to.", new Message[] {new Message(0, "You didn't mean to tamper with an active crime scene?"), new Message(0, "It should be common sense not to mess with stuff before the police gets there.")}}
+                }),
+                new MultipleChoice(0, "Be real with us. What were you up to before the attack?", 2, new Dictionary<string, Message[]>
+                {
+                    {"We stopped at a gas station.", new Message[] {new Message(0, "... We?")}},
+                    {"We were sharing drinks at a bar.", new Message[] {new Message(0, "Just drinking?? You're leaving out something crucial."), new Message(0, "We know about the gas station trip you made.")}}
+                })
+            };
 
-                questions = questions.ToList();
+            questions = questions.ToList();
 
             // Create a final messages array combining fixed messages with the randomized questions
                 List<Message> finalMessages = new List<Message>();

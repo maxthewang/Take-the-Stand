@@ -28,5 +28,6 @@ public class AnimatorController : MonoBehaviour
     public void OnTimerEnd()
     {
         animator.SetTrigger("Turn Around");
+        Debug.Log("Turning");
     }
 }
