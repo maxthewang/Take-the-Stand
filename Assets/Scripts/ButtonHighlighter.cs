@@ -6,6 +6,9 @@ using UnityEngine.EventSystems;
 public class ButtonHighlighter : MonoBehaviour, ISelectHandler, IDeselectHandler
 {
     public GameObject pumpkinHighlight;
+	void OnDisable(){
+        pumpkinHighlight.SetActive(false);
+	}
     // Start is called before the first frame update
     void Start()
     {

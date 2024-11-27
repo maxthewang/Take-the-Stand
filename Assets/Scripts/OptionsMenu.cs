@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
+using System.Collections.Generic;
+using UnityEngine.EventSystems;
 
 public class OptionsMenu : MonoBehaviour
 {
@@ -9,7 +11,12 @@ public class OptionsMenu : MonoBehaviour
     private bool isSettings = false;
     public GameObject pauseMenuUI;
 	[SerializeField]
+	private GameObject resumeButton;
+	[SerializeField]
     private PlayerInputActions playerControls;
+
+	[SerializeField]
+	private List<GameObject> OtherThingsToCheck;
 
     private void Awake()
     {
@@ -62,10 +69,18 @@ public class OptionsMenu : MonoBehaviour
         if (isPaused && !isSettings)
         {
             ResumeGame();  // If the game is paused, resume it
+			for(int i = 0; i < OtherThingsToCheck.Count; i++){
+				if(OtherThingsToCheck[i].activeSelf){
+					EventSystem.current.SetSelectedGameObject(OtherThingsToCheck[i]);
+				}
+			}
         }
         else
         {
             PauseGame();   // If the game is running, pause it
+			if(resumeButton.activeSelf){
+				EventSystem.current.SetSelectedGameObject(resumeButton);
+			}
         }
     }
 
@@ -83,6 +98,11 @@ public class OptionsMenu : MonoBehaviour
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
         }
+		for(int i = 0; i < OtherThingsToCheck.Count; i++){
+			if(OtherThingsToCheck[i].activeSelf){
+				EventSystem.current.SetSelectedGameObject(OtherThingsToCheck[i]);
+			}
+		}
         // pointer.SetActive(true);
     }
 
