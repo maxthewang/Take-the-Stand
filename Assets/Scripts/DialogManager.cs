@@ -18,7 +18,7 @@ public class DialogManager : MonoBehaviour
     public TMP_Text choiceMessageText;
     public AudioSource boxSound;
     public static bool isActive = true;
-    private List<string> correctStrings = new List<string> {"Quite well actually.", "Out the side door.", "Gasoline and a lighter.", "An old farmhouse.", $"{GameManager.instance.GetInteractionCount()}", "I think so.", "We stopped at a gas station.", "The flames would've disintegrated it all.", "In the nighttime.", "I was the only one.", "Yes, I believe so.", "It was Warren."};
+    private List<string> correctStrings = new List<string> {"Quite well actually.", "Out the side door.", "Gasoline and a lighter.", "An old farmhouse.", $"{GameManager.instance.GetInteractionCount()}", "I think so.", "We stopped at a gas station.", "The flames would've disintegrated it all.", "In the nighttime.", "I was the only one.", "Yes, I believe so.", "It was Warren.", "In through the window.", "It must've been the gun.", "Warren was a liar.", "There was a document."};
 
 	public List<TMP_Text> buttonTexts;
 
@@ -185,7 +185,7 @@ public class DialogManager : MonoBehaviour
             else
             {
                 int trust = GameManager.instance.GetTrust();
-                if (trust > 10)
+                if (trust >= 15)
                 {
 					FadeTransition.instance.FadeToBlack("Win Scene");
                 }

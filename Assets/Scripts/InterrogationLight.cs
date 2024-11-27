@@ -5,7 +5,7 @@ using UnityEngine;
 public class InterrogationLight : MonoBehaviour
 {
     // Start is called before the first frame update
-    int trust = 5;
+    int trust = 0;
     private Light lightComponent;
     Color color0 = Color.red;
     Color color1 = Color.cyan;
@@ -15,7 +15,7 @@ public class InterrogationLight : MonoBehaviour
         if (lightComponent != null)
         {
             // Set the initial light color based on the trust value
-            lightComponent.color = Color.Lerp(color0, color1, trust / 10f);
+            lightComponent.color = Color.Lerp(color0, color1, (trust + 15) / 30f);
         }
         else
         {
@@ -29,7 +29,7 @@ public class InterrogationLight : MonoBehaviour
         trust = GameManager.instance.GetTrust();
         if (lightComponent != null)
         {
-            lightComponent.color = Color.Lerp(color0, color1, trust / 10f);
+            lightComponent.color = Color.Lerp(color0, color1, (trust + 15) / 30f);
         }
     }
 }
