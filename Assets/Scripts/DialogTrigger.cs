@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Linq;
+using System;
 
 public class DialogTrigger : MonoBehaviour
 {
@@ -18,11 +19,11 @@ public class DialogTrigger : MonoBehaviour
         {
             messages = new Message[]
             {
-                new Message(0, "As you know, you're the main suspect in the arson attack that took place last night."),
-                new Message(0, "And you understand that we can use anything you say against you, right?"),
-                new Message(1, "Does it matter if I didn't do it?"),
-                new Message(0, "Well then these questions should be easy for you."),
-                new Message(0, "And we only want the truth, got it?")
+                new Message(0, "As you know, you're the main suspect in the arson attack that took place last night.", "Audio/NewVoicelines/Edited_files/IntroVoiceLines/Interrogator/As_you_know"),
+                new Message(0, "And you understand that we can use anything you say against you, right?", "Audio/NewVoicelines/Edited_files/IntroVoiceLines/Interrogator/And_you_understand"),
+                new Message(1, "Does it matter if I didn't do it?", "Audio/NewVoicelines/Edited_files/IntroVoiceLines/Does_it_matter"),
+                new Message(0, "Well then these questions should be easy for you.", "Audio/NewVoicelines/Edited_files/IntroVoiceLines/Interrogator/Well_then"),
+                new Message(0, "And we only want the truth, got it?", "Audio/NewVoicelines/Edited_files/IntroVoiceLines/Interrogator/And_we_only")
             };
         }
         else
@@ -163,12 +164,28 @@ public class Message
 {
     public int actorid;
     public string message;
+    public AudioClip voiceline;
 
     // Constructor that initializes actorid and message
-    public Message(int actorid, string message)
+    public Message(int actorid, string message, string voicelinePath = "")
     {
         this.actorid = actorid;
         this.message = message;
+        if (!string.IsNullOrEmpty(voicelinePath))
+        {
+            LoadVoiceline(voicelinePath);
+        }
+    }
+    
+    // Method to load the voiceline
+    public void LoadVoiceline(string path)
+    {
+        Debug.Log("Loading voiceline at path: " + path);
+        voiceline = Resources.Load(path) as AudioClip;
+        if (voiceline == null)
+        {
+            Debug.LogError("Failed to load voiceline at path: " + path);
+        }
     }
 }
 
