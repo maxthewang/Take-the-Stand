@@ -10,21 +10,15 @@ public class DialogTrigger : MonoBehaviour
     private Message[] messages;
     public Actor[] actors;
     private int i = 0;
-    private string introSoundsPath = "Audio/NewVoicelines/Edited_files/IntroVoiceLines/";
+    public static string rootDirectory = "Audio/NewVoicelines/Edited_files/";
+    private string introSoundsPath = "IntroVoiceLines/";
     private string interrogator = "Interrogator/";
-    private string positiveResponseSoundsPath = "Audio/NewVoicelines/Edited_files/InterrogationVoiceLines/PositiveResponse";
-    private string negativeResponseSoundsPath = "Audio/NewVoicelines/Edited_files/InterrogationVoiceLines/NegativeResponse";
-    private AudioClip LoadRandomAudioClip(string path)
+
+    static public string FormDirectoryPath(string[] path)
     {
-        AudioClip[] clips = Resources.LoadAll<AudioClip>(path);
-        if (clips.Length == 0)
-        {
-            Debug.LogError("No audio clips found at path: " + path);
-            return null;
-        }
-        int randomIndex = UnityEngine.Random.Range(0, clips.Length);
-        return clips[randomIndex];
+        return rootDirectory + string.Join("", path);
     }
+
 
     public void StartDialogue()
     {
@@ -32,13 +26,15 @@ public class DialogTrigger : MonoBehaviour
         
         if (currScene == "Intro")
         {
+            string soundPath = FormDirectoryPath(new string[] {introSoundsPath});
+            string interrogatorSoundPath = soundPath + interrogator;
             messages = new Message[]
             {
-                new Message(0, "As you know, you're the main suspect in the arson attack that took place last night.", introSoundsPath + interrogator + "As_you_know"),
-                new Message(0, "And you understand that we can use anything you say against you, right?", introSoundsPath + interrogator + "And_you_understand"),
-                new Message(1, "Does it matter if I didn't do it?", introSoundsPath + "Does_it_matter"),
-                new Message(0, "Well then these questions should be easy for you.", introSoundsPath + interrogator + "Well_then"),
-                new Message(0, "And we only want the truth, got it?", introSoundsPath + interrogator + "And_we_only")
+                new Message(0, "As you know, you're the main suspect in the arson attack that took place last night.", interrogatorSoundPath + "As_you_know"),
+                new Message(0, "And you understand that we can use anything you say against you, right?", interrogatorSoundPath + "And_you_understand"),
+                new Message(1, "Does it matter if I didn't do it?", soundPath + "Does_it_matter"),
+                new Message(0, "Well then these questions should be easy for you.", interrogatorSoundPath + "Well_then"),
+                new Message(0, "And we only want the truth, got it?", interrogatorSoundPath + "And_we_only")
             };
         }
         else
@@ -187,6 +183,32 @@ public class Message
 public class MultipleChoice : Message{
 	public int numberOfChoices;
 	public Dictionary<string, Message[]> optionStrings;
+    public static string positiveResponseSoundsPath = "InterrogationVoiceLines/PositiveResponse";
+    public static string negativeResponseSoundsPath = "InterrogationVoiceLines/NegativeResponse";
+
+    
+    public static AudioClip LoadRandomAudioClip(string path)
+    {
+        AudioClip[] clips = Resources.LoadAll<AudioClip>(path);
+        if (clips.Length == 0)
+        {
+            Debug.LogError("No audio clips found at path: " + path);
+            return null;
+        }
+        int randomIndex = UnityEngine.Random.Range(0, clips.Length);
+        return clips[randomIndex];
+    }
+
+    public static AudioClip LoadRandomPositiveResponse()
+    {
+        return LoadRandomAudioClip(DialogTrigger.FormDirectoryPath(new string[] {positiveResponseSoundsPath}));
+    }
+
+    public static AudioClip LoadRandomNegativeResponse()
+    {
+        return LoadRandomAudioClip(DialogTrigger.FormDirectoryPath(new string[] {negativeResponseSoundsPath}));
+    }
+
 
 	public MultipleChoice(int actorid, string message, int numberOfChoices, Dictionary<string, Message[]> optionStrings) : base(actorid, message){
 		this.optionStrings = optionStrings;

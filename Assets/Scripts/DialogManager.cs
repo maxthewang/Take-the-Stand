@@ -36,7 +36,23 @@ public class DialogManager : MonoBehaviour
     private void Start()
     {
         mainCharacterVoice = GameObject.FindWithTag("Player").GetComponentInChildren<AudioSource>();
+        if (mainCharacterVoice == null)
+        {
+            mainCharacterVoice = GameObject.Find("MainCharVoice").GetComponent<AudioSource>();
+            if (mainCharacterVoice == null)
+            {
+                Debug.LogError("Main character voice not found");
+            }
+        }
         interrogatorAnimationManager = GameObject.FindWithTag("Interrogator").GetComponent<InterrogatorAnimationManager>();
+        if (interrogatorAnimationManager == null)
+        {
+            interrogatorAnimationManager = GameObject.Find("Interrogator").GetComponent<InterrogatorAnimationManager>();
+            if (interrogatorAnimationManager == null)
+            {
+                Debug.LogError("Interrogator animation manager not found");
+            }
+        }
         interrogatorVoice = GameObject.FindWithTag("Interrogator").GetComponentInChildren<AudioSource>();
     }
 
@@ -72,11 +88,16 @@ public class DialogManager : MonoBehaviour
         currentMessages = optionStrings[selectedMessage].Concat(remainingMessages).ToArray();
 
 		activeMessage = 0;
+        StopPlayingVoicelines();
         if (correctStrings.Contains(selectedMessage)) {
+            interrogatorVoice.clip = MultipleChoice.LoadRandomPositiveResponse();
             GameManager.instance.IncreaseTrust();
         } else {
+            RandomNegativeAnimation();
+            interrogatorVoice.clip = MultipleChoice.LoadRandomNegativeResponse();
             GameManager.instance.DecreaseTrust();
         }
+        interrogatorVoice.Play();
 		DisplayMessage();
 		ShowRegularDialogueBox();
 		HideChoiceBox();
@@ -150,9 +171,12 @@ public class DialogManager : MonoBehaviour
     {
         if (activeMessage < currentMessages.Length)
         {
+            Debug.Log("interrogatorAnimationManager: " + interrogatorAnimationManager);
+            interrogatorAnimationManager.PlayCalmDown();
             Message messageToDisplay = currentMessages[activeMessage];
             if (messageToDisplay is MultipleChoice)
             {
+                interrogatorAnimationManager.PlayLeanForward();
                 DisplayOptions();
                 return;
             }
@@ -165,7 +189,15 @@ public class DialogManager : MonoBehaviour
             {
                 interrogatorVoice.clip = messageToDisplay.voiceline;
                 interrogatorVoice.Play();
-                interrogatorAnimationManager.PlayIntimidate();
+                if (SceneManager.GetActiveScene().name == "Intro")
+                {
+                    RandomNegativeAnimation();
+                }
+                else
+                {
+                    interrogatorAnimationManager.PlayCalmDown();
+                }
+                RandomNegativeAnimation();
             }
             else
             {
@@ -241,5 +273,22 @@ public class DialogManager : MonoBehaviour
     {
         interrogatorVoice.Stop();
         mainCharacterVoice.Stop();
+    }
+
+    private void RandomNegativeAnimation()
+    {
+        int random = Random.Range(0, 3);
+        if (random == 0)
+        {
+            interrogatorAnimationManager.PlayGrabHandcuff();
+        }
+        else if (random == 1)
+        {
+            interrogatorAnimationManager.PlaySmackTableAngrily();
+        }
+        else
+        {
+            interrogatorAnimationManager.PlayIntimidate();
+        }
     }
 }
