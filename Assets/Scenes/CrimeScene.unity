@@ -2896,6 +2896,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9728173a1d69b18489ca565619f85f23, type: 3}
       insertIndex: -1
       addedObject: {fileID: 336868174}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9728173a1d69b18489ca565619f85f23, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 336868176}
   m_SourcePrefab: {fileID: 100100000, guid: 9728173a1d69b18489ca565619f85f23, type: 3}
 --- !u!4 &336868172 stripped
 Transform:
@@ -2970,6 +2973,25 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &336868176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 336868173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9287154d1c2cf054c9fea93783e7bcc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionText: Click to interact.
+  interactedText: This clue has already been discovered
+  clueMessage: An old photo of Warren and I, the other kid in this photo must be
+    his brother.
+  unfoundClueMessage: 
+  voiceLine: {fileID: 0}
+  itemSprite: {fileID: 0}
 --- !u!1 &355693743
 GameObject:
   m_ObjectHideFlags: 0
@@ -5379,7 +5401,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 65ab2fcc4f4c3d649868ad1ced885168, type: 3}
+  m_audioClip: {fileID: 8300000, guid: e17732a2b13ac584983af9a3596e5361, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
