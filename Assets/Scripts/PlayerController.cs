@@ -30,9 +30,11 @@ public class PlayerController : MonoBehaviour
     private float rotationX = 0.0f; // X rotation for looking up/down
     private bool shouldMoveAnimation = false;
 
-	public GameObject notepadGameObject;
-    public GameObject settingsGameObject;
-    public GameObject pauseGameObject;
+	public GameObject notepadObject;
+    public GameObject settingsObject;
+    public GameObject pauseObject;
+    public GameObject controlsObject;
+    public TimerScript timerScript;
 
     private void Awake()
     {
@@ -125,9 +127,7 @@ public class PlayerController : MonoBehaviour
 
     private void CharacterControllerMovement() 
     {
-		if(notepadGameObject.activeSelf 
-        || settingsGameObject.activeSelf 
-        || pauseGameObject.activeSelf){
+		if(PreventMovement()){
 			return;
 		}
         Vector2 moveInput = move.ReadValue<Vector2>();
@@ -171,9 +171,7 @@ public class PlayerController : MonoBehaviour
 
     private void LookAround(Vector2 lookInput)
     {
-		if(notepadGameObject.activeSelf
-        || settingsGameObject.activeSelf 
-        || pauseGameObject.activeSelf){
+		if (PreventMovement()){
 			return;
 		}
         // Get the mouse delta input for looking
@@ -188,6 +186,15 @@ public class PlayerController : MonoBehaviour
         transform.localRotation = Quaternion.Euler(0, transform.localEulerAngles.y + mouseX, 0);
 		playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
 
+    }
+
+    private bool PreventMovement()
+    {
+        return notepadObject.activeSelf
+        || settingsObject.activeSelf 
+        || pauseObject.activeSelf
+        || controlsObject.activeSelf
+        || !timerScript.TimerOn;
     }
 
     private IEnumerator Jump()
