@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using TMPro;
-using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class TimerScript : MonoBehaviour
 {
@@ -16,6 +16,8 @@ public class TimerScript : MonoBehaviour
     public TextMeshProUGUI TimerTxt;
 
 	public GameObject notepadObject;
+    public GameObject playerObject;
+    public GameObject policeObject;
    
     void Start()
     {
@@ -49,7 +51,13 @@ public class TimerScript : MonoBehaviour
             {
                 TimeLeft = 0;
                 TimerOn = false;
-				FadeTransition.instance.FadeToBlack("NotepadScene");
+
+                AnimatorController animatorController = playerObject.GetComponent<AnimatorController>();
+                GunAnimatorController policeController = policeObject.GetComponent<GunAnimatorController>();
+                animatorController.OnTimerEnd();
+                policeController.OnTimerEnd();
+
+                StartCoroutine(fadeOut());
             }
         }
     }
@@ -66,6 +74,13 @@ public class TimerScript : MonoBehaviour
         float seconds = Mathf.FloorToInt(currentTime % 60);
 
         TimerTxt.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+    }
+
+    private IEnumerator fadeOut()
+    {
+        yield return new WaitForSeconds(4.0f);
+
+		FadeTransition.instance.FadeToBlack("NotepadScene");
     }
 
 }
