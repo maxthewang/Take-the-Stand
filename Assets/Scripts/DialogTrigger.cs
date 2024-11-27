@@ -211,6 +211,8 @@ public class MultipleChoice : Message{
     public static AudioClip LoadRandomAudioClip(string path)
     {
         AudioClip[] clips = Resources.LoadAll<AudioClip>(path);
+        Debug.Log("Loaded " + clips.Length + " audio clips from path: " + path);
+        Debug.Log("Clips: " + clips);
         if (clips.Length == 0)
         {
             Debug.LogError("No audio clips found at path: " + path);
@@ -222,12 +224,16 @@ public class MultipleChoice : Message{
 
     public static AudioClip LoadRandomPositiveResponse()
     {
-        return LoadRandomAudioClip(DialogTrigger.FormDirectoryPath(new string[] {positiveResponseSoundsPath}));
+        string path = DialogTrigger.FormDirectoryPath(new string[] {positiveResponseSoundsPath});
+        Debug.Log("Loading positive response from path: " + path);
+        return LoadRandomAudioClip(path);
     }
 
     public static AudioClip LoadRandomNegativeResponse()
     {
-        return LoadRandomAudioClip(DialogTrigger.FormDirectoryPath(new string[] {negativeResponseSoundsPath}));
+        string path = DialogTrigger.FormDirectoryPath(new string[] {negativeResponseSoundsPath});
+        Debug.Log("Loading negative response from path: " + path);
+        return LoadRandomAudioClip(path);
     }
 
 
