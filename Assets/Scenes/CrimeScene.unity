@@ -301,6 +301,7 @@ MonoBehaviour:
   clueMessage: It looks fancy, and was incidentally dropped near a bottle.
   unfoundClueMessage: It looks ______, and was incidentally ______________________.
   grabSound: {fileID: 1985355980}
+  grabSound: {fileID: 1985355980}
   voiceLine: {fileID: 929486332}
   itemSprite: {fileID: 21300000, guid: 7b857a288d2a58e499e5a3902278b2d5, type: 3}
 --- !u!23 &3173204

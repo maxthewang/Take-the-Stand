@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Linq;
 using System;
+using System;
 
 public class DialogTrigger : MonoBehaviour
 {
