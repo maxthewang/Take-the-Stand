@@ -25,18 +25,21 @@ public class DialogTrigger : MonoBehaviour
     public void StartDialogue()
     {
         string currScene = SceneManager.GetActiveScene().name;
-        
+        string introSoundPath = FormDirectoryPath(new string[] {introSoundsPath});
+        string introInterrogationSoundPath = introSoundPath + interrogatorPath;
+        string interrogationInterrogatorSoundPath = FormDirectoryPath(new string[] {interrogationVoiceLines, interrogatorPath});
+        Debug.Log(interrogationInterrogatorSoundPath);
+        string interrogationSoundPath = FormDirectoryPath(new string[] {interrogationVoiceLines});
+
         if (currScene == "Intro")
         {
-            string soundPath = FormDirectoryPath(new string[] {introSoundsPath});
-            string interrogatorSoundPath = soundPath + interrogatorPath;
             messages = new Message[]
             {
-                new Message(0, "As you know, you're the main suspect in the arson attack that took place last night.", interrogatorSoundPath + "As_you_know"),
-                new Message(0, "And you understand that we can use anything you say against you, right?", interrogatorSoundPath + "And_you_understand"),
-                new Message(1, "Does it matter if I didn't do it?", soundPath + "Does_it_matter"),
-                new Message(0, "Well then these questions should be easy for you.", interrogatorSoundPath + "Well_then"),
-                new Message(0, "And we only want the truth, got it?", interrogatorSoundPath + "And_we_only")
+                new Message(0, "As you know, you're the main suspect in the arson attack that took place last night.", introInterrogationSoundPath + "As_you_know"),
+                new Message(0, "And you understand that we can use anything you say against you, right?", introInterrogationSoundPath + "And_you_understand"),
+                new Message(1, "Does it matter if I didn't do it?", introSoundPath + "Does_it_matter"),
+                new Message(0, "Well then these questions should be easy for you.", introInterrogationSoundPath + "Well_then"),
+                new Message(0, "And we only want the truth, got it?", introInterrogationSoundPath + "And_we_only")
             };
         } 
         else
@@ -125,9 +128,9 @@ public class DialogTrigger : MonoBehaviour
 
             // Create a final messages array combining fixed messages with the randomized questions
                 List<Message> finalMessages = new List<Message>();
-                finalMessages.Add(new Message(0, "Is it all coming back to you now?")); // Optional fixed message before questions
-                finalMessages.Add(new Message(1, "Yeah, I remember what I did."));
-                finalMessages.Add(new Message(0, "Our investigators have evidence of " + interactionCount + " suspicious things you did on the scene."));
+                finalMessages.Add(new Message(0, "Is it all coming back to you now?", interrogationInterrogatorSoundPath + "Is_it_all")); // Optional fixed message before questions
+                finalMessages.Add(new Message(1, "Yeah, I remember what I did.", interrogationSoundPath + "sfx_well"));
+                finalMessages.Add(new Message(0, "Our investigators have evidence of " + interrogationInterrogatorSoundPath + " suspicious things you did on the scene."));
                 finalMessages.Add(new Message(0, "Let's start with the easy questions shall we?"));
 
                 // Add shuffled questions to final messages

@@ -215,14 +215,17 @@ public class DialogManager : MonoBehaviour
             Actor actorToDisplay = currentActors[messageToDisplay.actorid];
             actorName.text = actorToDisplay.name;
             actorImage.sprite = actorToDisplay.sprite;
+            Debug.Log("messageToDisplay: ", messageToDisplay.message);
             StopPlayingVoicelines();
+            
+            Debug.Log("messageToDisplay voiceline: ", messageToDisplay.voiceline);
             if (messageToDisplay.actorid.Equals(0))
             {
                 // Note: This is currently failing so I commented it out so the interrogation text gets displayed
-                /* interrogatorVoice.clip = messageToDisplay.voiceline;
-                Debug.Log("Playing voiceline: " + messageToDisplay.voiceline.name, interrogatorVoice.clip);
+                interrogatorVoice.clip = messageToDisplay.voiceline;
+                
                 isPlayingLine = true;
-                interrogatorVoice.Play(); */
+                interrogatorVoice.Play();
                 if (SceneManager.GetActiveScene().name == "Intro")
                 {
                     interrogatorAnimationManager.PlayRandomNegativeAnimation();
@@ -232,12 +235,12 @@ public class DialogManager : MonoBehaviour
                     interrogatorAnimationManager.PlayCalmDown();
                 }
             }
-            /* else
+            else
             {
                 mainCharacterVoice.clip = messageToDisplay.voiceline;
                 isPlayingLine = true;
                 mainCharacterVoice.Play();
-            } */
+            } 
             StopAllCoroutines();
             StartCoroutine(TypeMessage(messageText, messageToDisplay.message));
         }
