@@ -190,6 +190,15 @@ public class PlayerController : MonoBehaviour
 
     private bool PreventMovement()
     {
+        if (notepadObject == null || settingsObject == null || pauseObject == null || controlsObject == null || timerScript == null)
+        {
+            if (notepadObject == null) Debug.LogWarning("NotepadObject is not assigned.");
+            if (settingsObject == null) Debug.LogWarning("SettingsObject is not assigned.");
+            if (pauseObject == null) Debug.LogWarning("PauseObject is not assigned.");
+            if (controlsObject == null) Debug.LogWarning("ControlsObject is not assigned.");
+            if (timerScript == null) Debug.LogWarning("TimerScript is not assigned.");
+            return true;
+        }
         return notepadObject.activeSelf
         || settingsObject.activeSelf 
         || pauseObject.activeSelf
