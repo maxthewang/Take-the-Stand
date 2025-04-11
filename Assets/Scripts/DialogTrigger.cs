@@ -143,8 +143,8 @@ public class DialogTrigger : MonoBehaviour
                 List<Message> finalMessages = new List<Message>();
                 finalMessages.Add(new Message(0, "Is it all coming back to you now?", interrogatorSoundPath + "Is_it_all")); // Optional fixed message before questions
                 finalMessages.Add(new Message(1, "Yeah, I remember what I did.", soundPath + mainCharResponseSoundsPath + "sfx_yeah"));
-                finalMessages.Add(new Message(0, "Our investigators have evidence of " + interactionCount + " suspicious things you did on the scene."));
-                finalMessages.Add(new Message(0, "Let's start with the easy questions shall we?"));
+                finalMessages.Add(new Message(0, "Our investigators have evidence of " + interactionCount + " suspicious things you did on the scene.", soundPath + "NegativeResponse/sfx_hm"));
+                finalMessages.Add(new Message(0, "Let's start with the easy questions shall we?", soundPath + "NegativeResponse/sfx_ha_nl01"));
 
                 // Add shuffled questions to final messages
                 foreach (var question in questions)

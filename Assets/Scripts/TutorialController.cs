@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -10,13 +11,14 @@ public class TutorialController : MonoBehaviour
 	public TMP_Text tutorialText;
 	private bool interacted = false;
 	public TimerScript timerScript;
+    public GameObject ControlsImage;
     void Start()
     {
 		if(GameManager.instance.doneTutorial){
 			Destroy(gameObject);
 			return;
 		}
-		tutorialText.text = "Move To the Red Arrow with the Left Joystick";
+		tutorialText.text = "Move to the Red Arrow with the <color=white>Left Joystick</color>";
 		timerScript.TimerOn = false;
         
     }
@@ -25,22 +27,22 @@ public class TutorialController : MonoBehaviour
     void Update()
     {
 		if(GameManager.instance.closedNotepadOnce){
-			timerScript.TimerOn = true;
+            ControlsImage.SetActive(true);
 			Destroy(gameObject);
 		}
 		if(!interacted && GameManager.instance.outlinedObject){
-			tutorialText.text = "Press the Right Trigger To Interact With the trash can";
+			tutorialText.text = "Press <color=lightblue>X</color> to Interact with the trash can";
 		}
 		if(!interacted && GameManager.instance.GetInteractionCount() > 0){
 			interacted = true;
-			tutorialText.text = "Press Left Trigger to see what was added to the Notepad";
+			tutorialText.text = "Press <color=yellow>Y</color> to see what was added to the Notepad";
 		}
 		if(interacted){
 			if(GameManager.instance.openedNotepadOnce && !GameManager.instance.flippedPagesOnce){
-				tutorialText.text = "Press Left and Right Dpad to flip pages";
+				tutorialText.text = "Press <color=white>D-Pad</color> (Left & Right) to flip pages";
 			}
 			else if(GameManager.instance.flippedPagesOnce){
-				tutorialText.text = "Close the notepad to continue";
+				tutorialText.text = "Close the Notepad with <color=yellow>Y</color> to continue";
 				GameManager.instance.doneTutorial = true;
 			}
 		}
@@ -48,6 +50,6 @@ public class TutorialController : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other){
 		Debug.Log("Entered");
-		tutorialText.text = "Aim at the trash can with the Right Joystick";
+		tutorialText.text = "Aim at the trash can with the <color=white>Right Joystick</color>";
 	}
 }

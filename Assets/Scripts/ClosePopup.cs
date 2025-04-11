@@ -10,6 +10,7 @@ public class ClosePopup : MonoBehaviour
     public float fadeDuration = 1f;
     private PlayerInputActions playerControls;
     private InputAction startAction;
+	public TimerScript timerScript;
 
     void Awake()
     {
@@ -36,9 +37,6 @@ public class ClosePopup : MonoBehaviour
         {
             popupImage.gameObject.SetActive(true);
         }
-
-        // Pause the game time
-        Time.timeScale = 0f;
     }
 
     private void OnStartGame(InputAction.CallbackContext context)
@@ -49,7 +47,7 @@ public class ClosePopup : MonoBehaviour
         }
 
         // Start the game time
-        Time.timeScale = 1f;
+        timerScript.TimerOn = true;
     }
     IEnumerator FadeOut()
     {
