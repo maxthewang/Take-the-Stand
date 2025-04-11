@@ -80,10 +80,15 @@ public class CameraController : MonoBehaviour
 			}
 			Outlined interactableObject = objectHit.GetComponent<Outlined>();
 			if((interactableObject != currentlyHoveredObject || interactableObject == null) && currentlyHoveredObject != null){
+			Debug.Log("Hit something and turning off shader | interactable obj null: " +  (interactableObject == null) + " | " + "curr hoveredobj != null: " + (currentlyHoveredObject != null));
+			if(interactableObject == null){
+				Debug.Log("This is the object name since its null " + objectHit.name);
+			}
 				currentlyHoveredObject.TurnOffShader();
 				currentlyHoveredObject = null;
 			}
 			if(interactableObject != null && interactableObject != currentlyHoveredObject){
+			Debug.Log("Hit something and turning on shader");
 				interactableObject.TurnOnShader();
 				currentlyHoveredObject = interactableObject;
 			}
