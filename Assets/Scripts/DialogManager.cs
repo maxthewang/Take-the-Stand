@@ -296,7 +296,7 @@ public class DialogManager : MonoBehaviour
             else
             {
                 int trust = GameManager.instance.GetTrust();
-                if (trust >= 15)
+                if (trust >= 12)
                 {
                     FadeTransition.instance.FadeToBlack("Win Scene");
                 }
