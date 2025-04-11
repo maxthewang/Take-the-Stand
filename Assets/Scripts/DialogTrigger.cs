@@ -3,41 +3,57 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Linq;
+using System;
 
 public class DialogTrigger : MonoBehaviour
 {
     private Message[] messages;
     public Actor[] actors;
     private int i = 0;
+    public static string rootDirectory = "Audio/NewVoicelines/Edited_files/";
+    private string interrogationVoiceLines = "InterrogationVoiceLines/";
+    private string mainCharResponseSoundsPath = "MainCharResponseSFX/";
+    private string introSoundsPath = "IntroVoiceLines/";
+    private string interrogatorPath = "Interrogator/";
+
+    static public string FormDirectoryPath(string[] path)
+    {
+        return rootDirectory + string.Join("", path);
+    }
+
 
     public void StartDialogue()
     {
         string currScene = SceneManager.GetActiveScene().name;
-        Debug.Log(currScene);
         
         if (currScene == "Intro")
         {
+            string soundPath = FormDirectoryPath(new string[] {introSoundsPath});
+            string interrogatorSoundPath = soundPath + interrogatorPath;
             messages = new Message[]
             {
-                new Message(0, "As you know, you're the main suspect in the arson attack that took place last night."),
-                new Message(0, "And you understand that we can use anything you say against you, right?"),
-                new Message(1, "Does it matter if I didn't do it?"),
-                new Message(0, "Well then these questions should be easy for you."),
-                new Message(0, "And we only want the truth, got it?")
+                new Message(0, "As you know, you're the main suspect in the arson attack that took place last night.", interrogatorSoundPath + "As_you_know"),
+                new Message(0, "And you understand that we can use anything you say against you, right?", interrogatorSoundPath + "And_you_understand"),
+                new Message(1, "Does it matter if I didn't do it?", soundPath + "Does_it_matter"),
+                new Message(0, "Well then these questions should be easy for you.", interrogatorSoundPath + "Well_then"),
+                new Message(0, "And we only want the truth, got it?", interrogatorSoundPath + "And_we_only")
             };
         }
         else
         {
             int interactionCount = GameManager.instance.GetInteractionCount();
-            
+            string soundPath = FormDirectoryPath(new string[] {interrogationVoiceLines});
+            string interrogatorSoundPath = soundPath + interrogatorPath;
+            Debug.Log("Interrogator sound path: " + interrogatorSoundPath);
             if (interactionCount == 0)
             {
+
                 messages = new Message[]
                 {
-                    new Message(0, "Is it all coming back to you now?"),
-                    new Message(1, "I... don't remember doing anything."),
-                    new Message(0, "We're looking for the truth."),
-                    new Message(0, "Either you're lying to us or you're not thinking hard enough.")
+                    new Message(0, "Is it all coming back to you now?", interrogatorSoundPath + "Is_it_all"),
+                    new Message(1, "I... don't remember doing anything.", soundPath + "I_dont_remember"),
+                    new Message(0, "We're looking for the truth.", interrogatorSoundPath + "Were_looking_for"),
+                    new Message(0, "Either you're lying to us or you're not thinking hard enough.", interrogatorSoundPath + "Either_youre"),
                 };
             }
             else
@@ -125,10 +141,10 @@ public class DialogTrigger : MonoBehaviour
 
             // Create a final messages array combining fixed messages with the randomized questions
                 List<Message> finalMessages = new List<Message>();
-                finalMessages.Add(new Message(0, "Is it all coming back to you now?")); // Optional fixed message before questions
-                finalMessages.Add(new Message(1, "Yeah, I remember what I did."));
-                finalMessages.Add(new Message(0, "Our investigators have evidence of " + interactionCount + " suspicious things you did on the scene."));
-                finalMessages.Add(new Message(0, "Let's start with the easy questions shall we?"));
+                finalMessages.Add(new Message(0, "Is it all coming back to you now?", interrogatorSoundPath + "Is_it_all")); // Optional fixed message before questions
+                finalMessages.Add(new Message(1, "Yeah, I remember what I did.", soundPath + mainCharResponseSoundsPath + "sfx_yeah"));
+                finalMessages.Add(new Message(0, "Our investigators have evidence of " + interactionCount + " suspicious things you did on the scene.", soundPath + "NegativeResponse/sfx_hm"));
+                finalMessages.Add(new Message(0, "Let's start with the easy questions shall we?", soundPath + "NegativeResponse/sfx_ha_nl01"));
 
                 // Add shuffled questions to final messages
                 foreach (var question in questions)
@@ -164,12 +180,28 @@ public class Message
 {
     public int actorid;
     public string message;
+    public AudioClip voiceline;
 
     // Constructor that initializes actorid and message
-    public Message(int actorid, string message)
+    public Message(int actorid, string message, string voicelinePath = "")
     {
         this.actorid = actorid;
         this.message = message;
+        if (!string.IsNullOrEmpty(voicelinePath))
+        {
+            LoadVoiceline(voicelinePath);
+        }
+    }
+    
+    // Method to load the voiceline
+    public void LoadVoiceline(string path)
+    {
+        Debug.Log("Loading voiceline at path: " + path);
+        voiceline = Resources.Load(path) as AudioClip;
+        if (voiceline == null)
+        {
+            Debug.LogError("Failed to load voiceline at path: " + path);
+        }
     }
 }
 
@@ -177,6 +209,38 @@ public class Message
 public class MultipleChoice : Message{
 	public int numberOfChoices;
 	public Dictionary<string, Message[]> optionStrings;
+    public static string positiveResponseSoundsPath = "InterrogationVoiceLines/PositiveResponse";
+    public static string negativeResponseSoundsPath = "InterrogationVoiceLines/NegativeResponse";
+
+    
+    public static AudioClip LoadRandomAudioClip(string path)
+    {
+        AudioClip[] clips = Resources.LoadAll<AudioClip>(path);
+        Debug.Log("Loaded " + clips.Length + " audio clips from path: " + path);
+        Debug.Log("Clips: " + clips);
+        if (clips.Length == 0)
+        {
+            Debug.LogError("No audio clips found at path: " + path);
+            return null;
+        }
+        int randomIndex = UnityEngine.Random.Range(0, clips.Length);
+        return clips[randomIndex];
+    }
+
+    public static AudioClip LoadRandomPositiveResponse()
+    {
+        string path = DialogTrigger.FormDirectoryPath(new string[] {positiveResponseSoundsPath});
+        Debug.Log("Loading positive response from path: " + path);
+        return LoadRandomAudioClip(path);
+    }
+
+    public static AudioClip LoadRandomNegativeResponse()
+    {
+        string path = DialogTrigger.FormDirectoryPath(new string[] {negativeResponseSoundsPath});
+        Debug.Log("Loading negative response from path: " + path);
+        return LoadRandomAudioClip(path);
+    }
+
 
 	public MultipleChoice(int actorid, string message, int numberOfChoices, Dictionary<string, Message[]> optionStrings) : base(actorid, message){
 		this.optionStrings = optionStrings;

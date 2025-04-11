@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using TMPro;
-using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class TimerScript : MonoBehaviour
 {
@@ -8,15 +8,20 @@ public class TimerScript : MonoBehaviour
     public bool TimerOn = false;
     public AudioSource sirenSound;
     public AudioSource clockSound;
+    public AudioSource bellSound;
     public AudioSource introVoiceLine;
     public AudioSource sirenVoiceLine;
     private bool sirenPlaying = false;
     private bool voicePlayed = false;
+    private bool flashing = false;
+    private Color flashColor = Color.red;
 
     public TextMeshProUGUI TimerTxt;
 
-	public GameObject notepadObject;
-   
+    public GameObject notepadObject;
+    public GameObject playerObject;
+    public GameObject policeObject;
+
     void Start()
     {
         TimerOn = true;
@@ -24,40 +29,55 @@ public class TimerScript : MonoBehaviour
 
     void Update()
     {
-        if(TimerOn)
+        if (TimerOn)
         {
-            if(TimeLeft > 0)
+            if (TimeLeft > 0)
             {
                 TimeLeft -= Time.deltaTime;
                 updateTimer(TimeLeft);
 
-                if(TimeLeft <= 30f && !sirenPlaying)
+                if (TimeLeft <= 30f && !sirenPlaying)
                 {
                     sirenSound.Play();
                     sirenVoiceLine.Play();
                     sirenPlaying = true;
-                } else if (sirenPlaying) {
+                    flashing = true;
+                }
+                else if (sirenPlaying)
+                {
                     sirenSound.volume = (30 - TimeLeft) / 30;
                 }
 
-                if(TimeLeft <= 10f && !clockSound.isPlaying)
+                if (TimeLeft <= 10f && !clockSound.isPlaying)
                 {
                     clockSound.Play();
                 }
             }
             else
             {
-                Debug.Log("Time is UP!");
                 TimeLeft = 0;
                 TimerOn = false;
-				FadeTransition.instance.FadeToBlack("NotepadScene");
+
+                bellSound.Play();
+                AnimatorController animatorController = playerObject.GetComponent<AnimatorController>();
+                GunAnimatorController policeController = policeObject.GetComponent<GunAnimatorController>();
+                animatorController.OnTimerEnd();
+                policeController.OnTimerEnd();
+
+                StartCoroutine(fadeOut());
             }
+        }
+        if (flashing)
+        {
+            float alpha = Mathf.PingPong(Time.time * 2f, 0.5f) + 0.5f; // oscillates between 0.5 and 1.0
+            TimerTxt.color = new Color(flashColor.r, flashColor.g, flashColor.b, alpha);
         }
     }
 
     void updateTimer(float currentTime)
     {
-        if (!voicePlayed) {
+        if (!voicePlayed)
+        {
             introVoiceLine.Play();
             voicePlayed = true;
         }
@@ -67,6 +87,13 @@ public class TimerScript : MonoBehaviour
         float seconds = Mathf.FloorToInt(currentTime % 60);
 
         TimerTxt.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+    }
+
+    private IEnumerator fadeOut()
+    {
+        yield return new WaitForSeconds(4.0f);
+
+        FadeTransition.instance.FadeToBlack("NotepadScene");
     }
 
 }

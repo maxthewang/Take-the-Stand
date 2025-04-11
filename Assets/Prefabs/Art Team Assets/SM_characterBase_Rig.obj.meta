@@ -3,7 +3,12 @@ guid: e4154e5da877f124d91e9316a68f019a
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SM_characterBase_Low_Geometry_GroupMat
+    second: {fileID: 2100000, guid: 8faaec5a975c6489d8404b4fa3c9ed4f, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
