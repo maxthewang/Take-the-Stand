@@ -295,8 +295,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionText: Click to interact.
   interactedText: This clue has already been discovered
-  clueMessage: Almost all the fluid is gone, but it doesn't seem that old the engraving
-    of W.K is untarnished, it's like someone was burning it for fun.
+  clueMessage: Almost all the fluid is gone, but it doesn't seem that old. The engraving
+    of W.K is untarnished, like someone was using it for fun.
   unfoundClueMessage: 
   grabSound: {fileID: 1985355980}
   voiceLine: {fileID: 929486332}
@@ -642,7 +642,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &29932729
 RectTransform:
   m_ObjectHideFlags: 0
@@ -652,7 +652,7 @@ RectTransform:
   m_GameObject: {fileID: 29932728}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.32, y: 2.32, z: 2.32}
+  m_LocalScale: {x: 2.1, y: 2.1, z: 2.1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 924988074}
@@ -660,7 +660,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 177, y: 112}
+  m_SizeDelta: {x: 177, y: 130}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &29932730
 MonoBehaviour:
@@ -689,7 +689,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.93333334}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1001,10 +1001,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1140753822}
     m_Modifications:
-    - target: {fileID: -7511558181221131132, guid: b1525ebb37100074e9117eea86d5a0ea, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 84bb5a20442bd1643bd89821ca9fc3a1, type: 2}
     - target: {fileID: -8679921383154817045, guid: 78301c4475acfc3428aa4ef520177b87, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.08
@@ -1019,31 +1015,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 78301c4475acfc3428aa4ef520177b87, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -33.362
+      value: -32.942
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 78301c4475acfc3428aa4ef520177b87, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 21.988
+      value: 21.993
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 78301c4475acfc3428aa4ef520177b87, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 7.007
+      value: 7.298
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 78301c4475acfc3428aa4ef520177b87, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.29883623
+      value: -0.64085644
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 78301c4475acfc3428aa4ef520177b87, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.64085644
+      value: 0.29883623
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 78301c4475acfc3428aa4ef520177b87, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.64085644
+      value: -0.29883623
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 78301c4475acfc3428aa4ef520177b87, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.29883623
+      value: 0.64085644
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 78301c4475acfc3428aa4ef520177b87, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1051,11 +1047,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 78301c4475acfc3428aa4ef520177b87, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 230
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 78301c4475acfc3428aa4ef520177b87, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 90
+      value: 270
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 78301c4475acfc3428aa4ef520177b87, type: 3}
       propertyPath: m_ConstrainProportionsScale
@@ -1065,6 +1061,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Master Key
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: b1525ebb37100074e9117eea86d5a0ea, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 84bb5a20442bd1643bd89821ca9fc3a1, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1082,6 +1082,134 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 300416668}
   m_SourcePrefab: {fileID: 100100000, guid: 78301c4475acfc3428aa4ef520177b87, type: 3}
+--- !u!1 &114871365
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 114871366}
+  - component: {fileID: 114871367}
+  m_Layer: 0
+  m_Name: Molotov
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &114871366
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 114871365}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1236886581}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &114871367
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 114871365}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 91dc345e1002ccd4eaab60e739bcbdd3, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.538
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &134051040
 GameObject:
   m_ObjectHideFlags: 0
@@ -1872,14 +2000,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1140753822}
     m_Modifications:
-    - target: {fileID: -7972127631495061029, guid: cc4dc72aff64d453da3c63cad42078c9, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 1726d3284ed2c7f4aa95962e69998210, type: 2}
-    - target: {fileID: 412738641791304340, guid: cc4dc72aff64d453da3c63cad42078c9, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: e31798231a22f594ab9fff311055dba1, type: 2}
     - target: {fileID: -8679921383154817045, guid: e9adb978afcb59343830e8ce62272530, type: 3}
       propertyPath: m_LocalScale.x
       value: 62.999996
@@ -1960,6 +2080,14 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 2f270cc455ca042d7a0e50e11085ccd7, type: 2}
+    - target: {fileID: -7972127631495061029, guid: cc4dc72aff64d453da3c63cad42078c9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1726d3284ed2c7f4aa95962e69998210, type: 2}
+    - target: {fileID: 412738641791304340, guid: cc4dc72aff64d453da3c63cad42078c9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e31798231a22f594ab9fff311055dba1, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2566,7 +2694,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionText: Click to interact.
   interactedText: This clue has already been discovered
-  clueMessage: It has initials on it, W.K., I wonder how the criminal got their hands
+  clueMessage: It has initials on it, W.K. I wonder how the criminal got their hands
     on this.
   unfoundClueMessage: 
   grabSound: {fileID: 1745764613}
@@ -2682,7 +2810,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -190.47202, y: 39.73397}
+  m_AnchoredPosition: {x: -81.7, y: 45.4}
   m_SizeDelta: {x: 219.2558, y: 34.1321}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &312115159
@@ -2925,15 +3053,15 @@ RectTransform:
   m_GameObject: {fileID: 355693743}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.32, y: 1.32, z: 1.32}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.79999995, y: 0.79999995, z: 0.79999995}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1809356415}
   m_Father: {fileID: 595528662}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -207.9, y: -115}
+  m_AnchoredPosition: {x: 0, y: -44.3}
   m_SizeDelta: {x: 142.8826, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &332325075
@@ -3100,7 +3228,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 6897a61dbb3e14f41a5d03154aa555b5, type: 2}
     - target: {fileID: 919132149155446097, guid: 9728173a1d69b18489ca565619f85f23, type: 3}
       propertyPath: m_Name
-      value: Photo
+      value: Burned Photo
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3115,6 +3243,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9728173a1d69b18489ca565619f85f23, type: 3}
       insertIndex: -1
       addedObject: {fileID: 336868176}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9728173a1d69b18489ca565619f85f23, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 336868177}
   m_SourcePrefab: {fileID: 100100000, guid: 9728173a1d69b18489ca565619f85f23, type: 3}
 --- !u!4 &336868172 stripped
 Transform:
@@ -3203,12 +3334,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionText: Click to interact.
   interactedText: This clue has already been discovered
-  clueMessage: An old photo of Warren and I, the other kid in this photo must be
-    his brother.
+  clueMessage: An old photo of Warren and I. It's bringing back memories of when
+    I used to visit.
   unfoundClueMessage: 
-  grabSound: {fileID: 0}
-  voiceLine: {fileID: 0}
-  itemSprite: {fileID: 0}
+  grabSound: {fileID: 250905754}
+  voiceLine: {fileID: 980952767}
+  itemSprite: {fileID: 21300000, guid: 9f887a5da60f7d948b17383e21492c5b, type: 3}
+--- !u!114 &336868177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 336868173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68e484bdc9910c94ea58f3385d3e7ed4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &355693743
 GameObject:
   m_ObjectHideFlags: 0
@@ -4119,8 +4262,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionText: Click to interact.
   interactedText: This clue has already been discovered
-  clueMessage: 'It was dropped by an unlocked window, what an uncoordinated, potentially
-    impaired criminal. '
+  clueMessage: It was dropped by an unlocked window. The criminal was either peeking
+    in or trying to smash through it.
   unfoundClueMessage: 
   grabSound: {fileID: 1443717453}
   voiceLine: {fileID: 1457645916}
@@ -5006,7 +5149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.8392157}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.9019608}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -5142,7 +5285,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &617049446
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5809,15 +5952,15 @@ RectTransform:
   m_GameObject: {fileID: 659213366}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.4687594, y: 1.4687594, z: 1.4687594}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 595528662}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 174.6, y: -65}
-  m_SizeDelta: {x: 177, y: 112}
+  m_AnchoredPosition: {x: 185.8, y: -80.8}
+  m_SizeDelta: {x: 177, y: 130}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &659213368
 MonoBehaviour:
@@ -7761,7 +7904,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a07ac907edf507c46b8167c54126b708, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TimeLeft: 60
+  TimeLeft: 180
   TimerOn: 1
   sirenSound: {fileID: 1140794980}
   clockSound: {fileID: 2024364312}
@@ -7989,11 +8132,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionText: Click to interact.
   interactedText: This clue has already been discovered
-  clueMessage: William wrote about... well not a lot, he brags about his money, and
+  clueMessage: William wrote about... well not a lot. He brags about his money, and
     complains about his wife and kids. Seems like not too long ago he was in a big
     argument with his brother.
   unfoundClueMessage: 
-  grabSound: {fileID: 0}
+  grabSound: {fileID: 984965828}
   voiceLine: {fileID: 659095}
   itemSprite: {fileID: 21300000, guid: 874e14a9474160a4d93ffee2b19c4372, type: 3}
 --- !u!65 &942539903
@@ -8839,6 +8982,134 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &984965826
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 984965827}
+  - component: {fileID: 984965828}
+  m_Layer: 0
+  m_Name: Journal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &984965827
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 984965826}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1236886581}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &984965828
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 984965826}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 65511036ef16ef544ab0cadae96555a1, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.538
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &989481415
 GameObject:
   m_ObjectHideFlags: 0
@@ -8874,7 +9145,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -200.09998, y: 77.3}
+  m_AnchoredPosition: {x: -90.4, y: 80.9}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &989481417
@@ -9281,7 +9552,7 @@ MonoBehaviour:
   walkingSound: {fileID: 20253882}
   playerCamera: {fileID: 963194227}
   gravity: -200
-  notepadObject: {fileID: 812011329}
+  notepadObject: {fileID: 1188834729}
   settingsObject: {fileID: 595528661}
   pauseObject: {fileID: 1289529672}
   controlsObject: {fileID: 29932728}
@@ -9584,8 +9855,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionText: Click to interact.
   interactedText: This clue has already been discovered
-  clueMessage: A business deal proposing nearly 1M for the farm and all it's land.
-    It seems like it was rejected by William. Crazy guy.
+  clueMessage: A business deal proposing nearly $1,000,000 for the farm and all its
+    land. It seems like it was rejected by William. Crazy guy.
   unfoundClueMessage: 
   grabSound: {fileID: 90847800}
   voiceLine: {fileID: 1536619902}
@@ -10060,8 +10331,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionText: Click to interact.
   interactedText: This clue has already been discovered
-  clueMessage: There was an old photograph inside, it seemed like a family photo
-    with two brothers and their parents in a pumpkin patch.
+  clueMessage: Something's hidden at the bottom. Might be a piece of evidence that
+    the criminal tried to get rid of.
   unfoundClueMessage: 
   grabSound: {fileID: 623934118}
   voiceLine: {fileID: 558471033}
@@ -11408,6 +11679,8 @@ Transform:
   - {fileID: 1443717452}
   - {fileID: 1459731867}
   - {fileID: 90847799}
+  - {fileID: 114871366}
+  - {fileID: 984965827}
   m_Father: {fileID: 1766778618}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1236886582
@@ -11550,7 +11823,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: ee277a20556ea434988c357ed0e68ecb, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.538
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -13330,9 +13603,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionText: Click to interact.
   interactedText: This clue has already been discovered
-  clueMessage: ' I''ve always wanted one of these, good thing it''s unused!'
+  clueMessage: I've always wanted one of these, good thing it's unused!
   unfoundClueMessage: 
-  grabSound: {fileID: 0}
+  grabSound: {fileID: 114871367}
   voiceLine: {fileID: 1476862672}
   itemSprite: {fileID: 21300000, guid: 430515fc24521f544b3d868d598679df, type: 3}
 --- !u!65 &1434731168
@@ -13457,7 +13730,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 3b491235f60b02e4d9009baf0a003237, type: 3}
+  m_audioClip: {fileID: 8300000, guid: c8eff03d38658da4ebeaf481fdac459b, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -16558,8 +16831,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionText: Click to interact.
   interactedText: This clue has already been discovered
-  clueMessage: It's empty, but it there's a sharper smell under the alcohol, kinda
-    smells like the taste at the back of my throat.
+  clueMessage: It's empty, but it has a sharp scent of alcohol. Kinda smells like
+    the taste at the back of my throat.
   unfoundClueMessage: 
   grabSound: {fileID: 1265369204}
   voiceLine: {fileID: 2066415357}
@@ -16724,7 +16997,7 @@ MonoBehaviour:
   interactionText: Click to interact.
   interactedText: This clue has already been discovered
   clueMessage: It was left by the open door. It's still loaded, and the chamber's
-    half empty. It has blood on it, there must've been some sort of altercation.
+    half empty. It has blood on it, something horrific must've happened inside.
   unfoundClueMessage: 
   grabSound: {fileID: 1459731868}
   voiceLine: {fileID: 734254004}
@@ -18818,8 +19091,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionText: Click to interact.
   interactedText: This clue has already been discovered
-  clueMessage: 'Hastily discarded. It''s empty but the receipt on it is dated today,
-    surely the car in the garage wasn''t driven that recently. '
+  clueMessage: Hastily discarded. It's empty, but the receipt on it is dated today.
+    Surely the car in the garage wasn't driven that recently.
   unfoundClueMessage: 
   grabSound: {fileID: 1791570183}
   voiceLine: {fileID: 708105004}

@@ -74,7 +74,7 @@ public class GameManager : MonoBehaviour
 
 	public void RestartGame(){
 		interactionCount = 0;
-		trust = 5;
+		trust = 0;
 		DiscoverableManager.instance.RestartGame();
 		NotepadManager.instance.RestartGame();
 	}
