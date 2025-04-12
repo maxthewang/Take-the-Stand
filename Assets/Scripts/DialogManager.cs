@@ -114,7 +114,7 @@ public class DialogManager : MonoBehaviour
         {
             // Correct
             StartCoroutine(ShowFeedback("+1", Color.green));
-            interrogatorResponseVoice.clip = MultipleChoice.LoadRandomPositiveResponse();
+            // interrogatorResponseVoice.clip = MultipleChoice.LoadRandomPositiveResponse();
             GameManager.instance.IncreaseTrust();
         }
         else
@@ -122,7 +122,7 @@ public class DialogManager : MonoBehaviour
             // Incorrect
             StartCoroutine(ShowFeedback("-1", Color.red));
             interrogatorAnimationManager.PlayRandomNegativeAnimation();
-            interrogatorResponseVoice.clip = MultipleChoice.LoadRandomNegativeResponse();
+            // interrogatorResponseVoice.clip = MultipleChoice.LoadRandomNegativeResponse();
             GameManager.instance.DecreaseTrust();
         }
         if (interrogatorResponseVoice.clip == null)

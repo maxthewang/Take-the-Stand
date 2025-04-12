@@ -113,12 +113,12 @@ public class DialogTrigger : MonoBehaviour
                     new MultipleChoice(0, "Anything else you think might help us?", 2, new Dictionary<string, Message[]>
                     {
                         {"William was a jerk.", new Message[] {new Message(0, "With that much money? It's no surprise.", interrogatorSoundPath + "with_that_much_money"), new Message(0, "I'd hate to have known him too.", interrogatorSoundPath + "id_hate_to_have")}},
-                        {"Warren was a liar.", new Message[] {new Message(0, "What do you mean?", interrogatorSoundPath + "what_do_you_mean"), new Message(1, "He's in a lot more debt than he told me."), new Message(0, "That is... interesting.", interrogatorSoundPath + "that_is_interesting")}}
+                        {"Warren was a liar.", new Message[] {new Message(0, "What do you mean?", interrogatorSoundPath + "what_do_you_mean"), new Message(1, "He's in a lot more debt than he told me.", soundPath + mainCharResponseSoundsPath + "more_debt"), new Message(0, "That is... interesting.", interrogatorSoundPath + "that_is_interesting")}}
                     }, interrogatorSoundPath + "anything_else"),
                     new MultipleChoice(0, "What about something more tangible?", 2, new Dictionary<string, Message[]>
                     {
                         {"There was a photo.", new Message[] {new Message(0, "We're already aware of the photos.", interrogatorSoundPath + "were_already_aware_of"), new Message(0, "Family portraits aren't exactly what we're looking for from a dead family.", interrogatorSoundPath + "family_portraits_arent_exactly")}},
-                        {"There was a document.", new Message[] {new Message(0, "Go on.", interrogatorSoundPath + "go_on"), new Message(1, "It seems William declined a big offer for the farm recently.", interrogatorSoundPath + "i_wonder_what_that")}}
+                        {"There was a document.", new Message[] {new Message(0, "Go on.", interrogatorSoundPath + "go_on"), new Message(1, "It seems like William declined a huge offer for the farm recently.", soundPath + mainCharResponseSoundsPath + "declined_offer")}}
                     }, interrogatorSoundPath + "what_about_something"),
                     new MultipleChoice(0, "Ok, let's talk motives, did the victims have any rivals?", 2, new Dictionary<string, Message[]>
                     {
@@ -142,7 +142,7 @@ public class DialogTrigger : MonoBehaviour
             // Create a final messages array combining fixed messages with the randomized questions
                 List<Message> finalMessages = new List<Message>();
                 finalMessages.Add(new Message(0, "Is it all coming back to you now?", interrogatorSoundPath + "Is_it_all")); // Optional fixed message before questions
-                finalMessages.Add(new Message(1, "Yeah, I remember what I did.", soundPath + mainCharResponseSoundsPath + "sfx_yeah"));
+                finalMessages.Add(new Message(1, "Yeah, I'm starting to remember.", soundPath + mainCharResponseSoundsPath + "yeah_remember"));
                 finalMessages.Add(new Message(0, "Our investigators have evidence of " + interactionCount + " suspicious things you did on the scene.", soundPath + "NegativeResponse/sfx_hm"));
                 finalMessages.Add(new Message(0, "Let's start with the easy questions shall we?", soundPath + "NegativeResponse/sfx_ha_nl01"));
 
