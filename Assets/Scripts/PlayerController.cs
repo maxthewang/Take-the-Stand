@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     public float speed = 4.0f; 
     public float runSpeed = 7.0f;
     public float rotateSpeed = 120.0f; 
-    public float jumpForce = 20.0f; 
+    public float jumpForce = 5.0f; 
     public AudioSource walkingSound;
     public PlayerInputActions playerControls;
 	public Camera playerCamera;
@@ -131,25 +131,22 @@ public class PlayerController : MonoBehaviour
 			return;
 		}
         Vector2 moveInput = move.ReadValue<Vector2>();
-        moveSpeed = (transform.forward * moveInput.y + transform.right * moveInput.x).normalized * speed;
-
-        // Apply gravity
-        if (!isGrounded) 
-        {
-            moveSpeed.y += gravity * Time.deltaTime * fallMultiplier; // Adjust fall speed
-        }
-
-        // Check if grounded and reset vertical movement
+        Vector3 horizontalMovement = (transform.forward * moveInput.y + transform.right * moveInput.x).normalized * speed;
+        
+        // If grounded, reset vertical velocity; otherwise, accumulate gravity
         if (isGrounded) 
         {
             moveSpeed.y = 0;
-            if (jump.triggered) 
-            {
-                moveSpeed.y = jumpForce;
-            }
         }
-
-        controller.Move(moveSpeed * Time.deltaTime);     
+        else 
+        {
+            moveSpeed.y += gravity * Time.deltaTime * fallMultiplier; // Adjust fall speed
+        }
+        
+        // Combine horizontal movement with the persistent vertical velocity
+        Vector3 moveDirection = new Vector3(horizontalMovement.x, moveSpeed.y, horizontalMovement.z);
+        
+        controller.Move(moveDirection * Time.deltaTime);     
     }
 
     public void SetSensitivity(float sensitivityMultiplier)
