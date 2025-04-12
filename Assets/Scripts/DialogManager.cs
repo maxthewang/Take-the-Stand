@@ -205,6 +205,8 @@ public class DialogManager : MonoBehaviour
     {
         HideRegularDialogueBox();
         MultipleChoice multipleChoiceToDisplay = (MultipleChoice)currentMessages[activeMessage];
+        
+        playVoiceline(interrogatorVoice, multipleChoiceToDisplay.voiceline);
 
         if (typingCoroutine != null)
         {
@@ -240,13 +242,9 @@ public class DialogManager : MonoBehaviour
             Actor actorToDisplay = currentActors[messageToDisplay.actorid];
             actorName.text = actorToDisplay.name;
             actorImage.sprite = actorToDisplay.sprite;
-            StopPlayingVoicelines();
             if (messageToDisplay.actorid.Equals(0) && messageToDisplay.voiceline != null)
             {
-                interrogatorVoice.clip = messageToDisplay.voiceline;
-                Debug.Log("Playing voiceline: " + messageToDisplay.voiceline.name, interrogatorVoice.clip);
-                isPlayingLine = true;
-                interrogatorVoice.Play();
+                playVoiceline(interrogatorVoice, messageToDisplay.voiceline);
                 if (SceneManager.GetActiveScene().name == "Intro")
                 {
                     interrogatorAnimationManager.PlayRandomNegativeAnimation();
@@ -258,9 +256,7 @@ public class DialogManager : MonoBehaviour
             }
             else if (messageToDisplay.actorid.Equals(1) && messageToDisplay.voiceline != null)
             {
-                mainCharacterVoice.clip = messageToDisplay.voiceline;
-                isPlayingLine = true;
-                mainCharacterVoice.Play();
+                playVoiceline(mainCharacterVoice, messageToDisplay.voiceline);
             }
             if (typingCoroutine != null)
             {
@@ -352,6 +348,21 @@ public class DialogManager : MonoBehaviour
         feedbackText.transform.localPosition = originalPos;
     }
 
+    public void playVoiceline(AudioSource voice, AudioClip clip)
+    {
+        if (clip != null)
+        {
+            StopPlayingVoicelines();
+            Debug.Log("Playing voiceline: " + clip.name, clip);
+            voice.clip = clip;
+            voice.Play();
+            isPlayingLine = true;
+        }
+        else
+        {
+            Debug.LogError("No voiceline found");
+        }
+    }
 
     public void StopPlayingVoicelines()
     {

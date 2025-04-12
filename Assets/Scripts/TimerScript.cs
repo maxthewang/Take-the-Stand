@@ -9,6 +9,7 @@ public class TimerScript : MonoBehaviour
     public AudioSource sirenSound;
     public AudioSource clockSound;
     public AudioSource bellSound;
+    public AudioSource policeVoiceLine;
     public AudioSource introVoiceLine;
     public AudioSource sirenVoiceLine;
     private bool sirenPlaying = false;
@@ -59,6 +60,7 @@ public class TimerScript : MonoBehaviour
                 TimerOn = false;
 
                 bellSound.Play();
+                policeVoiceLine.Play();
                 AnimatorController animatorController = playerObject.GetComponent<AnimatorController>();
                 GunAnimatorController policeController = policeObject.GetComponent<GunAnimatorController>();
                 animatorController.OnTimerEnd();
