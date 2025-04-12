@@ -62,8 +62,8 @@ public class DialogTrigger : MonoBehaviour
                 {
                     new MultipleChoice(0, "Aside from the victims, how many witnesses were there?", 2, new Dictionary<string, Message[]>
                     {
-                        {"I was the only one.", new Message[] {new Message(0, "Correct, you were the only witness."), new Message(0, "A good reason why you're a prime suspect at the moment.", interrogatorSoundPath + "a_good_reason_why")}},
-                        {"I saw someone else.", new Message[] {new Message(0, "Come on. The house is completely isolated."), new Message(0, "There's not a single soul within a mile of the area.", interrogatorSoundPath + "theres_not_a_single"), new Message(0, "You must've hurt your head.", interrogatorSoundPath + "you_mustve_hurt_your")}}
+                        {"I was the only one.", new Message[] {new Message(0, "Correct, you were the only witness.", interrogatorSoundPath + "correct_you_were_the"), new Message(0, "A good reason why you're a prime suspect at the moment.", interrogatorSoundPath + "a_good_reason_why")}},
+                        {"I saw someone else.", new Message[] {new Message(0, "Come on. The house is completely isolated.", interrogatorSoundPath + "come_on_the_house"), new Message(0, "There's not a single soul within a mile of the area.", interrogatorSoundPath + "theres_not_a_single"), new Message(0, "You must've hurt your head.", interrogatorSoundPath + "you_mustve_hurt_your")}}
                     }, interrogatorSoundPath + "aside_from"),
                     new MultipleChoice(0, "What sort of building were the victims in?", 2, new Dictionary<string, Message[]>
                     {
@@ -82,8 +82,8 @@ public class DialogTrigger : MonoBehaviour
                     }, interrogatorSoundPath + "how_well_did"),
                     new MultipleChoice(0, "Alright, I'm asking you to think back to the crime itself, how many things did you notice on the scene?", 2, new Dictionary<string, Message[]>
                     {
-                        {$"{interactionCount}", new Message[] {new Message(0, "Correct.")}},
-                        {$"{interactionCount + 2}", new Message[] {new Message(0, "Not quite.")}}
+                        {$"{interactionCount}", new Message[] {new Message(0, "Correct.", interrogatorSoundPath + "correct")}},
+                        {$"{interactionCount + 2}", new Message[] {new Message(0, "Not quite.", interrogatorSoundPath + "not_quite")}}
                     }, interrogatorSoundPath + "alright_im_asking"),
                     new MultipleChoice(0, "When did the crime happen?", 2, new Dictionary<string, Message[]>
                     {
@@ -107,7 +107,7 @@ public class DialogTrigger : MonoBehaviour
                     }, interrogatorSoundPath + "any_guesses"),
                     new MultipleChoice(0, "How about the blood?", 2, new Dictionary<string, Message[]>
                     {
-                        {"It must've been the knife.", new Message[] {new Message(0, "What knife?", interrogatorSoundPath + "what_knife"), new Message(0, "You're one hell of a nut case.", interrogatorSoundPath + "yore_one_hell_of")}},
+                        {"It must've been the knife.", new Message[] {new Message(0, "What knife?", interrogatorSoundPath + "what_knife"), new Message(0, "You're one hell of a nut case.", interrogatorSoundPath + "youre_one_hell_of")}},
                         {"It must've been the gun.", new Message[] {new Message(0, "Our forensics team found the same.", interrogatorSoundPath + "our_forensics_team_found"), new Message(0, "It must've been quite the struggle, the way we found the Father.", interrogatorSoundPath + "it_mustve_been_quite")}}
                     }, interrogatorSoundPath + "how_about_the_blood"),
                     new MultipleChoice(0, "Anything else you think might help us?", 2, new Dictionary<string, Message[]>
@@ -144,7 +144,7 @@ public class DialogTrigger : MonoBehaviour
                 finalMessages.Add(new Message(0, "Is it all coming back to you now?", interrogatorSoundPath + "Is_it_all")); // Optional fixed message before questions
                 finalMessages.Add(new Message(1, "Yeah, I'm starting to remember.", soundPath + mainCharResponseSoundsPath + "yeah_remember"));
                 finalMessages.Add(new Message(0, "Our investigators have evidence of " + interactionCount + " suspicious things you did on the scene.", soundPath + "NegativeResponse/sfx_hm"));
-                finalMessages.Add(new Message(0, "Let's start with the easy questions shall we?", soundPath + "NegativeResponse/sfx_ha_nl01"));
+                finalMessages.Add(new Message(0, "Let's start with the easy questions shall we?", interrogatorSoundPath + "lets_start_with_the"));
 
                 // Add shuffled questions to final messages
                 foreach (var question in questions)
