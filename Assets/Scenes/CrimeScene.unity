@@ -9633,7 +9633,7 @@ MonoBehaviour:
   speed: 6
   runSpeed: 7
   rotateSpeed: 120
-  jumpForce: 15
+  jumpForce: 5
   walkingSound: {fileID: 20253882}
   playerCamera: {fileID: 963194227}
   gravity: -200
