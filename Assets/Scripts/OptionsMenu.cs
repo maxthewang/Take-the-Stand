@@ -10,13 +10,13 @@ public class OptionsMenu : MonoBehaviour
     private bool isPaused = false;
     private bool isSettings = false;
     public GameObject pauseMenuUI;
-	[SerializeField]
-	private GameObject resumeButton;
-	[SerializeField]
+    [SerializeField]
+    private GameObject resumeButton;
+    [SerializeField]
     private PlayerInputActions playerControls;
 
-	[SerializeField]
-	private List<GameObject> OtherThingsToCheck;
+    [SerializeField]
+    private List<GameObject> OtherThingsToCheck;
 
     private void Awake()
     {
@@ -69,18 +69,21 @@ public class OptionsMenu : MonoBehaviour
         if (isPaused && !isSettings)
         {
             ResumeGame();  // If the game is paused, resume it
-			for(int i = 0; i < OtherThingsToCheck.Count; i++){
-				if(OtherThingsToCheck[i].activeSelf){
-					EventSystem.current.SetSelectedGameObject(OtherThingsToCheck[i]);
-				}
-			}
+            for (int i = 0; i < OtherThingsToCheck.Count; i++)
+            {
+                if (OtherThingsToCheck[i].activeSelf)
+                {
+                    EventSystem.current.SetSelectedGameObject(OtherThingsToCheck[i]);
+                }
+            }
         }
         else
         {
             PauseGame();   // If the game is running, pause it
-			if(resumeButton.activeSelf){
-				EventSystem.current.SetSelectedGameObject(resumeButton);
-			}
+            if (resumeButton.activeSelf)
+            {
+                EventSystem.current.SetSelectedGameObject(resumeButton);
+            }
         }
     }
 
@@ -98,11 +101,13 @@ public class OptionsMenu : MonoBehaviour
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
         }
-		for(int i = 0; i < OtherThingsToCheck.Count; i++){
-			if(OtherThingsToCheck[i].activeSelf){
-				EventSystem.current.SetSelectedGameObject(OtherThingsToCheck[i]);
-			}
-		}
+        for (int i = 0; i < OtherThingsToCheck.Count; i++)
+        {
+            if (OtherThingsToCheck[i].activeSelf)
+            {
+                EventSystem.current.SetSelectedGameObject(OtherThingsToCheck[i]);
+            }
+        }
         // pointer.SetActive(true);
     }
 
@@ -117,18 +122,21 @@ public class OptionsMenu : MonoBehaviour
         }
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
-        
+
         isPaused = true;                    // Mark the game as paused
     }
 
     // Setting page
-    public void OpenSettingsPage(){
+    public void OpenSettingsPage()
+    {
         isSettings = true;
-        while (!Cursor.visible) {
+        while (!Cursor.visible)
+        {
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
         }
-        while (pauseMenuUI && pauseMenuUI.activeSelf) {
+        while (pauseMenuUI && pauseMenuUI.activeSelf)
+        {
             pauseMenuUI.SetActive(false);
         }
         if (settingsPanel != null)
@@ -138,13 +146,15 @@ public class OptionsMenu : MonoBehaviour
 
     }
 
-    public void CloseSettingsPage(){
+    public void CloseSettingsPage()
+    {
         while (settingsPanel && settingsPanel.activeSelf)
         {
             settingsPanel.SetActive(false);   // Hide the settings panel
         }
         isSettings = false;
-        if (SceneManager.GetActiveScene().name != "StartMenu"){
+        if (SceneManager.GetActiveScene().name != "StartMenu")
+        {
             PauseGame();   // Pause the game
         }
     }
@@ -152,14 +162,22 @@ public class OptionsMenu : MonoBehaviour
     // Optional: Add a method to quit the game from the pause menu
     public void QuitGame()
     {
-        #if UNITY_EDITOR
+#if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
-        #endif
+#endif
         Application.Quit();
     }
 
-	public void RestartGame(){
-		GameManager.instance.RestartGame();
-		FadeTransition.instance.FadeToBlack("CrimeScene");
-	}
+    public void RestartGame()
+    {
+        if (GameManager.instance != null)
+        {
+            GameManager.instance.RestartGame();
+            FadeTransition.instance.FadeToBlack("CrimeScene");
+        }
+        else
+        {
+            Debug.LogWarning("GameManager instance not found.");
+        }
+    }
 }
