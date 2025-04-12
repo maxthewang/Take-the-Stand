@@ -28,7 +28,7 @@ public class ButtonIndicator : MonoBehaviour
         if (image != null)
         {
             Color color = image.color;
-            color.a = Mathf.Lerp(0.3f, 1f, (Mathf.Sin(Time.time * blinkSpeed) + 1f) / 2f);
+            color.a = Mathf.Lerp(0.5f, 1f, (Mathf.Sin(Time.time * blinkSpeed) + 1f) / 2f);
             image.color = color;
         }
     }
