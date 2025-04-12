@@ -72,7 +72,7 @@ public class DialogTrigger : MonoBehaviour
                     }, interrogatorSoundPath + "what_sort"),
                     new MultipleChoice(0, "Have you ever been to that house before that day?", 2, new Dictionary<string, Message[]>
                     {
-                        {"No, I don't believe so.", new Message[] {new Message(0, "This is not going well for you.", interrogatorSoundPath + "this_is_not_going"), new Message(0, "We've discovered old polaroids of you soliciting the premises.", interrogatorSoundPath + "weve_discovered_old_polaroids")}},
+                        {"No, I don't believe so.", new Message[] {new Message(0, "This is not going well for you.", interrogatorSoundPath + "this_is_not_going"), new Message(0, "We've discovered old polaroids of you soliciting the premises.", interrogatorSoundPath + "weve_discovered_old_polarioids")}},
                         {"Yes, I believe so.", new Message[] {new Message(0, "Indeed, we're aware you paid some visits to them in the past.", interrogatorSoundPath + "indeed_were_aware_you")}}
                     }, interrogatorSoundPath + "have_you_been"),
                     new MultipleChoice(0, "How well did you know the victims?", 2, new Dictionary<string, Message[]>
